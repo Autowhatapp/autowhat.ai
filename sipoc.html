@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supply Chain and Logistics | Autowhat AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/clear-sans@5.0.0/index.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Product Page Specific Styles */
+        body {
+            font-family: 'Outfit', 'Clear Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .product-hero {
+            padding: 130px 0 30px;
+            background: linear-gradient(135deg, rgba(235, 245, 255, 0.4) 0%, rgba(255, 255, 255, 1) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .product-hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 168, 89, 0.2);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            background: rgba(0, 168, 89, 0.05);
+            margin-bottom: 24px;
+            letter-spacing: 0.05em;
+        }
+
+        .product-hero h1 {
+            font-size: 3.5rem;
+            /* Adjusted size for title */
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+            line-height: 1.1;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            letter-spacing: -0.02em;
+        }
+
+        .product-hero-lead {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Custom Hero Dashboard Infographic */
+        .hero-infographic-container {
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .dashboard-mockup {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dashboard-header {
+            height: 40px;
+            background: rgba(250, 250, 250, 0.9);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 8px;
+        }
+
+        .dashboard-header .dots span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e2e2e2;
+            margin-right: 4px;
+        }
+
+        .dashboard-header .dots span:nth-child(1) {
+            background: #ff5f56;
+        }
+
+        .dashboard-header .dots span:nth-child(2) {
+            background: #ffbd2e;
+        }
+
+        .dashboard-header .dots span:nth-child(3) {
+            background: #27c93f;
+        }
+
+        .dashboard-header .title {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .dashboard-body {
+            display: flex;
+            height: 500px;
+        }
+
+        .dash-sidebar {
+            width: 80px;
+            background: #fafafc;
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .dash-sidebar .nav-item {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .dash-sidebar .nav-item.active {
+            background: rgba(0, 168, 89, 0.1);
+            border: 1px solid rgba(0, 168, 89, 0.2);
+        }
+
+        .dash-main {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            background: #ffffff;
+            position: relative;
+        }
+
+        .dash-stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: #fafafc;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stat-card .label {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .dash-map-area {
+            flex: 1;
+            background: #fdfdfd;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .dash-map-svg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .route-line {
+            stroke-dasharray: 10, 10;
+            animation: dash 20s linear infinite;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -1000;
+            }
+        }
+
+        .pulse-node {
+            animation: pulse 2s infinite;
+            transform-origin: center;
+            transform-box: fill-box;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            padding: 12px 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            font-size: 0.85rem;
+            min-width: 180px;
+            transform: translateY(0);
+            animation: float 6s ease-in-out infinite;
+            z-index: 5;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .floating-card.alert-card {
+            animation-delay: 1s;
+        }
+
+        .card-header {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-dark);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .status-dot.green {
+            background: #00a859;
+            box-shadow: 0 0 10px rgba(0, 168, 89, 0.5);
+        }
+
+        .status-dot.orange {
+            background: #f39c12;
+            box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+        }
+
+        .status-dot.blue {
+            background: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        }
+
+        .card-row {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-gray);
+            margin-bottom: 6px;
+        }
+
+        /* Removed broken keyframes */
+
+        .card-row span:first-child {
+            color: #555;
+        }
+
+        /* Tech Architecture Diagram */
+        .tech-diagram-container {
+            width: 100%;
+            margin: 60px auto 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .tech-diagram-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .tech-connector {
+                width: 2px;
+                height: 40px;
+                flex: none;
+            }
+
+            .tech-connector::after {
+                animation: flowDown 3s infinite linear;
+            }
+
+            @keyframes flowDown {
+                0% {
+                    top: 0;
+                    opacity: 0;
+                }
+
+                10% {
+                    opacity: 1;
+                }
+
+                90% {
+                    opacity: 1;
+                }
+
+                100% {
+                    top: 100%;
+                    opacity: 0;
+                }
+            }
+        }
+
+        .tech-node {
+            background: #ffffff;
+            border: 1px solid rgba(0, 168, 89, 0.2);
+            border-radius: 16px;
+            padding: 30px 24px;
+            width: 220px;
+            flex-shrink: 0;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-node:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 168, 89, 0.5);
+        }
+
+        .tech-node-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(0, 168, 89, 0.05);
+            color: var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .tech-node-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .tech-node-desc {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            flex: 1;
+        }
+
+        .tech-connector {
+            flex: 1;
+            min-width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(0, 168, 89, 0.1), rgba(0, 168, 89, 0.5), rgba(0, 168, 89, 0.1));
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-connector::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary-color);
+            animation: flow 3s infinite linear;
+        }
+
+        .tech-connector.reverse-flow::after {
+            animation: flowReverse 2s infinite linear;
+            background: #3498db;
+            box-shadow: 0 0 10px #3498db;
+        }
+
+        @keyframes flow {
+            0% {
+                left: 0;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                left: 100%;
+                opacity: 0;
+            }
+        }
+
+        @keyframes flowReverse {
+            0% {
+                left: 100%;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                left: 0%;
+                opacity: 0;
+            }
+        }
+
+        .platform-capabilities {
+            padding: 40px 0;
+            background: #ffffff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.75rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .capability-card {
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .capability-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 168, 89, 0.1);
+            color: var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .capability-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .capability-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-weight: 300;
+            font-size: 0.95rem;
+        }
+
+        .tech-architecture {
+            padding: 60px 0;
+            background: #fafafc;
+            border-top: 1px solid rgba(0, 0, 0, 0.03);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .cta-section {
+            padding: 60px 0;
+            text-align: center;
+            background: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header (Copied from index.html) -->
+    <header id="main-header" class="scrolled">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">Autowhat AI</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="who-we-are.html">Who we are</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#services">What we do</a>
+                        <ul class="dropdown-content">
+                            <li class="nested-dropdown">
+                                <a href="#">Logistics and Mobility Systems</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
+                                    <li><a href="sipoc.html" class="active">Supply Chain and Logistics</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="#">Finance and Capital Markets</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="algo-trading.html">Algo Trading</a></li>
+                                    <li><a href="pms-data-scraping.html">PMS Data Scraping Automation</a></li>
+                                    <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="#">Growth and Intelligence Products</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="chat-with-database.html">Chat with Database</a></li>
+                                    <li><a href="content-ai.html">Content AI</a></li>
+                                    <li><a href="mgrow.html">MGrow</a></li>
+                                    <li><a href="learnpro.html">LearnPro</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="ai-consulting.html">AI Consulting</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions" style="justify-self: end;">
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Hero -->
+    <section class="product-hero">
+        <div class="container">
+            <div class="product-hero-badge">THE INTELLIGENT SUPPLY CHAIN & LOGISTICS PLATFORM</div>
+            <h1>Transform your fragmented manual processes into a seamless, automated, and scalable operation.</h1>
+            <p class="product-hero-lead">
+                Our platform is not just a tracking tool; it is a unified digital ecosystem designed to replace
+                fragmented manual processes with intelligent automation. From the moment an order is placed to the final
+                proof of delivery, Autowhat manages the entire lifecycle.
+            </p>
+
+            <!-- Hero Infographic (CSS/HTML Based) -->
+            <div class="hero-infographic-container fade-in">
+                <style>
+                    /* Custom Supply Chain Map Styles */
+                    .sc-map-container {
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                        width: 100%;
+                        flex: 1;
+                        padding: 20px;
+                        background: #0f172a;
+                        /* Dark tech background */
+                        position: relative;
+                        overflow: hidden;
+                        border-radius: 0 0 12px 12px;
+                    }
+
+                    .sc-map-header {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 20px;
+                        z-index: 2;
+                    }
+
+                    .sc-stat-card {
+                        background: rgba(255, 255, 255, 0.05);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        border-radius: 8px;
+                        padding: 12px 20px;
+                        flex: 1;
+                        margin: 0 10px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        backdrop-filter: blur(10px);
+                    }
+
+                    .sc-stat-card:first-child {
+                        margin-left: 0;
+                    }
+
+                    .sc-stat-card:last-child {
+                        margin-right: 0;
+                    }
+
+                    .sc-stat-label {
+                        font-size: 0.75rem;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                        color: #94a3b8;
+                        margin-bottom: 5px;
+                    }
+
+                    .sc-stat-value {
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        color: #fff;
+                    }
+
+                    .sc-stat-value.primary {
+                        color: #38bdf8;
+                    }
+
+                    .sc-stat-value.success {
+                        color: #00a859;
+                    }
+
+                    .sc-stat-value.warning {
+                        color: #00a859;
+                    }
+
+                    .sc-map-area {
+                        flex-grow: 1;
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        height: 400px;
+                        background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+                        border-radius: 8px;
+                        border: 1px solid rgba(255, 255, 255, 0.05);
+                        overflow: hidden;
+                    }
+
+                    /* Grid background */
+                    .sc-map-grid {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-image:
+                            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+                        background-size: 40px 40px;
+                        z-index: 0;
+                    }
+
+                    .sc-map-svg {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        z-index: 1;
+                    }
+
+                    .sc-hub {
+                        fill: #1e293b;
+                        stroke: #38bdf8;
+                        stroke-width: 2;
+                        transition: all 0.3s ease;
+                    }
+
+                    .sc-hub:hover {
+                        fill: #38bdf8;
+                        filter: drop-shadow(0 0 10px #38bdf8);
+                        cursor: pointer;
+                    }
+
+                    .sc-hub-pulse {
+                        fill: transparent;
+                        stroke: #38bdf8;
+                        stroke-width: 1;
+                        opacity: 0;
+                        animation: radarPulse 3s infinite;
+                    }
+
+                    .sc-route {
+                        fill: none;
+                        stroke: rgba(56, 189, 248, 0.2);
+                        stroke-width: 2;
+                        stroke-dasharray: 6 6;
+                    }
+
+                    .sc-route-active {
+                        fill: none;
+                        stroke: #00a859;
+                        stroke-width: 2;
+                        opacity: 0.6;
+                    }
+
+                    .sc-vehicle {
+                        fill: #00a859;
+                        filter: drop-shadow(0 0 5px #00a859);
+                    }
+
+                    @keyframes radarPulse {
+                        0% {
+                            r: 5;
+                            opacity: 1;
+                        }
+
+                        100% {
+                            r: 35;
+                            opacity: 0;
+                        }
+                    }
+
+                    /* Animation removed, using SVG native animateMotion */
+                </style>
+                <div class="dashboard-mockup" style="background: transparent; border-color: rgba(255,255,255,0.1);">
+                    <div class="dashboard-header"
+                        style="background: #1e293b; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <div class="dots"><span style="background:#ff5f56"></span><span
+                                style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div>
+                        <div class="title" style="color: #cbd5e1;">Live Telemetry & Fleet Dispatch Network</div>
+                    </div>
+                    <div class="dashboard-body" style="background: #0f172a;">
+                        <!-- Main Content -->
+                        <div class="sc-map-container">
+                            <div class="sc-map-header">
+                                <div class="sc-stat-card">
+                                    <span class="sc-stat-label">Active Deployments</span>
+                                    <span class="sc-stat-value primary">4,192</span>
+                                </div>
+                                <div class="sc-stat-card">
+                                    <span class="sc-stat-label">Network Sync</span>
+                                    <span class="sc-stat-value success">99.8%</span>
+                                </div>
+                                <div class="sc-stat-card">
+                                    <span class="sc-stat-label">Routing Efficiency</span>
+                                    <span class="sc-stat-value warning">Optimal</span>
+                                </div>
+                            </div>
+
+                            <div class="sc-map-area">
+                                <div class="sc-map-grid"></div>
+                                <svg class="sc-map-svg" viewBox="0 0 800 280" preserveAspectRatio="xMidYMid meet">
+                                    <!-- Routes -->
+                                    <path id="route1" class="sc-route" d="M 100,200 C 150,200 200,80 300,80" />
+                                    <path id="route2" class="sc-route-active" d="M 300,80 C 400,80 450,180 550,180" />
+                                    <path id="route3" class="sc-route" d="M 300,80 C 400,80 600,100 700,100" />
+                                    <path id="route4" class="sc-route-active" d="M 550,180 C 600,180 650,100 700,100" />
+                                    <path id="route5" class="sc-route" d="M 100,200 C 300,250 400,250 550,180" />
+
+                                    <!-- Animated Vehicles -->
+                                    <circle class="sc-vehicle" r="4" fill="#00a859">
+                                        <animateMotion dur="8s" repeatCount="indefinite">
+                                            <mpath href="#route1" />
+                                        </animateMotion>
+                                        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1"
+                                            dur="8s" repeatCount="indefinite" />
+                                    </circle>
+                                    <circle class="sc-vehicle" r="4" fill="#00a859">
+                                        <animateMotion dur="6s" repeatCount="indefinite" begin="3s">
+                                            <mpath href="#route2" />
+                                        </animateMotion>
+                                        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1"
+                                            dur="6s" repeatCount="indefinite" begin="3s" />
+                                    </circle>
+                                    <circle class="sc-vehicle" r="4" fill="#00a859">
+                                        <animateMotion dur="9s" repeatCount="indefinite" begin="1s">
+                                            <mpath href="#route3" />
+                                        </animateMotion>
+                                        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1"
+                                            dur="9s" repeatCount="indefinite" begin="1s" />
+                                    </circle>
+                                    <circle class="sc-vehicle" r="4" fill="#00a859">
+                                        <animateMotion dur="5s" repeatCount="indefinite" begin="4s">
+                                            <mpath href="#route4" />
+                                        </animateMotion>
+                                        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1"
+                                            dur="5s" repeatCount="indefinite" begin="4s" />
+                                    </circle>
+                                    <circle class="sc-vehicle" r="4" fill="#00a859">
+                                        <animateMotion dur="10s" repeatCount="indefinite" begin="2s">
+                                            <mpath href="#route5" />
+                                        </animateMotion>
+                                        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1"
+                                            dur="10s" repeatCount="indefinite" begin="2s" />
+                                    </circle>
+                                    <svg class="sc-map-svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
+                                        <!-- Routes -->
+                                        <path id="route1" class="sc-route" d="M 100,280 C 200,280 300,100 400,100" />
+                                        <path id="route2" class="sc-route-active"
+                                            d="M 400,100 C 600,100 600,240 800,240" />
+                                        <path id="route3" class="sc-route" d="M 400,100 C 600,100 800,150 1100,150" />
+                                        <path id="route4" class="sc-route-active"
+                                            d="M 800,240 C 950,240 1000,150 1100,150" />
+                                        <path id="route5" class="sc-route" d="M 100,280 C 400,380 600,380 800,240" />
+
+                                        <!-- Animated Vehicles -->
+                                        <circle class="sc-vehicle" r="4" fill="#00a859">
+                                            <animateMotion dur="8s" repeatCount="indefinite">
+                                                <mpath href="#route1" />
+                                            </animateMotion>
+                                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1"
+                                                dur="8s" repeatCount="indefinite" />
+                                        </circle>
+                                        <circle class="sc-vehicle" r="4" fill="#00a859">
+                                            <animateMotion dur="6s" repeatCount="indefinite" begin="3s">
+                                                <mpath href="#route2" />
+                                            </animateMotion>
+                                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1"
+                                                dur="6s" repeatCount="indefinite" begin="3s" />
+                                        </circle>
+                                        <circle class="sc-vehicle" r="4" fill="#00a859">
+                                            <animateMotion dur="9s" repeatCount="indefinite" begin="1s">
+                                                <mpath href="#route3" />
+                                            </animateMotion>
+                                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1"
+                                                dur="9s" repeatCount="indefinite" begin="1s" />
+                                        </circle>
+                                        <circle class="sc-vehicle" r="4" fill="#00a859">
+                                            <animateMotion dur="5s" repeatCount="indefinite" begin="4s">
+                                                <mpath href="#route4" />
+                                            </animateMotion>
+                                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1"
+                                                dur="5s" repeatCount="indefinite" begin="4s" />
+                                        </circle>
+                                        <circle class="sc-vehicle" r="4" fill="#00a859">
+                                            <animateMotion dur="10s" repeatCount="indefinite" begin="2s">
+                                                <mpath href="#route5" />
+                                            </animateMotion>
+                                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1"
+                                                dur="10s" repeatCount="indefinite" begin="2s" />
+                                        </circle>
+                                        <circle class="sc-vehicle" r="4" fill="#00a859">
+                                            <animateMotion dur="6s" repeatCount="indefinite" begin="7s">
+                                                <mpath href="#route2" />
+                                            </animateMotion>
+                                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1"
+                                                dur="6s" repeatCount="indefinite" begin="7s" />
+                                        </circle>
+
+                                        <!-- Hub Nodes & Labels -->
+                                        <g transform="translate(100, 280)">
+                                            <circle cx="0" cy="0" r="5" class="sc-hub-pulse" />
+                                            <circle cx="0" cy="0" r="8" class="sc-hub" />
+                                            <g transform="translate(0, -35)">
+                                                <rect x="-48" y="-14" width="96" height="28" rx="6"
+                                                    fill="rgba(15, 23, 42, 0.8)" stroke="rgba(255,255,255,0.1)"></rect>
+                                                <circle cx="-34" cy="0" r="4" fill="#00a859" />
+                                                <text x="-22" y="4" fill="#cbd5e1" font-size="11" font-weight="500"
+                                                    font-family="system-ui, -apple-system, sans-serif">Supplier
+                                                    Node</text>
+                                            </g>
+                                        </g>
+
+                                        <g transform="translate(400, 100)">
+                                            <circle cx="0" cy="0" r="5" class="sc-hub-pulse"
+                                                style="animation-delay: 1s;" />
+                                            <circle cx="0" cy="0" r="8" class="sc-hub" />
+                                            <g transform="translate(0, -35)">
+                                                <rect x="-43" y="-14" width="86" height="28" rx="6"
+                                                    fill="rgba(15, 23, 42, 0.8)" stroke="rgba(255,255,255,0.1)"></rect>
+                                                <circle cx="-29" cy="0" r="4" fill="#00a859" />
+                                                <text x="-18" y="4" fill="#cbd5e1" font-size="11" font-weight="500"
+                                                    font-family="system-ui, -apple-system, sans-serif">Dispatch
+                                                    HQ</text>
+                                            </g>
+                                        </g>
+
+                                        <g transform="translate(800, 240)">
+                                            <circle cx="0" cy="0" r="5" class="sc-hub-pulse"
+                                                style="animation-delay: 0.5s;" />
+                                            <circle cx="0" cy="0" r="8" class="sc-hub" />
+                                            <g transform="translate(0, -35)">
+                                                <rect x="-43" y="-14" width="86" height="28" rx="6"
+                                                    fill="rgba(15, 23, 42, 0.8)" stroke="rgba(255,255,255,0.1)"></rect>
+                                                <circle cx="-29" cy="0" r="4" fill="#00a859" />
+                                                <text x="-18" y="4" fill="#cbd5e1" font-size="11" font-weight="500"
+                                                    font-family="system-ui, -apple-system, sans-serif">Yard Hub A</text>
+                                            </g>
+                                        </g>
+
+                                        <g transform="translate(1100, 150)">
+                                            <circle cx="0" cy="0" r="5" class="sc-hub-pulse"
+                                                style="animation-delay: 1.5s;" />
+                                            <circle cx="0" cy="0" r="8" class="sc-hub" />
+                                            <g transform="translate(0, -35)">
+                                                <rect x="-40" y="-14" width="80" height="28" rx="6"
+                                                    fill="rgba(15, 23, 42, 0.8)" stroke="rgba(255,255,255,0.1)"></rect>
+                                                <circle cx="-26" cy="0" r="4" fill="#00a859" />
+                                                <text x="-15" y="4" fill="#cbd5e1" font-size="11" font-weight="500"
+                                                    font-family="system-ui, -apple-system, sans-serif">Fulfillment</text>
+                                            </g>
+                                        </g>
+                                    </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Platform Capabilities -->
+    <section class="platform-capabilities" id="capabilities">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">Core Platform Capabilities</h2>
+
+            <div class="capabilities-grid">
+                <!-- Capability 1 -->
+                <div class="capability-card fade-in">
+                    <div class="capability-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+                            <line x1="9" y1="3" x2="9" y2="18"></line>
+                            <line x1="15" y1="6" x2="15" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3>1. Intelligent Order Management & Load Planning</h3>
+                    <p>Eliminate hours of manual spreadsheet manipulation. Our system ingests your raw order data and
+                        automatically architects the most efficient dispatch plan.</p>
+                    <ul style="margin-top: 12px; font-size: 0.9rem; color: var(--text-gray); padding-left: 20px;">
+                        <li><strong>Seamless Data Ingestion:</strong> Upload order data via Excel (.xlsx, .xls, or .csv)
+                            and let the system automatically parse and validate required fields.</li>
+                        <li><strong>Algorithmic Grouping:</strong> The system automatically clusters orders based on
+                            nearby geographic locations (within ~100 km).</li>
+                        <li><strong>Capacity Optimization:</strong> Orders are dynamically assigned to vehicles based on
+                            exact weight requirements and available truck capacities.</li>
+                        <li><strong>Automated Transporter Dispatch:</strong> The platform automatically selects
+                            transporters and sends comprehensive email summaries.</li>
+                    </ul>
+                </div>
+
+                <!-- Capability 2 -->
+                <div class="capability-card fade-in delay-1">
+                    <div class="capability-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                            <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                            <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                            <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+                            <line x1="7" y1="8" x2="7" y2="16"></line>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="17" y1="8" x2="17" y2="16"></line>
+                        </svg>
+                    </div>
+                    <h3>2. Comprehensive Fleet Tracking & Trip Lifecycle</h3>
+                    <p>Gain absolute real-time control over your vehicles and cargo with our live monitoring and trip
+                        management services.</p>
+                    <ul style="margin-top: 12px; font-size: 0.9rem; color: var(--text-gray); padding-left: 20px;">
+                        <li><strong>Interactive Live Mapping:</strong> Monitor all active vehicles on a unified
+                            dashboard, powered by real-time GPS hardware feeds.</li>
+                        <li><strong>End-to-End Milestone Tracking:</strong> Manage the complete trip lifecycle with a
+                            structured event log.</li>
+                        <li><strong>Freight Bidding Module:</strong> Integrated tools for comprehensive freight rate
+                            management.</li>
+                        <li><strong>Secure Cloud Document Storage:</strong> Safely store and instantly retrieve critical
+                            trip sheets and PODs via Google Cloud Storage.</li>
+                    </ul>
+                </div>
+
+                <!-- Capability 3 -->
+                <div class="capability-card fade-in delay-2">
+                    <div class="capability-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+                            <circle cx="12" cy="5" r="2"></circle>
+                            <path d="M12 7v4"></path>
+                            <line x1="8" y1="16" x2="8" y2="16"></line>
+                            <line x1="16" y1="16" x2="16" y2="16"></line>
+                        </svg>
+                    </div>
+                    <h3>3. Yard Orchestration & Dispatch Floor Automation</h3>
+                    <p>Bridge the communication gap between interior administration and exterior dock workers to
+                        accelerate loading and unloading times.</p>
+                    <ul style="margin-top: 12px; font-size: 0.9rem; color: var(--text-gray); padding-left: 20px;">
+                        <li><strong>Digital QR Gate Passes:</strong> Issue structurally encoded HTML5 QR-code gate
+                            passes for verifiable scanning.</li>
+                        <li><strong>Live Line-Side Synchronization:</strong> Track active unloading yard states in
+                            real-time to eliminate vehicle idle times.</li>
+                        <li><strong>Conversational AI:</strong> Leverage advanced OpenAI voice processing for rapid,
+                            hands-free operational data input.</li>
+                    </ul>
+                </div>
+
+                <!-- Capability 4 -->
+                <div class="capability-card fade-in">
+                    <div class="capability-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <path d="M9 15l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3>4. Automated Inventory & Compliance Verification</h3>
+                    <p>Protect your operations from data discrepancies, human error, and compliance risks through
+                        automated, continuous auditing.</p>
+                    <ul style="margin-top: 12px; font-size: 0.9rem; color: var(--text-gray); padding-left: 20px;">
+                        <li><strong>Multi-Format Ingestion Engine:</strong> Automatically normalize headers across
+                            diverse stock records and space files.</li>
+                        <li><strong>Evidence-Based Verification:</strong> Cross-references internal work efficiency
+                            claims against external evidence sources.</li>
+                        <li><strong>Risk Scoring:</strong> Automatically calculates confidence scores and determines
+                            operational risk statuses for processed data.</li>
+                        <li><strong>Vehicle Compliance Checks:</strong> Automatically verify critical transporter
+                            documents, tracking expiry dates.</li>
+                    </ul>
+                </div>
+
+                <!-- Capability 5 -->
+                <div class="capability-card fade-in delay-1">
+                    <div class="capability-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                            </path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3>5. Proactive Communication & Support Ticketing</h3>
+                    <p>Keep your drivers, distributors, and management teams perfectly aligned without relying on manual
+                        phone calls or chaotic group chats.</p>
+                    <ul style="margin-top: 12px; font-size: 0.9rem; color: var(--text-gray); padding-left: 20px;">
+                        <li><strong>Automated WhatsApp Microservice:</strong> Deliver operational notifications directly
+                            to stakeholders via the Meta WhatsApp Business API.</li>
+                        <li><strong>Centralized Support Ticketing:</strong> Field staff can log issues with priority
+                            classification, chat threading, and SLA enforcement.</li>
+                        <li><strong>On-Demand PDF Reporting:</strong> Instantly generate professionally formatted,
+                            date-filtered PDF reports detailing KPI statistics.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expected Outcomes -->
+    <section class="outcomes-section bg-light"
+        style="padding: 80px 0; background: #fafafc; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 24px;">Expected Outcomes & Business
+                Value</h2>
+
+            <div style="max-width: 900px; margin: 0 auto; text-align: center; margin-bottom: 60px;">
+                <p style="font-size: 1.15rem; color: var(--text-gray); line-height: 1.6;">
+                    By replacing disjointed manual workflows with Autowhat's intelligent automation, your organization
+                    can transition from reactive firefighting to proactive, optimized orchestration. Here is how our
+                    platform directly impacts your bottom line and operational rhythm.
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+
+                <!-- Pillar 1: Efficiency -->
+                <div class="outcome-pillar"
+                    style="background: #ffffff; border-radius: 20px; padding: 40px 30px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s ease;">
+                    <div
+                        style="width: 64px; height: 64px; border-radius: 16px; background: rgba(0, 168, 89, 0.1); color: var(--primary-color); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 12px; color: var(--text-dark);">1. Maximize Operational
+                        Efficiency</h3>
+                    <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 24px; font-size: 0.95rem;">Drive
+                        more throughput with fewer resources by eliminating operational bottlenecks at every stage.</p>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="color: var(--primary-color); flex-shrink: 0; margin-top: 4px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <p style="font-size: 0.95rem; line-height: 1.5; color: var(--text-dark); margin: 0;">
+                                <strong>Automated Orchestration:</strong> Replaces countless phone calls and manual
+                                emails with automated transporter dispatch and real-time status triggers.
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="color: var(--primary-color); flex-shrink: 0; margin-top: 4px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <p style="font-size: 0.95rem; line-height: 1.5; color: var(--text-dark); margin: 0;">
+                                <strong>Reduced Idle Time:</strong> Synchronizing line-side unloading with dock
+                                availability prevents vehicles from waiting needlessly in the yard.
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="color: var(--primary-color); flex-shrink: 0; margin-top: 4px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <p style="font-size: 0.95rem; line-height: 1.5; color: var(--text-dark); margin: 0;">
+                                <strong>Streamlined Workflows:</strong> Automated data parsing and validation remove the
+                                need for manual data entry.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 2: Revenue & Costs -->
+                <div class="outcome-pillar"
+                    style="background: #ffffff; border-radius: 20px; padding: 40px 30px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s ease;">
+                    <div
+                        style="width: 64px; height: 64px; border-radius: 16px; background: rgba(52, 152, 219, 0.1); color: #3498db; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 12px; color: var(--text-dark);">2. Drive Revenue &
+                        Lower Costs</h3>
+                    <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 24px; font-size: 0.95rem;">
+                        Unlock hidden value in your supply chain by optimizing asset utilization and reducing
+                        controllable expenses.</p>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="color: #3498db; flex-shrink: 0; margin-top: 4px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <p style="font-size: 0.95rem; line-height: 1.5; color: var(--text-dark); margin: 0;">
+                                <strong>Optimized Truck Utilization:</strong> Algorithmic load planning ensures every
+                                vehicle is filled to its optimal weight capacity.
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="color: #3498db; flex-shrink: 0; margin-top: 4px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <p style="font-size: 0.95rem; line-height: 1.5; color: var(--text-dark); margin: 0;">
+                                <strong>Lower Operational Costs:</strong> Reducing vehicle idle times and optimizing
+                                routes directly correlates to lower fuel consumption.
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="color: #3498db; flex-shrink: 0; margin-top: 4px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <p style="font-size: 0.95rem; line-height: 1.5; color: var(--text-dark); margin: 0;">
+                                <strong>Scalable Operations:</strong> Handle a growing volume of orders and shipments
+                                without a linear increase in administrative headcount.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Visibility & Risk -->
+                <div class="outcome-pillar"
+                    style="background: #ffffff; border-radius: 20px; padding: 40px 30px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s ease;">
+                    <div
+                        style="width: 64px; height: 64px; border-radius: 16px; background: rgba(155, 89, 182, 0.1); color: #9b59b6; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <polyline points="9 12 11 14 15 10"></polyline>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 12px; color: var(--text-dark);">3. Enhance Visibility &
+                        Mitigate Risk</h3>
+                    <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 24px; font-size: 0.95rem;">Make
+                        informed decisions based on real-time data and protect your business from costly compliance
+                        errors.</p>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="color: #9b59b6; flex-shrink: 0; margin-top: 4px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <p style="font-size: 0.95rem; line-height: 1.5; color: var(--text-dark); margin: 0;">
+                                <strong>Proactive Problem Solving:</strong> Live fleet dashboards allow you to identify
+                                and resolve delays before they become critical failures.
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="color: #9b59b6; flex-shrink: 0; margin-top: 4px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <p style="font-size: 0.95rem; line-height: 1.5; color: var(--text-dark); margin: 0;">
+                                <strong>Automated Compliance:</strong> Systematically verifying vehicle documents (RC,
+                                Insurance, Permits) reduces legal liability.
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="color: #9b59b6; flex-shrink: 0; margin-top: 4px;">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <p style="font-size: 0.95rem; line-height: 1.5; color: var(--text-dark); margin: 0;">
+                                <strong>Data-Driven Confidence:</strong> Automated evidence verification against
+                                external sources provides a trustworthy foundation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Architecture -->
+    <section class="tech-architecture">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2 class="section-title">Enterprise-Grade Architecture & Deployment</h2>
+                <p
+                    style="font-size: 1.15rem; color: var(--text-gray); font-weight: 300; margin-bottom: 50px; line-height: 1.6;">
+                    Our platform is engineered for high availability, security, and effortless horizontal scaling to
+                    support growing enterprise operations.
+                </p>
+            </div>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                <div class="capability-card" style="text-align: center;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 16px; font-size: 1.25rem; font-weight: 500;">
+                        Full-Stack Framework</h4>
+                    <p style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; font-weight: 300;">The
+                        system is built on a monolithic Next.js (App Router) foundation, seamlessly serving a
+                        responsive, accessible React frontend alongside serverless-style API route handlers.</p>
+                </div>
+                <div class="capability-card" style="text-align: center;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 16px; font-size: 1.25rem; font-weight: 500;">
+                        Cloud-Native Orchestration</h4>
+                    <p style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; font-weight: 300;">
+                        Containerized as Docker images, the platform is deployed to Google Kubernetes Engine (GKE) on
+                        GCP. Zero-downtime rolling updates and Horizontal Pod Autoscaling (HPA) sustain peak loads.</p>
+                </div>
+                <div class="capability-card" style="text-align: center;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 16px; font-size: 1.25rem; font-weight: 500;">
+                        Automated CI/CD & Resilient Data Layer</h4>
+                    <p style="color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; font-weight: 300;">
+                        Transactional data is managed by MongoDB Atlas clusters. Media is persisted in Google Cloud
+                        Storage. A GitHub Actions pipeline manages Docker builds, Trivy scans, and GKE rollouts.</p>
+                </div>
+            </div>
+
+            <!-- Architecture Diagram Graphic -->
+            <div class="tech-diagram-container fade-in"
+                style="border-color: rgba(0, 168, 89, 0.4); box-shadow: 0 15px 40px rgba(0, 168, 89, 0.1);">
+
+                <!-- Node 1 -->
+                <div class="tech-node" style="border-width: 2px;">
+                    <div class="tech-node-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <div class="tech-node-title">Next.js App Server</div>
+                    <div class="tech-node-desc">React Server Components & Serverless API Routes</div>
+                    <div style="margin-top:12px; font-size: 0.75rem; color: #00a859; font-weight: 600;">Monolithic Core
+                    </div>
+                </div>
+
+                <!-- Connector -->
+                <div class="tech-connector"></div>
+
+                <!-- Node 2 -->
+                <div class="tech-node" style="border-width: 2px;">
+                    <div class="tech-node-icon" style="background: rgba(0, 168, 89, 0.1);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <div class="tech-node-title">Google Kubernetes Engine</div>
+                    <div class="tech-node-desc">Dockerized Container Orchestration & Horizontal Pod Autoscaling</div>
+                    <div style="margin-top:12px; font-size: 0.75rem; color: #f39c12; font-weight: 600;">GCP Hosted</div>
+                </div>
+
+                <!-- Connector -->
+                <div class="tech-connector reverse-flow"></div>
+
+                <!-- Node 3 -->
+                <div class="tech-node" style="border-width: 2px;">
+                    <div class="tech-node-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                        </svg>
+                    </div>
+                    <div class="tech-node-title">MongoDB & Cloud Storage</div>
+                    <div class="tech-node-desc">HA Database Clusters & Secure Binary Object Storage</div>
+                    <div style="margin-top:12px; font-size: 0.75rem; color: #f39c12; font-weight: 600;">Auto-Healing
+                        Triggers</div>
+                </div>
+
+                <!-- Connector -->
+                <div class="tech-connector reverse-flow"></div>
+
+                <!-- Node 3 -->
+                <div class="tech-node" style="border-width: 2px;">
+                    <div class="tech-node-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                        </svg>
+                    </div>
+                    <div class="tech-node-title">Secure Cloud Data</div>
+                    <div class="tech-node-desc">Immutable Audit Logging & Analytics Core</div>
+                    <div style="margin-top:12px; font-size: 0.75rem; color: var(--text-gray); font-weight: 600;">Azure /
+                        AWS / GCP</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container" style="max-width: 800px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Ready to Transform Your Supply Chain?</h2>
+            <p style="font-size: 1.15rem; color: var(--text-gray); margin-bottom: 40px; line-height: 1.6;">
+                Stop letting manual processes, disjointed communication, and operational blind spots slow your business
+                down. Autowhat AI & Automations provides the intelligence and architecture required to build a
+                resilient, future-ready logistics network.
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="contact-us.html" class="btn-primary">Speak with Our Engineering Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Copied from index.html) -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">AUTOWHAT AI</h4>
+                <p style="color: var(--primary-color);">Innovating for a better tomorrow.</p>
+            </div>
+            
+            
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Autowhat AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Intersection Observer for fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
