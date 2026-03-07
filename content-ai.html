@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content AI | Autowhat AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/clear-sans@5.0.0/index.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Product Page Specific Styles */
+        body {
+            font-family: 'Outfit', 'Clear Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .product-hero {
+            padding: 160px 0 40px;
+            background: linear-gradient(135deg, rgba(248, 242, 248, 0.4) 0%, rgba(255, 255, 255, 1) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .product-hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #8A2BE2;
+            /* Primary color for Content AI */
+            background: rgba(138, 43, 226, 0.05);
+            margin-bottom: 24px;
+            letter-spacing: 0.05em;
+        }
+
+        .product-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+            line-height: 1.1;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            letter-spacing: -0.02em;
+        }
+
+        .product-hero-lead {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Custom Hero Dashboard Infographic */
+        .hero-infographic-container {
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .dashboard-mockup {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dashboard-header {
+            height: 40px;
+            background: rgba(250, 250, 250, 0.9);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 8px;
+        }
+
+        .dashboard-header .dots span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e2e2e2;
+            margin-right: 4px;
+        }
+
+        .dashboard-header .dots span:nth-child(1) {
+            background: #ff5f56;
+        }
+
+        .dashboard-header .dots span:nth-child(2) {
+            background: #ffbd2e;
+        }
+
+        .dashboard-header .dots span:nth-child(3) {
+            background: #27c93f;
+        }
+
+        .dashboard-header .title {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        /* Content AI Specific Dashboard Styles */
+        .content-dash-body {
+            display: flex;
+            height: 500px;
+            background: #fafafc;
+        }
+
+        .content-sidebar {
+            width: 250px;
+            background: #ffffff;
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            text-align: left;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .sidebar-item.active {
+            background: rgba(138, 43, 226, 0.1);
+            color: #8A2BE2;
+        }
+
+        .content-main {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+            background: #fdfdfd;
+        }
+
+        .ai-prompt-box {
+            background: #ffffff;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 20px rgba(138, 43, 226, 0.05);
+        }
+
+        .ai-sparkle {
+            color: #8A2BE2;
+            animation: pulse-sparkle 2s infinite;
+        }
+
+        @keyframes pulse-sparkle {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+        }
+
+        .prompt-text {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            flex: 1;
+            text-align: left;
+            border-right: 2px solid #8A2BE2;
+            animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: #8A2BE2;
+            }
+        }
+
+        .generation-area {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            flex: 1;
+        }
+
+        .preview-canvas {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            /* Container styling remains, but inner content will fill it */
+        }
+
+        .social-preview {
+            width: 100%;
+            height: 100%;
+            background: #fafafc;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slide-up-full 1s ease-out 2s both;
+        }
+
+        @keyframes slide-up-full {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .social-header {
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background: #fff;
+        }
+
+        .social-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #2a1b18;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4a373;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .social-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #111;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .social-image {
+            flex: 1;
+            background: url('images/content_ai_post.png') center/cover;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Floating Hearts Animation */
+        .floating-heart {
+            position: absolute;
+            bottom: -30px;
+            color: #ff3366;
+            font-size: 20px;
+            animation: floatUp 3s ease-in infinite, sway 2s ease-in-out infinite alternate;
+            opacity: 0;
+            filter: drop-shadow(0 2px 4px rgba(255, 51, 102, 0.4));
+        }
+
+        .floating-heart:nth-child(1) {
+            left: 20%;
+            animation-delay: 1.5s;
+            font-size: 16px;
+        }
+
+        .floating-heart:nth-child(2) {
+            left: 50%;
+            animation-delay: 2.2s;
+            font-size: 24px;
+            animation-duration: 3.5s;
+        }
+
+        .floating-heart:nth-child(3) {
+            left: 80%;
+            animation-delay: 2.8s;
+            font-size: 18px;
+        }
+
+        .floating-heart:nth-child(4) {
+            left: 35%;
+            animation-delay: 3.4s;
+            font-size: 22px;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(0.8);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+                transform: translateY(-30px) scale(1.1);
+            }
+
+            80% {
+                opacity: 0.8;
+                transform: translateY(-120px) scale(0.9);
+            }
+
+            100% {
+                transform: translateY(-150px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes sway {
+            0% {
+                margin-left: -10px;
+            }
+
+            100% {
+                margin-left: 10px;
+            }
+        }
+
+        /* Published Badge */
+        .publish-badge {
+            background: rgba(34, 197, 94, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            animation: popInBadge 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 4s both;
+            transform-origin: center;
+        }
+
+        @keyframes popInBadge {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+
+        .social-footer {
+            padding: 12px;
+            background: #fff;
+        }
+
+        .social-likes {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #111;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-caption {
+            font-size: 0.95rem;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .social-caption span {
+            font-weight: 600;
+            color: #111;
+            margin-right: 6px;
+        }
+
+        .channels-card {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .channel-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            background: #fafafc;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            animation: fade-in-right 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .channel-item:nth-child(1) {
+            animation-delay: 2.5s;
+        }
+
+        .channel-item:nth-child(2) {
+            animation-delay: 2.7s;
+        }
+
+        .channel-item:nth-child(3) {
+            animation-delay: 2.9s;
+        }
+
+        @keyframes fade-in-right {
+            from {
+                transform: translateX(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .channel-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .status-badge {
+            font-size: 0.7rem;
+            padding: 4px 8px;
+            border-radius: 12px;
+            background: rgba(52, 211, 153, 0.1);
+            color: #00a859;
+            font-weight: 600;
+        }
+
+        .platform-capabilities {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.75rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .capability-card {
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .capability-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(138, 43, 226, 0.1);
+            color: #8A2BE2;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .capability-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .capability-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-weight: 300;
+            font-size: 0.95rem;
+        }
+
+        /* Bento Grid Sections */
+        .bento-section {
+            padding: 80px 0;
+            background: #fafafc;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .bento-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bento-card.wide {
+            grid-column: span 2;
+        }
+
+        .bento-card.tall {
+            grid-row: span 2;
+        }
+
+        .bento-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+            position: relative;
+            z-index: 2;
+        }
+
+        .bento-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bento-graphic {
+            margin-top: auto;
+            align-self: flex-end;
+            padding-top: 24px;
+            z-index: 1;
+            width: 100%;
+        }
+
+        /* Timeline Process Section */
+        .process-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .timeline-container {
+            max-width: 800px;
+            margin: 60px auto 0;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 24px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background: rgba(0, 0, 0, 0.05);
+            z-index: 1;
+        }
+
+        .timeline-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #8A2BE2, #ec4899);
+            width: 100%;
+            transform-origin: left;
+            animation: scaleX 4s infinite;
+        }
+
+        @keyframes scaleX {
+            0% {
+                transform: scaleX(0);
+            }
+
+            50%,
+            100% {
+                transform: scaleX(1);
+            }
+        }
+
+        .timeline-step {
+            z-index: 2;
+            text-align: center;
+            background: #ffffff;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #ffffff;
+            border: 2px solid #8A2BE2;
+            color: #8A2BE2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            box-shadow: 0 0 0 4px #ffffff;
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .step-desc {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+            background: #fafafc;
+        }
+
+        @media (max-width: 900px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .bento-card.wide,
+            .bento-card.tall {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .content-dash-body {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .content-sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .generation-area {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+
+            .timeline-line {
+                width: 2px;
+                height: 100%;
+                top: 0;
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+            }
+
+            .timeline-progress {
+                width: 100%;
+                background: linear-gradient(180deg, #8A2BE2, #ec4899);
+                transform-origin: top;
+                animation: scaleY 4s infinite;
+            }
+
+            @keyframes scaleY {
+                0% {
+                    transform: scaleY(0);
+                }
+
+                50%,
+                100% {
+                    transform: scaleY(1);
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header (Copied from index.html) -->
+    <header id="main-header" class="scrolled">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">Autowhat AI</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="who-we-are.html">Who we are</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#services">What we do</a>
+                        <ul class="dropdown-content">
+                            <li class="nested-dropdown">
+                                <a href="#">Logistics and Mobility Systems</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
+                                    <li><a href="sipoc.html">Supply Chain and Logistics</a></li>
+                                    <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="#">Finance and Capital Markets</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="algo-trading.html">Algo Trading</a></li>
+                                    <li><a href="pms-data-scraping.html">PMS Data Scraping Automation</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="#">Growth and Intelligence Products</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="chat-with-database.html">Chat with Database</a></li>
+                                    <li><a href="content-ai.html" class="active">Content AI</a></li>
+                                    <li><a href="mgrow.html">MGrow</a></li>
+                                    <li><a href="learnpro.html">LearnPro</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="ai-consulting.html">AI Consulting</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions" style="justify-self: end;">
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Hero -->
+    <section class="product-hero">
+        <div class="container">
+            <div class="product-hero-badge">THE CONTENT AI PLATFORM</div>
+            <h1>The Power of a Digital Marketing Firm in Your Pocket</h1>
+            <p class="product-hero-lead">
+                Create, Schedule, and Publish Professional Content in Seconds. Stop Overpaying for Marketing. Start
+                Dominating. As a small business owner or content creator, you know the struggle: you need to post every
+                day to stay relevant, but you don’t have the time to design graphics, write captions, and manage five
+                different social apps. Content AI is the first platform that handles the entire creative process for
+                you—from the first spark of an idea to the final post on your feed.
+            </p>
+
+            <!-- Hero Infographic (CSS/HTML Based Dashboard) -->
+            <div class="hero-infographic-container fade-in">
+                <div class="dashboard-mockup">
+                    <div class="dashboard-header">
+                        <div class="dots"><span></span><span></span><span></span></div>
+                        <div class="title">Content AI Studio v2.0</div>
+                    </div>
+                    <div class="content-dash-body">
+                        <div class="content-sidebar">
+                            <div class="sidebar-item active">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                                </svg>
+                                Create Post
+                            </div>
+                            <div class="sidebar-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                Content Calendar
+                            </div>
+                            <div class="sidebar-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                                Brand Assets
+                            </div>
+                            <div class="sidebar-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                </svg>
+                                Analytics
+                            </div>
+                        </div>
+                        <div class="content-main">
+                            <div class="ai-prompt-box">
+                                <svg class="ai-sparkle" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                </svg>
+                                <div class="prompt-text">"Generate a festival-themed promotional post for our new summer
+                                    coffee blend..."</div>
+                            </div>
+                            <div class="generation-area">
+                                <div class="preview-canvas">
+                                    <div class="social-preview">
+                                        <div class="social-header">
+                                            <div class="social-avatar">☕</div>
+                                            <div class="social-name">
+                                                Artisan Beans Co.
+                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#00a859"
+                                                    stroke="#fff" stroke-width="2">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <polyline points="9 12 11 14 15 10"></polyline>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="social-image">
+                                            <!-- Animated Overlay Elements -->
+                                            <svg class="floating-heart" viewBox="0 0 24 24" fill="currentColor"
+                                                width="24" height="24">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                            <svg class="floating-heart" viewBox="0 0 24 24" fill="currentColor"
+                                                width="24" height="24">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                            <svg class="floating-heart" viewBox="0 0 24 24" fill="currentColor"
+                                                width="24" height="24">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                            <svg class="floating-heart" viewBox="0 0 24 24" fill="currentColor"
+                                                width="24" height="24">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+
+                                            <div class="publish-badge">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                                </svg>
+                                                Auto-Published
+                                            </div>
+                                        </div>
+                                        <div class="social-footer">
+                                            <div class="social-likes">
+                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff3366"
+                                                    stroke="#ff3366" stroke-width="2">
+                                                    <path
+                                                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                                </svg>
+                                                14,209 likes
+                                            </div>
+                                            <div class="social-caption">
+                                                <span>Artisan Beans Co.</span> Summer is here! ☀️ Come grab our new
+                                                festival-themed iced coffee blend. Available now!
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="channels-card">
+                                    <h4 style="margin:0; font-size:1rem; color:var(--text-dark);">Publishing Targets
+                                    </h4>
+                                    <div class="channel-item">
+                                        <div class="channel-info">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E1306C"
+                                                stroke-width="2">
+                                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                            </svg>
+                                            Instagram
+                                        </div>
+                                        <div class="status-badge">Ready</div>
+                                    </div>
+                                    <div class="channel-item">
+                                        <div class="channel-info">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1877F2"
+                                                stroke-width="2">
+                                                <path
+                                                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                                                </path>
+                                            </svg>
+                                            Facebook
+                                        </div>
+                                        <div class="status-badge">Ready</div>
+                                    </div>
+                                    <div class="channel-item">
+                                        <div class="channel-info">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1DA1F2"
+                                                stroke-width="2">
+                                                <path
+                                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                                </path>
+                                            </svg>
+                                            Twitter/X
+                                        </div>
+                                        <div class="status-badge">Ready</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Capabilities -->
+    <section class="platform-capabilities">
+        <div class="container">
+            <h2 class="section-title">What You Can Do in Just 3 Clicks</h2>
+            <p class="section-subtitle">A fully automated workflow designed to remove the friction from your daily
+                marketing tasks.</p>
+
+            <div class="capabilities-grid">
+                <!-- Capability 1 -->
+                <div class="capability-card fade-in">
+                    <div class="capability-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Instant Visuals & Videos</h3>
+                    <p>Generate high-quality marketing images, festival-themed creatives, and video content specifically
+                        tailored to your brand's unique identity.</p>
+                </div>
+
+                <!-- Capability 2 -->
+                <div class="capability-card fade-in delay-1">
+                    <div class="capability-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 20h9"></path>
+                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                        </svg>
+                    </div>
+                    <h3>Viral-Ready Copy</h3>
+                    <p>Get AI-crafted social media posts, engaging blogs, and even product recipes that sound exactly
+                        like you and capture your audience's attention.</p>
+                </div>
+
+                <!-- Capability 3 -->
+                <div class="capability-card fade-in delay-2">
+                    <div class="capability-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3>One-Click Publishing</h3>
+                    <p>Stop jumping between apps. Post directly to Instagram, Facebook, Twitter/X, and WhatsApp from one
+                        single unified dashboard.</p>
+                </div>
+
+                <!-- Capability 4 -->
+                <div class="capability-card fade-in flex">
+                    <div class="capability-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </div>
+                    <h3>E-commerce Growth</h3>
+                    <p>If you sell online, use the built-in Amazon Seller Central integration to create stunning product
+                        carousels that drive immediate sales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Grid Value Prop -->
+    <section class="bento-section">
+        <div class="container">
+            <h2 class="section-title">Why Small Businesses & Creators Love This</h2>
+
+            <div class="bento-grid fade-in">
+                <!-- Card 1 -->
+                <div class="bento-card wide">
+                    <h3>No "Creative Gap"</h3>
+                    <p style="max-width: 500px;">You don't need to be a designer. Just provide a few basic business
+                        inputs, and our Google Gemini-powered AI does the heavy lifting to create stunning,
+                        agency-quality assets.</p>
+                    <div class="bento-graphic">
+                        <svg width="100%" height="120" viewBox="0 0 400 120" fill="none">
+                            <path d="M0,100 C150,100 200,20 400,20" stroke="#8A2BE2" stroke-width="4" fill="none" />
+                            <path d="M0,100 C150,100 200,20 400,20 L400,120 L0,120 Z" fill="url(#grad1)"
+                                opacity="0.3" />
+                            <defs>
+                                <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#8A2BE2;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#8A2BE2;stop-opacity:0" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bento-card tall">
+                    <h3>Save 20+ Hours a Week</h3>
+                    <p>Eliminate the manual work of content production and scheduling.</p>
+                    <div class="bento-graphic" style="display:flex; flex-direction:column; gap:8px; margin-top:30px;">
+                        <div style="background:#f1f5f9; height:12px; border-radius:6px; width:100%; position:relative;">
+                            <div style="background:#ef4444; height:100%; border-radius:6px; width:90%;"></div>
+                        </div>
+                        <span style="font-size:0.75rem; color:#ef4444; font-weight:600; text-align:right;">Manual
+                            Work</span>
+                        <div
+                            style="background:#f1f5f9; height:12px; border-radius:6px; width:100%; position:relative; margin-top:15px;">
+                            <div style="background:#00a859; height:100%; border-radius:6px; width:15%;"></div>
+                        </div>
+                        <span style="font-size:0.75rem; color:#00a859; font-weight:600; text-align:right;">Content AI
+                            workflow</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bento-card">
+                    <h3>Brand Consistency</h3>
+                    <p>Keep your marketing looking professional and aligned across every platform, every single day.</p>
+                    <div class="bento-graphic" style="display:flex; justify-content:center; gap:10px; margin-top:20px;">
+                        <div style="width:40px; height:40px; background:#8A2BE2; border-radius:8px;"></div>
+                        <div style="width:40px; height:40px; background:#8A2BE2; border-radius:8px;"></div>
+                        <div style="width:40px; height:40px; background:#8A2BE2; border-radius:50%;"></div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bento-card">
+                    <h3>Scalability</h3>
+                    <p>Whether you're launching a new product or running a holiday sale, produce all the content you
+                        need.</p>
+                    <div class="bento-graphic" style="margin-top:20px;">
+                        <svg width="100%" height="60" viewBox="0 0 200 60" fill="none">
+                            <rect x="0" y="40" width="30" height="20" rx="4" fill="#cbd5e1" />
+                            <rect x="50" y="25" width="30" height="35" rx="4" fill="#94a3b8" />
+                            <rect x="100" y="10" width="30" height="50" rx="4" fill="#64748b" />
+                            <rect x="150" y="0" width="30" height="60" rx="4" fill="#8A2BE2" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Process -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Simple. Powerful. Professional.</h2>
+            <p class="section-subtitle">Take control of your marketing funnel in three easy steps.</p>
+
+            <div class="timeline-container fade-in">
+                <div class="timeline-line">
+                    <div class="timeline-progress"></div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-number">1</div>
+                    <h4 class="step-title">Input</h4>
+                    <p class="step-desc">Tell the AI what you’re promoting. Just a few keywords or product links will
+                        do.</p>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-number">2</div>
+                    <h4 class="step-title">Generate</h4>
+                    <p class="step-desc">Choose from a variety of AI-generated images, videos, and compelling captions.
+                    </p>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-number">3</div>
+                    <h4 class="step-title">Publish</h4>
+                    <p class="step-desc">Schedule your posts across all channels instantly and get back to running your
+                        business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container" style="max-width: 800px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Ready to Scale Your Content?</h2>
+            <p style="font-size: 1.15rem; color: var(--text-gray); margin-bottom: 40px; line-height: 1.6;">
+                Don't let a lack of time or design skills hold your marketing back. Automate your entire social media
+                presence today with Content AI.
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="contact-us.html" class="btn-primary">Speak with Our Engineering Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Copied from index.html) -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">AUTOWHAT AI</h4>
+                <p style="color: var(--primary-color);">Innovating for a better tomorrow.</p>
+            </div>
+            
+            
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Autowhat AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Intersection Observer for fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>

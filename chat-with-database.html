@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AskDB | Autowhat AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/clear-sans@5.0.0/index.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Product Page Specific Styles */
+        body {
+            font-family: 'Outfit', 'Clear Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .product-hero {
+            padding: 130px 0 30px;
+            background: linear-gradient(135deg, rgba(242, 248, 255, 0.4) 0%, rgba(255, 255, 255, 1) 100%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .product-hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 168, 89, 0.2);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #00a859;
+            /* Blue Primary */
+            background: rgba(0, 168, 89, 0.05);
+            margin-bottom: 24px;
+            letter-spacing: 0.05em;
+        }
+
+        .product-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+            line-height: 1.1;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            letter-spacing: -0.02em;
+        }
+
+        .product-hero-lead {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Custom Hero Chat Dashboard Infographic */
+        .hero-infographic-container {
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            animation: slide-up-fade 0.8s ease-out 0.2s forwards;
+        }
+
+        @keyframes slide-up-fade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dashboard-mockup {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dashboard-header {
+            height: 40px;
+            background: rgba(250, 250, 250, 0.9);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 8px;
+        }
+
+        .dashboard-header .dots span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e2e2e2;
+            margin-right: 4px;
+        }
+
+        .dashboard-header .dots span:nth-child(1) {
+            background: #ff5f56;
+        }
+
+        .dashboard-header .dots span:nth-child(2) {
+            background: #ffbd2e;
+        }
+
+        .dashboard-header .dots span:nth-child(3) {
+            background: #27c93f;
+        }
+
+        .dashboard-header .title {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Chat Interface Specifics */
+        .chat-body {
+            display: flex;
+            min-height: 550px;
+            background: #fafafc;
+        }
+
+        .chat-sidebar {
+            width: 260px;
+            background: #ffffff;
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .db-connection-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(0, 168, 89, 0.05);
+            border: 1px solid rgba(0, 168, 89, 0.1);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .db-icon {
+            width: 32px;
+            height: 32px;
+            background: #ffffff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00a859;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .status-text h4 {
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+            color: var(--text-dark);
+        }
+
+        .status-text p {
+            font-size: 0.75rem;
+            color: #00a859;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background: #00a859;
+            border-radius: 50%;
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 168, 89, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 6px rgba(0, 168, 89, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 168, 89, 0);
+            }
+        }
+
+        .sidebar-section h5 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+
+        .schema-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .schema-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            padding: 6px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .schema-item:last-child {
+            border-bottom: none;
+        }
+
+        .schema-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            position: relative;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 30px;
+            overflow-y: visible;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Message Bubbles */
+        .message {
+            display: flex;
+            gap: 16px;
+            max-width: 85%;
+            opacity: 0;
+            animation: fade-in-up 0.5s ease-out forwards;
+        }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            align-self: flex-end;
+            animation-delay: 0.5s;
+        }
+
+        .message.ai {
+            align-self: flex-start;
+            animation-delay: 2s;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .avatar.user-avatar {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        .avatar.ai-avatar {
+            background: linear-gradient(135deg, #00a859, #8b5cf6);
+            color: white;
+        }
+
+        .bubble {
+            padding: 16px 20px;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            position: relative;
+            text-align: left;
+        }
+
+        .user .bubble {
+            background: #00a859;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .ai .bubble {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: var(--text-dark);
+            border-bottom-left-radius: 4px;
+            min-width: 450px;
+        }
+
+        /* Interactive SQL & Data within AI Bubble */
+        .sql-translation {
+            margin-top: 12px;
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #38bdf8;
+            border-left: 3px solid #8b5cf6;
+            overflow: hidden;
+            white-space: pre-wrap;
+            position: relative;
+        }
+
+        .sql-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            color: #94a3b8;
+            font-size: 0.75rem;
+            font-family: sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .typing-sql {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            animation: typing-code 2s steps(40, end) 2.5s forwards;
+        }
+
+        @keyframes typing-code {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        .data-visualization {
+            margin-top: 16px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            opacity: 0;
+            animation: fade-in 0.5s ease-out 5s forwards;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .data-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fafc;
+        }
+
+        .data-tabs {
+            display: flex;
+            gap: 16px;
+            font-size: 0.8rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .data-tabs span.active {
+            color: #00a859;
+            border-bottom: 2px solid #00a859;
+            padding-bottom: 4px;
+        }
+
+        .chart-placeholder {
+            padding: 20px;
+            height: 160px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            gap: 12px;
+        }
+
+        .bar {
+            width: 40px;
+            background: linear-gradient(180deg, #00a859, rgba(0, 168, 89, 0.4));
+            border-radius: 4px 4px 0 0;
+            transform-origin: bottom;
+            transform: scaleY(0);
+            animation: grow-bar 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 5.5s forwards;
+        }
+
+        .bar:nth-child(1) {
+            height: 100%;
+            animation-delay: 5.5s;
+            background: linear-gradient(180deg, #8b5cf6, rgba(139, 92, 246, 0.4));
+        }
+
+        .bar:nth-child(2) {
+            height: 80%;
+            animation-delay: 5.6s;
+        }
+
+        .bar:nth-child(3) {
+            height: 65%;
+            animation-delay: 5.7s;
+        }
+
+        .bar:nth-child(4) {
+            height: 45%;
+            animation-delay: 5.8s;
+        }
+
+        .bar:nth-child(5) {
+            height: 30%;
+            animation-delay: 5.9s;
+        }
+
+        @keyframes grow-bar {
+            to {
+                transform: scaleY(1);
+            }
+        }
+
+        .chat-input-area {
+            padding: 20px 30px;
+            background: #ffffff;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .input-box {
+            display: flex;
+            align-items: center;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 12px 20px;
+            gap: 12px;
+        }
+
+        .input-box .placeholder {
+            color: #94a3b8;
+            flex: 1;
+            font-size: 0.95rem;
+            text-align: left;
+        }
+
+        .send-btn {
+            width: 32px;
+            height: 32px;
+            background: #00a859;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            opacity: 0.8;
+        }
+
+
+        .platform-capabilities {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.75rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .capability-card {
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .capability-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 168, 89, 0.1);
+            color: #00a859;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .capability-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .capability-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-weight: 300;
+            font-size: 0.95rem;
+        }
+
+        /* Bento Grid Sections */
+        .bento-section {
+            padding: 80px 0;
+            background: #fafafc;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .bento-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 36px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bento-card.wide {
+            grid-column: span 2;
+        }
+
+        .bento-card.tall {
+            grid-row: span 2;
+        }
+
+        .bento-card.dark {
+            background: #0f172a;
+            color: white;
+            border: none;
+        }
+
+        .bento-card.dark p {
+            color: #94a3b8;
+        }
+
+        .bento-card.dark h3 {
+            color: white;
+        }
+
+        .bento-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+            position: relative;
+            z-index: 2;
+        }
+
+        .bento-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bento-graphic {
+            margin-top: auto;
+            align-self: flex-end;
+            padding-top: 24px;
+            z-index: 1;
+            width: 100%;
+        }
+
+        /* Architecture Diagram Styles */
+        .tech-architecture {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .arch-container {
+            max-width: 1000px;
+            margin: 60px auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .arch-node {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+            width: 240px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            position: relative;
+            z-index: 2;
+        }
+
+        .arch-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 168, 89, 0.05);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            color: #00a859;
+        }
+
+        .arch-node h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .arch-node p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            line-height: 1.4;
+        }
+
+        .arch-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            margin-top: 16px;
+        }
+
+        .arch-tag {
+            font-size: 0.7rem;
+            padding: 4px 8px;
+            background: #f1f5f9;
+            color: #64748b;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .arch-connection {
+            position: absolute;
+            top: 50%;
+            left: 240px;
+            width: calc(100% - 480px);
+            height: 2px;
+            background: rgba(0, 0, 0, 0.05);
+            z-index: 1;
+            transform: translateY(-50%);
+        }
+
+        .arch-connection::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background: #00a859;
+            border-radius: 50%;
+            animation: moveDot 3s infinite linear;
+        }
+
+        @keyframes moveDot {
+            0% {
+                left: 0;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                left: 100%;
+                opacity: 0;
+            }
+        }
+
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+            background: #fafafc;
+        }
+
+        @media (max-width: 900px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .bento-card.wide,
+            .bento-card.tall {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .chat-body {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .chat-sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .arch-container {
+                flex-direction: column;
+                gap: 50px;
+            }
+
+            .arch-connection {
+                width: 2px;
+                height: 50px;
+                left: 50%;
+                top: auto;
+                bottom: -50px;
+                transform: translateX(-50%);
+            }
+
+            @keyframes moveDot {
+                0% {
+                    top: 0;
+                    left: -3px;
+                    opacity: 0;
+                }
+
+                10% {
+                    opacity: 1;
+                }
+
+                90% {
+                    opacity: 1;
+                }
+
+                100% {
+                    top: 100%;
+                    left: -3px;
+                    opacity: 0;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header (Based on unified design) -->
+    <header id="main-header" class="scrolled">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">Autowhat AI</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="who-we-are.html">Who we are</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#services">What we do</a>
+                        <ul class="dropdown-content">
+                            <li class="nested-dropdown">
+                                <a href="#">Logistics and Mobility Systems</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
+                                    <li><a href="sipoc.html">Supply Chain and Logistics</a></li>
+                                    <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="#">Finance and Capital Markets</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="algo-trading.html">Algo Trading</a></li>
+                                    <li><a href="pms-data-scraping.html">PMS Data Scraping Automation</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nested-dropdown">
+                                <a href="#">Growth and Intelligence Products</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="chat-with-database.html" class="active">Chat with Database</a></li>
+                                    <li><a href="content-ai.html">Content AI</a></li>
+                                    <li><a href="mgrow.html">MGrow</a></li>
+                                    <li><a href="learnpro.html">LearnPro</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="ai-consulting.html">AI Consulting</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions" style="justify-self: end;">
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Hero -->
+    <section class="product-hero">
+        <div class="container">
+            <div class="product-hero-badge">ENTERPRISE ANALYTICS</div>
+            <h1>Talk Directly to Your Data Like Never Before</h1>
+            <p class="subtitle"
+                style="font-size: 1.25rem; font-weight: 300; max-width: 800px; margin: 0 auto; line-height: 1.6;">Bypass
+                complex SQL and extract instant insights using simple, everyday language. Turn
+                your entire dataset into an open conversation using <span
+                    style="color: var(--primary-color); font-weight: 500;">AskDB</span>.</p>
+            <div class="hero-actions" style="margin-top: 60px;">
+                <!-- Hero Infographic (Interactive Chat UI) -->
+                <div class="hero-infographic-container">
+                    <div class="dashboard-mockup">
+                        <div class="dashboard-header">
+                            <div class="dots"><span></span><span></span><span></span></div>
+                            <div class="title">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                AskDB Query Studio
+                            </div>
+                        </div>
+                        <div class="chat-body">
+                            <!-- Sidebar -->
+                            <div class="chat-sidebar">
+                                <div class="db-connection-status">
+                                    <div class="db-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="status-text">
+                                        <h4>prod_analytics_db</h4>
+                                        <p><span class="pulse-dot"></span> Socket.IO Connected</p>
+                                    </div>
+                                </div>
+
+                                <div class="sidebar-section">
+                                    <h5>MAPPED SCHEMAS</h5>
+                                    <div class="schema-list">
+                                        <div class="schema-item">
+                                            <div class="schema-name">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="#64748b" stroke-width="2">
+                                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                                </svg>
+                                                sales_transactions
+                                            </div>
+                                            <span>2.4M rows</span>
+                                        </div>
+                                        <div class="schema-item">
+                                            <div class="schema-name">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="#64748b" stroke-width="2">
+                                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                                </svg>
+                                                user_engagements
+                                            </div>
+                                            <span>850K rows</span>
+                                        </div>
+                                        <div class="schema-item">
+                                            <div class="schema-name">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="#64748b" stroke-width="2">
+                                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                                </svg>
+                                                regional_mapping
+                                            </div>
+                                            <span>42 rows</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Main Chat Area -->
+                            <div class="chat-main">
+                                <div class="chat-messages">
+                                    <!-- User Message -->
+                                    <div class="message user">
+                                        <div class="bubble">
+                                            Show me the total revenue grouped by region for Q3, sorted highest to
+                                            lowest.
+                                        </div>
+                                        <div class="avatar user-avatar">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                                <circle cx="12" cy="7" r="4"></circle>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <!-- AI Response -->
+                                    <div class="message ai">
+                                        <div class="avatar ai-avatar">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2.5">
+                                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="bubble">
+                                            I found the data in the `sales_transactions` and `regional_mapping` tables.
+                                            Here
+                                            is the translated SQL and the resulting visualization:
+
+                                            <!-- Code block generation animation -->
+                                            <div class="sql-translation">
+                                                <div class="sql-header">
+                                                    <span>AI GENERATED SQL</span>
+                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2">
+                                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                        <path
+                                                            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                                <span class="typing-sql">SELECT r.region_name, SUM(s.amount) AS
+                                                    revenue</span><br>
+                                                <span class="typing-sql" style="animation-delay: 3s">FROM
+                                                    sales_transactions
+                                                    s</span><br>
+                                                <span class="typing-sql" style="animation-delay: 3.5s">JOIN
+                                                    regional_mapping
+                                                    r ON s.region_id = r.id</span><br>
+                                                <span class="typing-sql" style="animation-delay: 4.2s">WHERE
+                                                    EXTRACT(quarter
+                                                    FROM s.date) = 3</span><br>
+                                                <span class="typing-sql" style="animation-delay: 4.8s">GROUP BY
+                                                    r.region_name ORDER BY revenue DESC;</span>
+                                            </div>
+
+                                            <!-- Chart Appearance Animation -->
+                                            <div class="data-visualization">
+                                                <div class="data-header">
+                                                    <div class="data-tabs">
+                                                        <span class="active">Chart</span>
+                                                        <span>Table Chart</span>
+                                                    </div>
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                        stroke="#94a3b8" stroke-width="2">
+                                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                    </svg>
+                                                </div>
+                                                <div class="chart-placeholder">
+                                                    <div class="bar"></div>
+                                                    <div class="bar"></div>
+                                                    <div class="bar"></div>
+                                                    <div class="bar"></div>
+                                                    <div class="bar"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Input Area -->
+                                <div class="chat-input-area">
+                                    <div class="input-box">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8"
+                                            stroke-width="2">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        </svg>
+                                        <div class="placeholder">Ask anything about your data...</div>
+                                        <div class="send-btn">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Key Features & Capabilities (Grid) -->
+    <section class="platform-capabilities">
+        <div class="container">
+            <h2 class="section-title">Bridging the Gap Between You and Your Data</h2>
+            <p class="section-subtitle">A multi-tenant architecture loaded with enterprise capabilities, designed for
+                non-technical leaders.</p>
+
+            <div class="capabilities-grid">
+                <!-- Card 1 -->
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Natural Language Querying</h3>
+                    <p>Pose complex business questions in plain English. AskDB understands context and delivers accurate
+                        answers instantly, without requiring any SQL coding knowledge.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3>AI-Driven SQL Translation</h3>
+                    <p>Powered by advanced Large Language Models (LLMs), AskDB translates human intent into perfectly
+                        optimized backend queries, ensuring precision and reliability.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            <line x1="11" y1="8" x2="11" y2="14"></line>
+                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                        </svg>
+                    </div>
+                    <h3>Schema Discovery via Vector Search</h3>
+                    <p>Connecting a new database? AskDB automatically discovers, maps, and indexes relevant table
+                        schemas and relationships to guarantee query accuracy from day one.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </div>
+                    <h3>Interactive Visualizations</h3>
+                    <p>Raw tables are hard to read. AskDB automatically generates dynamic charts, graphs, and exportable
+                        data dashboards so you can spot trends immediately.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </div>
+                    <h3>Automated Reporting</h3>
+                    <p>Don't just query once. Schedule your most important reports for automated, recurring delivery
+                        directly to your Executive team via Email or WhatsApp.</p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Self-Service Analytics</h3>
+                    <p>A unified, intuitive interface that requires absolutely zero technical training. Democratize data
+                        access across your organization and stop bottlenecking your IT teams.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Problem & Value (Bento Grid) -->
+    <section class="bento-section">
+        <div class="container">
+            <h2 class="section-title">Why Traditional Data Analytics is Broken</h2>
+            <p class="section-subtitle">Waiting days for a simple SQL query report hurts your bottom line. AskDB fixes
+                the foundational problems of data silos.</p>
+
+            <div class="bento-grid">
+                <!-- Data Bottlenecks (Tall) -->
+                <div class="bento-card tall">
+                    <h3>Data Bottlenecks</h3>
+                    <p>Business leaders currently face delays stretching from hours to days simply waiting for
+                        overwhelmed data engineering teams to fulfill basic data extraction requests. Speed is lost.</p>
+                    <div class="bento-graphic">
+                        <svg viewBox="0 0 200 200" width="100%" style="height: auto;">
+                            <defs>
+                                <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00a859;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Hourglass/Bottleneck aesthetic -->
+                            <path
+                                d="M40,20 L160,20 C170,20 180,30 180,40 L180,60 C180,80 150,100 120,100 C150,100 180,120 180,140 L180,160 C180,170 170,180 160,180 L40,180 C30,180 20,170 20,160 L20,140 C20,120 50,100 80,100 C50,100 20,80 20,60 L20,40 C20,30 30,20 40,20 Z"
+                                fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="4" />
+                            <path
+                                d="M40,20 L160,20 C170,20 180,30 180,40 L180,60 C180,80 150,100 120,100 C150,100 180,120 180,140 L180,160 C180,170 170,180 160,180 L40,180 C30,180 20,170 20,160 L20,140 C20,120 50,100 80,100 C50,100 20,80 20,60 L20,40 C20,30 30,20 40,20 Z"
+                                fill="url(#grad1)" opacity="0.1" />
+                            <circle cx="100" cy="140" r="15" fill="#00a859" opacity="0.5" />
+                            <circle cx="100" cy="165" r="8" fill="#00a859" opacity="0.8" />
+                            <line x1="60" y1="40" x2="140" y2="40" stroke="#8b5cf6" stroke-width="8"
+                                stroke-linecap="round" />
+                            <line x1="50" y1="60" x2="150" y2="60" stroke="#8b5cf6" stroke-width="8"
+                                stroke-linecap="round" opacity="0.6" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Technical Barriers (Standard) -->
+                <div class="bento-card">
+                    <h3>Technical Barriers</h3>
+                    <p>Extracting data insights shouldn't require complex SQL proficiency or deep familiarity with
+                        convoluted relational schema structures.</p>
+                </div>
+
+                <!-- Access Inequality (Standard) -->
+                <div class="bento-card">
+                    <h3>Access Inequality</h3>
+                    <p>Actionable insights are hoarded by technical staff, constraining the pace of data-driven
+                        decisions for ops managers and executives.</p>
+                </div>
+
+                <!-- Business Value (Wide + Dark) -->
+                <div class="bento-card wide dark">
+                    <div style="display:flex; justify-content: space-between; align-items: flex-start; height: 100%;">
+                        <div style="max-width: 60%;">
+                            <h3>The Value of Self-Service</h3>
+                            <p>By implementing AskDB, organizations shift from a slow, request-based ticketing culture
+                                to a lightning-fast self-service model. Increase the speed of operations and ensure that
+                                every board decision is backed by real-time, validated data.</p>
+                        </div>
+                        <div
+                            style="width: 120px; height: 120px; background: rgba(0, 168, 89, 0.2); border-radius: 50%; display: flex; align-items:center; justify-content:center;">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#38bdf8"
+                                stroke-width="1.5">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expected Outcomes Section -->
+    <section class="outcomes-section bg-light"
+        style="padding: 80px 0; background: #fafafc; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 24px;">Expected Outcomes: Driving
+                Efficiency & Revenue</h2>
+
+            <div style="max-width: 900px; margin: 0 auto; text-align: center; margin-bottom: 60px;">
+                <p style="font-size: 1.15rem; color: var(--text-gray); line-height: 1.6;">
+                    AskDB isn't just a tool; it's a catalyst for fundamental business transformation. By democratizing
+                    access to data, it directly impacts both operational efficiency and revenue generation in several
+                    key ways:
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+
+                <!-- Card 1 -->
+                <div class="outcome-card"
+                    style="background: #ffffff; border-radius: 20px; padding: 40px 30px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s ease;">
+                    <div
+                        style="width: 56px; height: 56px; border-radius: 12px; background: rgba(0, 168, 89, 0.1); color: var(--primary-color); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: var(--text-dark);">Accelerated
+                        Decision-Making</h3>
+
+                    <div style="margin-bottom: 16px;">
+                        <h4 style="font-size: 1.05rem; color: var(--primary-color);" class="font-medium mb-2">Efficiency
+                        </h4>
+                        <p style="color: var(--text-gray); line-height: 1.5; font-size: 0.95rem;">Instead of waiting
+                            hours or days for data reports, users get instant answers to their business questions. This
+                            dramatically shortens the time from insight to action.</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.05rem; color: var(--primary-color); margin-bottom: 8px;"
+                            class="font-medium">Revenue</h4>
+                        <p style="color: var(--text-gray); line-height: 1.5; font-size: 0.95rem;">Quicker decisions mean
+                            faster identification of opportunities, such as new sales trends or areas for cost
+                            reduction, allowing for rapid resource allocation.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="outcome-card"
+                    style="background: #ffffff; border-radius: 20px; padding: 40px 30px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s ease;">
+                    <div
+                        style="width: 56px; height: 56px; border-radius: 12px; background: rgba(52, 152, 219, 0.1); color: #3498db; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: var(--text-dark);">Reduced Operational
+                        Costs</h3>
+
+                    <div style="margin-bottom: 16px;">
+                        <h4 style="font-size: 1.05rem; color: #3498db; margin-bottom: 8px;" class="font-medium">
+                            Efficiency</h4>
+                        <p style="color: var(--text-gray); line-height: 1.5; font-size: 0.95rem;">Significantly reduces
+                            the workload on analytics teams. By empowering business users to self-serve, technical
+                            resources are freed from routine requests.</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.05rem; color: #3498db; margin-bottom: 8px;" class="font-medium">Revenue
+                        </h4>
+                        <p style="color: var(--text-gray); line-height: 1.5; font-size: 0.95rem;">Optimizing resource
+                            allocation means fewer human hours spent on repetitive data pulls, allowing companies to
+                            reallocate budget to revenue-generating activities.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="outcome-card"
+                    style="background: #ffffff; border-radius: 20px; padding: 40px 30px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s ease;">
+                    <div
+                        style="width: 56px; height: 56px; border-radius: 12px; background: rgba(155, 89, 182, 0.1); color: #9b59b6; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: var(--text-dark);">Enhanced Data Literacy
+                    </h3>
+
+                    <div style="margin-bottom: 16px;">
+                        <h4 style="font-size: 1.05rem; color: #9b59b6; margin-bottom: 8px;" class="font-medium">
+                            Efficiency</h4>
+                        <p style="color: var(--text-gray); line-height: 1.5; font-size: 0.95rem;">Fosters a data-driven
+                            culture across the organization when all decision-makers, regardless of technical
+                            background, can directly interact with data.</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.05rem; color: #9b59b6; margin-bottom: 8px;" class="font-medium">Revenue
+                        </h4>
+                        <p style="color: var(--text-gray); line-height: 1.5; font-size: 0.95rem;">A data-literate
+                            workforce is better equipped to identify new business opportunities, optimize existing
+                            processes, and innovate to maximize ROI.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="outcome-card"
+                    style="background: #ffffff; border-radius: 20px; padding: 40px 30px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s ease;">
+                    <div
+                        style="width: 56px; height: 56px; border-radius: 12px; background: rgba(243, 156, 18, 0.1); color: #f39c12; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: var(--text-dark);">Improved Agility &
+                        Response</h3>
+
+                    <div style="margin-bottom: 16px;">
+                        <h4 style="font-size: 1.05rem; color: #f39c12; margin-bottom: 8px;" class="font-medium">
+                            Efficiency</h4>
+                        <p style="color: var(--text-gray); line-height: 1.5; font-size: 0.95rem;">The ability to pull
+                            specific, real-time data on demand means organizations can pivot strategies or launch new
+                            initiatives with unprecedented speed.</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.05rem; color: #f39c12; margin-bottom: 8px;" class="font-medium">Revenue
+                        </h4>
+                        <p style="color: var(--text-gray); line-height: 1.5; font-size: 0.95rem;">Agility is a
+                            competitive advantage. Responding quickly to market shifts allows companies to capture new
+                            market share and seize transient opportunities.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Architecture Section -->
+    <section class="tech-architecture">
+        <div class="container">
+            <h2 class="section-title">Technical Excellence</h2>
+            <p class="section-subtitle">Built on a secure, cloud-native foundation to handle enterprise data securely.
+            </p>
+
+            <div class="arch-container">
+                <!-- User Interface -->
+                <div class="arch-node">
+                    <div class="arch-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h4>Client Application</h4>
+                    <p>Real-time conversational interface with robust user session management.</p>
+                    <div class="arch-tech-tags">
+                        <span class="arch-tag">React / Next.js</span>
+                        <span class="arch-tag">NextAuth</span>
+                        <span class="arch-tag">OAuth 2.0</span>
+                    </div>
+                </div>
+
+                <div class="arch-connection"></div>
+
+                <!-- Logic/Cloud Core -->
+                <div class="arch-node" style="border-color: #00a859; box-shadow: 0 0 0 4px rgba(0, 168, 89, 0.1);">
+                    <div class="arch-icon" style="background: #00a859; color: white;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                        </svg>
+                    </div>
+                    <h4>AskDB Processing Engine</h4>
+                    <p>Containerized LLM reasoning, schema vector search, and SQL translation.</p>
+                    <div class="arch-tech-tags">
+                        <span class="arch-tag">Google Kubernetes Engine</span>
+                        <span class="arch-tag">Docker</span>
+                        <span class="arch-tag">Socket.IO</span>
+                    </div>
+                </div>
+
+                <div class="arch-connection" style="left: 600px;"></div>
+
+                <!-- Database Layer -->
+                <div class="arch-node">
+                    <div class="arch-icon" style="color: #00a859; background: rgba(0, 168, 89, 0.05);">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                        </svg>
+                    </div>
+                    <h4>Customer Databases</h4>
+                    <p>Secure connections to existing business relational data stores.</p>
+                    <div class="arch-tech-tags">
+                        <span class="arch-tag">PostgreSQL</span>
+                        <span class="arch-tag">MySQL</span>
+                        <span class="arch-tag">MSSQL</span>
+                        <span class="arch-tag">Oracle</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 20px;">Stop Waiting for Data. Start
+                Asking.</h2>
+            <p style="color: var(--text-gray); margin-bottom: 40px; font-size: 1.1rem;">Give your leadership team the
+                power to query databases in plain English today.</p>
+            <a href="contact-us.html" class="btn-primary">Speak with Our
+                Engineering Team</a>
+        </div>
+    </section>
+
+    <!-- Footer (Copied from index.html) -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">AUTOWHAT AI</h4>
+                <p style="color: var(--primary-color);">Innovating for a better tomorrow.</p>
+            </div>
+
+
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Autowhat AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
