@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who we are | Autowhat AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/clear-sans@5.0.0/index.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="padding-top: 100px;">
+    <!-- Header -->
+    <header id="main-header"
+        style="background: rgba(255, 255, 255, 0.95); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0;">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">Autowhat AI</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="who-we-are.html" style="color: var(--primary-color);">Who we are</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#services">What we do</a>
+                        <ul class="dropdown-content">
+                            <li class="nested-dropdown">
+                                <a href="#">Logistics and Mobility Systems</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
+                                    <li><a href="sipoc.html">Supply Chain and Logistics</a></li>
+                                    <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="#">Finance and Capital Markets</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="algo-trading.html">Algo Trading</a></li>
+                                    <li><a href="pms-data-scraping.html">PMS Data Scraping Automation</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="#">Growth and Intelligence Products</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="chat-with-database.html">Chat with Database</a></li>
+                                    <li><a href="content-ai.html">Content AI</a></li>
+                                    <li><a href="mgrow.html">MGrow</a></li>
+                                    <li><a href="learnpro.html">LearnPro</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="ai-consulting.html">AI Consulting</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions" style="justify-self: end;">
+                <!-- Empty div to balance the 3-column CSS grid and keep nav centered -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Custom Page Styles -->
+    <style>
+        .vision-hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(0, 168, 89, 0.05) 0%, transparent 50%), var(--bg-light);
+            padding: 120px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(rgba(0, 168, 89, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .vision-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(0, 168, 89, 0.1);
+            color: var(--primary-color);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        .vision-title {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+            color: var(--text-dark);
+        }
+
+        .vision-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .bento-section {
+            padding: 40px 20px 120px;
+            background: #ffffff;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .bento-card {
+            background: var(--bg-light);
+            border-radius: 32px;
+            padding: 48px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 168, 89, 0.08);
+            border-color: rgba(0, 168, 89, 0.2);
+        }
+
+        .bento-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 60%, rgba(0, 168, 89, 0.03) 100%);
+            pointer-events: none;
+        }
+
+        .bento-large {
+            grid-column: span 8;
+            min-height: 380px;
+        }
+
+        .bento-small {
+            grid-column: span 4;
+            min-height: 380px;
+        }
+
+        .bento-medium {
+            grid-column: span 6;
+            min-height: 340px;
+        }
+
+        .bento-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(0, 168, 89, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .bento-title {
+            font-size: 1.75rem;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            z-index: 1;
+        }
+
+        .bento-text {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            flex-grow: 1;
+            z-index: 1;
+        }
+
+        .card-dark {
+            background: rgba(0, 168, 89, 0.05);
+            border: 1px solid rgba(0, 168, 89, 0.1);
+        }
+
+        .card-dark .bento-title {
+            color: var(--text-dark);
+        }
+
+        .card-dark::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 60%, rgba(0, 168, 89, 0.03) 100%);
+            pointer-events: none;
+        }
+
+        .card-dark .bento-text {
+            color: var(--text-gray);
+        }
+
+        .card-dark:hover {
+            box-shadow: 0 30px 60px rgba(0, 168, 89, 0.08);
+            border-color: rgba(0, 168, 89, 0.2);
+        }
+
+        @media (max-width: 900px) {
+
+            .bento-large,
+            .bento-small,
+            .bento-medium {
+                grid-column: span 12;
+            }
+
+            .vision-title {
+                font-size: 3rem;
+            }
+        }
+
+        /* Animated Graphic CSS */
+        .hero-animated-graphic {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 30px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .orb-core {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(0, 168, 89, 1), rgba(0, 168, 89, 0.3));
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(0, 168, 89, 0.7);
+            animation: orb-pulse 3s infinite ease-in-out alternate;
+            position: relative;
+            z-index: 2;
+        }
+
+        .orb-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 168, 89, 0.3);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .ring-1 {
+            width: 90px;
+            height: 90px;
+            animation: orb-spin 8s linear infinite;
+        }
+
+        .ring-2 {
+            width: 130px;
+            height: 130px;
+            border-style: dashed;
+            animation: orb-spin-reverse 12s linear infinite;
+        }
+
+        .ring-3 {
+            width: 170px;
+            height: 170px;
+            border-color: rgba(0, 168, 89, 0.15);
+            animation: orb-spin 16s linear infinite;
+        }
+
+        .orb-satellite {
+            width: 12px;
+            height: 12px;
+            background: rgba(0, 168, 89, 1);
+            border-radius: 50%;
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px rgba(0, 168, 89, 0.8);
+        }
+
+        .orb-satellite-2 {
+            width: 8px;
+            height: 8px;
+            background: #111;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            right: -4px;
+            transform: translateY(-50%);
+        }
+
+        .orb-satellite-3 {
+            width: 6px;
+            height: 6px;
+            background: rgba(0, 168, 89, 0.5);
+            border-radius: 50%;
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes orb-pulse {
+            from {
+                transform: scale(0.95);
+                box-shadow: 0 0 20px rgba(0, 168, 89, 0.4);
+            }
+
+            to {
+                transform: scale(1.05);
+                box-shadow: 0 0 40px rgba(0, 168, 89, 0.8);
+            }
+        }
+
+        @keyframes orb-spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes orb-spin-reverse {
+            0% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+        }
+
+        /* Compliance Section */
+        .compliance-section {
+            padding: 100px 24px;
+            background: #ffffff;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .compliance-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .compliance-desc {
+            font-size: 1.15rem;
+            color: #555555;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+            line-height: 1.6;
+        }
+
+        .compliance-grid {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .compliance-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 24px;
+            padding: 40px 30px;
+            flex: 1;
+            min-width: 280px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .compliance-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+        }
+
+        .comp-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px auto;
+            color: #fff;
+        }
+
+        .comp-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .comp-soc {
+            background: linear-gradient(135deg, #1e56b8, #4a90e2);
+            box-shadow: 0 10px 20px rgba(30, 86, 184, 0.2);
+        }
+
+        .comp-iso {
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            box-shadow: 0 10px 20px rgba(243, 156, 18, 0.2);
+        }
+
+        .comp-gdpr {
+            background: linear-gradient(135deg, #00a859, #2ecc71);
+            box-shadow: 0 10px 20px rgba(0, 168, 89, 0.2);
+        }
+
+        .comp-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .comp-text {
+            color: #555555;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Our Philosophy Section */
+        .philosophy-section {
+            padding: 120px 24px;
+            background: var(--bg-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0, 168, 89, 0.03) 0%, transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .philosophy-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .philosophy-title {
+            font-size: 3.5rem;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            color: var(--text-dark);
+        }
+
+        .philosophy-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .phil-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+        }
+
+        .phil-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 168, 89, 0.03) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .phil-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 168, 89, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 168, 89, 0.08);
+        }
+
+        .phil-card:hover::before {
+            opacity: 1;
+        }
+
+        .phil-number {
+            font-family: var(--font-sans);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            background: rgba(0, 168, 89, 0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .phil-card:hover .phil-number {
+            background: var(--primary-color);
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .phil-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+            color: var(--text-dark);
+        }
+
+        .phil-card p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* The Autowhat Engine Section */
+        .engine-section {
+            padding: 120px 24px;
+            background: #ffffff;
+            position: relative;
+        }
+
+        .timeline-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, rgba(0, 168, 89, 0.3), transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            width: 50%;
+            padding: 0 50px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: #fff;
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -12px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -12px;
+        }
+
+        .timeline-content {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 168, 89, 0.08);
+            border-color: rgba(0, 168, 89, 0.2);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .timeline-content p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 80px;
+                padding-right: 0;
+                text-align: left !important;
+            }
+
+            .timeline-dot {
+                left: 18px !important;
+                right: auto !important;
+            }
+
+            .philosophy-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal.slide-left {
+            transform: translateX(-50px);
+        }
+
+        .reveal.slide-right {
+            transform: translateX(50px);
+        }
+
+        .reveal.slide-left.active,
+        .reveal.slide-right.active {
+            transform: translateX(0);
+        }
+    </style>
+
+    <!-- Hero Vision -->
+    <section class="vision-hero">
+        <div class="vision-content">
+            <div class="hero-animated-graphic">
+                <div class="orb-core"></div>
+                <div class="orb-ring ring-1">
+                    <div class="orb-satellite"></div>
+                </div>
+                <div class="orb-ring ring-2">
+                    <div class="orb-satellite-2"></div>
+                </div>
+                <div class="orb-ring ring-3">
+                    <div class="orb-satellite-3"></div>
+                </div>
+            </div>
+            <div class="hero-tag">Who we are</div>
+            <h1 class="vision-title">Intelligence That Acts.<br>Automation That Adapts.</h1>
+            <p class="vision-subtitle">
+                At Autowhat AI, we don't just write code. We build dynamic, AI-first systems that transform how
+                businesses use data, automate operations, and scale real-world productive efficiency.
+            </p>
+        </div>
+    </section>
+
+    <!-- Bento Grid Section -->
+    <section class="bento-section">
+        <div class="bento-grid">
+            <!-- Card 1 -->
+            <div class="bento-card bento-large reveal">
+                <div class="bento-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </div>
+                <h3 class="bento-title">Automating Operations</h3>
+                <p class="bento-text">We take your most complex, repetitive workflows and engineer completely autonomous
+                    pipelines. By automating operations at scale, we eliminate bottlenecks and unlock unprecedented
+                    productive efficiency across your entire enterprise.</p>
+            </div>
+
+            <!-- Card 2 (Dark) -->
+            <div class="bento-card bento-small card-dark reveal" style="transition-delay: 0.1s;">
+                <div class="bento-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                    </svg>
+                </div>
+                <h3 class="bento-title">Data-Driven Execution</h3>
+                <p class="bento-text">Data is useless without execution. We build intelligent systems that actively use
+                    your data to make contextual, optimal decisions in real-time, bridging the gap between analytics and
+                    action.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bento-card bento-medium reveal" style="transition-delay: 0.1s;">
+                <div class="bento-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
+                <h3 class="bento-title">Proprietary Platforms</h3>
+                <p class="bento-text">We aren't just consultants; we are creators. From advanced content-making engines
+                    to specialized use-case platforms, we are continuously building proprietary tools designed to push
+                    the boundaries of what's possible.</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bento-card bento-medium reveal" style="transition-delay: 0.2s;">
+                <div class="bento-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                        </path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                </div>
+                <h3 class="bento-title">Everything Powered by AI</h3>
+                <p class="bento-text">At the core of every solution lies state-of-the-art AI. We don't bolt on
+                    intelligence as an afterthought—it is the foundational architecture of every automated workflow,
+                    data system, and platform we create.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Philosophy Section -->
+    <section class="philosophy-section">
+        <div class="container">
+            <div class="philosophy-header reveal">
+                <div class="hero-tag" style="background: rgba(0,168,89,0.1); color: var(--primary-color);">Our
+                    Philosophy</div>
+                <h2 class="philosophy-title">The Principles We Build On</h2>
+                <p class="philosophy-subtitle">We believe software should work for you, not the other way around. Our
+                    systems are engineered with these core tenets in mind.</p>
+            </div>
+
+            <div class="philosophy-grid">
+                <!-- Card 1 -->
+                <div class="phil-card reveal">
+                    <div class="phil-number">1</div>
+                    <h3 class="phil-title">Relentless Automation</h3>
+                    <p class="phil-text">If a task can be defined by rules, it should not be done by a human. We
+                        systematically hunt down busywork and automate it out of existence.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="phil-card reveal" style="transition-delay: 0.1s;">
+                    <div class="phil-number">2</div>
+                    <h3 class="phil-title">Data as Infrastructure</h3>
+                    <p class="phil-text">Data isn't just an asset to be stored; it's the operational fuel for contextual
+                        AI. Our systems are built to orchestrate and act on data aggressively.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="phil-card reveal" style="transition-delay: 0.2s;">
+                    <div class="phil-number">3</div>
+                    <h3 class="phil-title">Scalable by Default</h3>
+                    <p class="phil-text">We engineer solutions that scale from day one. Whether processing 100 records
+                        or 10 million, our architecture handles the load seamlessly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Autowhat Engine Section (Timeline) -->
+    <section class="engine-section">
+        <div class="container">
+            <div class="philosophy-header reveal" style="margin-bottom: 80px;">
+                <div class="hero-tag">How We Work</div>
+                <h2 class="philosophy-title" style="color: var(--text-dark);">The <span
+                        style="color: var(--primary-color);">Autowhat</span> Engine</h2>
+                <p class="philosophy-subtitle" style="color: var(--text-gray);">Our systematic approach to transforming
+                    manual chaos
+                    into autonomous precision.</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item reveal slide-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>1. Discovery & Diagnosis</h4>
+                        <p>We perform a deep-dive audit of your operations, identifying the largest bottlenecks,
+                            isolated data silos, and repetitive manual loops.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal slide-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>2. Architecture Design</h4>
+                        <p>Our engineers sketch out a robust, scalable architecture tailored to your unique data stack,
+                            focusing on security and seamless API integrations.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal slide-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>3. AI & Automation Injection</h4>
+                        <p>We deploy our core machine learning models and custom pipelines, bridging systems together
+                            and creating intelligent execution loops.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal slide-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>4. Continuous Evolution</h4>
+                        <p>Post-deployment, our systems continuously monitor performance, adapt to new edge cases, and
+                            scale intelligently alongside your growth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">AUTOWHAT AI</h4>
+                <p style="color: var(--primary-color);">Innovating for a better tomorrow.</p>
+            </div>
+            
+            
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Autowhat AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll Reveal Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach((element) => {
+                observer.observe(element);
+            });
+
+            // Allow hover 3D tilt effect on bento cards
+            const bentoCards = document.querySelectorAll('.bento-card');
+            bentoCards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -5;
+                    const rotateY = ((x - centerX) / centerX) * 5;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

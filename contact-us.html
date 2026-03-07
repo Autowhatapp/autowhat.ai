@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Autowhat AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/clear-sans@5.0.0/index.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Outfit', 'Clear Sans', sans-serif;
+            background-color: #ffffff;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .contact-section {
+            padding: 160px 0 100px;
+            flex-grow: 1;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .contact-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-control {
+            padding: 14px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            color: #374151;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .form-control::placeholder {
+            color: #6b7280;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #00a859;
+            box-shadow: 0 0 0 3px rgba(0, 168, 89, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 5px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 4px;
+            width: 16px;
+            height: 16px;
+            accent-color: #00a859;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            font-size: 0.8rem;
+            color: #4b5563;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .submit-btn-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .submit-btn {
+            background-color: #00a859;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 40px;
+            font-size: 1rem;
+            font-weight: 500;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .submit-btn:hover {
+            background-color: #007c42;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 168, 89, 0.2);
+        }
+
+        /* Simplified Header padding for clean top since it's scrolled state usually on internal pages */
+        header#main-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header (Copied from standard pages) -->
+    <header id="main-header" class="scrolled">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">Autowhat AI</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="who-we-are.html">Who we are</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#services">What we do</a>
+                        <ul class="dropdown-content">
+                            <li class="nested-dropdown">
+                                <a href="#">Logistics and Mobility Systems</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
+                                    <li><a href="sipoc.html">Supply Chain and Logistics</a></li>
+                                    <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="#">Finance and Capital Markets</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="algo-trading.html">Algo Trading</a></li>
+                                    <li><a href="pms-data-scraping.html">PMS Data Scraping Automation</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="#">Growth and Intelligence Products</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="chat-with-database.html">Chat with Database</a></li>
+                                    <li><a href="content-ai.html">Content AI</a></li>
+                                    <li><a href="mgrow.html">MGrow</a></li>
+                                    <li><a href="learnpro.html">LearnPro</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="ai-consulting.html">AI Consulting</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact-us.html" class="active">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions" style="justify-self: end;">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Contact Section -->
+    <section class="contact-section">
+        <div class="container contact-container">
+            <h1 class="contact-title" style="margin-bottom: 16px;">How can we help you?</h1>
+            <p
+                style="text-align: center; font-size: 1.15rem; color: #555555; line-height: 1.6; margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                We have driven growth and purposeful transformation across industries, and we are excited to build on
+                your vision. Tell us a bit more about yourself so we can get the ball rolling.
+            </p>
+
+            <form class="contact-form" action="#" method="POST">
+
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="First Name" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Last Name" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Work Email" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Job Title" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Company" required>
+                </div>
+
+                <div class="form-group">
+                    <select class="form-control" required>
+                        <option value="" disabled selected>Region*</option>
+                        <option value="India">India</option>
+                        <option value="Asia Pacific">Asia Pacific</option>
+                        <option value="Australia and New Zealand">Australia and New Zealand</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Latin America">Latin America</option>
+                        <option value="Middle East and Africa">Middle East and Africa</option>
+                        <option value="North America">North America</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Message" required></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="privacy-consent" required>
+                    <label for="privacy-consent">I confirm, I have read and agree to Autowhat AI's Privacy Policy and
+                        consent to sharing my information.</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="marketing-updates">
+                    <label for="marketing-updates">I would like to receive alerts and updates from Autowhat AI.</label>
+                </div>
+
+                <div class="submit-btn-wrapper">
+                    <button type="submit" class="submit-btn">Send</button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <!-- Standardized Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">AUTOWHAT AI</h4>
+                <p style="color: var(--primary-color);">Innovating for a better tomorrow.</p>
+            </div>
+            
+            
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Autowhat AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
