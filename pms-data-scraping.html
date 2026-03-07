@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMS Data Scraping Automation | Autowhat AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/clear-sans@5.0.0/index.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .product-hero {
+            padding: 120px 20px 40px;
+            background: radial-gradient(circle at top right, rgba(0, 168, 89, 0.05) 0%, transparent 60%), var(--bg-light);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-pretitle {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(0, 168, 89, 0.1);
+            color: #00a859;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+            color: var(--text-dark);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .kpi-row-cover {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .kpi-card {
+            background: white;
+            padding: 24px 32px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+            min-width: 220px;
+        }
+
+        .kpi-val {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00a859;
+            margin-bottom: 8px;
+            font-family: var(--font-serif);
+        }
+
+        .kpi-label {
+            font-size: 1rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .bento-section {
+            padding: 100px 20px;
+            background: var(--bg-light);
+        }
+
+        /* Bento Grid Layout */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .bento-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 168, 89, 0.08);
+            /* Green shadow */
+            border-color: rgba(0, 168, 89, 0.2);
+        }
+
+        .bento-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .bento-card-visual {
+            margin-bottom: 30px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+        }
+
+        .bento-card h4 {
+            font-size: 1rem;
+            color: #00a859;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .bento-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .bento-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Specific Grid Placements for The Bottleneck */
+        .bottleneck-1 {
+            grid-column: span 6;
+        }
+
+        .bottleneck-2 {
+            grid-column: span 6;
+        }
+
+        .bottleneck-3 {
+            grid-column: span 4;
+        }
+
+        .bottleneck-4 {
+            grid-column: span 4;
+        }
+
+        .bottleneck-5 {
+            grid-column: span 4;
+        }
+
+        .feature-section {
+            padding: 100px 20px;
+            background: #ffffff;
+        }
+
+        /* Exec Card V2 for Agents */
+        .exec-card-v2 {
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .exec-card-v2:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 168, 89, 0.3);
+        }
+
+        .exec-card-v2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #00a859;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: top;
+        }
+
+        .exec-card-v2:hover::before {
+            transform: scaleY(1);
+        }
+
+        .agent-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .agent-title-block h3 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .agent-source {
+            font-family: monospace;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .agent-tag {
+            background: rgba(0, 168, 89, 0.1);
+            color: #00a859;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .agent-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .agent-content-col h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .agent-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .agent-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .agent-list.before li::before {
+            content: "✕";
+            color: var(--error-color, #ef4444);
+            position: absolute;
+            left: 0;
+        }
+
+        .agent-list.after li::before {
+            content: "✓";
+            color: var(--success-color, #00a859);
+            position: absolute;
+            left: 0;
+        }
+
+        /* SVG Utilities inside Bento */
+        .svg-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bento-svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Extensibility Section */
+        .check-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(0, 168, 89, 0.1);
+            color: #00a859;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .check-text {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+        }
+
+        /* Custom SVG Animations */
+        @keyframes cursorMove {
+            0% {
+                transform: translate(10px, 10px);
+            }
+
+            40% {
+                transform: translate(-5px, -5px);
+            }
+
+            50% {
+                transform: translate(-5px, -5px) scale(0.9);
+            }
+
+            60% {
+                transform: translate(-5px, -5px) scale(1);
+            }
+
+            100% {
+                transform: translate(10px, 10px);
+            }
+        }
+
+        .anim-cursor {
+            animation: cursorMove 3s infinite ease-in-out;
+        }
+
+        @keyframes stackRows {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            20% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            80% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+        }
+
+        .anim-row-1 {
+            animation: stackRows 2s infinite;
+            animation-delay: 0s;
+        }
+
+        .anim-row-2 {
+            animation: stackRows 2s infinite;
+            animation-delay: 0.3s;
+        }
+
+        .anim-row-3 {
+            animation: stackRows 2s infinite;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes lineBreak {
+
+            0%,
+            40% {
+                stroke-dasharray: 20;
+                stroke-dashoffset: 0;
+                stroke: #00a859;
+            }
+
+            50%,
+            90% {
+                stroke-dasharray: 4 4;
+                stroke: #ef4444;
+            }
+
+            100% {
+                stroke-dasharray: 20;
+                stroke: #00a859;
+            }
+        }
+
+        .anim-break {
+            animation: lineBreak 3s infinite;
+        }
+
+        @keyframes textClean {
+
+            0%,
+            45% {
+                opacity: 1;
+            }
+
+            50%,
+            95% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes textDirty {
+
+            0%,
+            45% {
+                opacity: 0;
+            }
+
+            50%,
+            95% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .anim-clean {
+            animation: textClean 4s infinite step-end;
+        }
+
+        .anim-dirty {
+            animation: textDirty 4s infinite step-end;
+        }
+
+        @keyframes clockSpin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .anim-spin-fast {
+            animation: clockSpin 2s infinite linear;
+            transform-origin: center;
+            transform-box: fill-box;
+        }
+
+        .anim-spin-slow {
+            animation: clockSpin 24s infinite linear;
+            transform-origin: center;
+            transform-box: fill-box;
+        }
+
+        @keyframes pulseData {
+            0% {
+                stroke-dashoffset: 100;
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                stroke-dashoffset: 0;
+                opacity: 0;
+            }
+        }
+
+        .anim-data-flow {
+            stroke-dasharray: 10 90;
+            animation: pulseData 2s infinite linear;
+        }
+
+        @keyframes gearSpin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .anim-gear {
+            animation: gearSpin 4s infinite linear;
+            transform-origin: center;
+            transform-box: fill-box;
+        }
+
+        .agent-pipeline {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px 0;
+            margin: 25px 0;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: center;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.01);
+        }
+
+        /* ROI Animations */
+        @keyframes scaleTall {
+            0% {
+                height: 0;
+                y: 70px;
+            }
+
+            100% {
+                height: 50px;
+                y: 20px;
+            }
+        }
+
+        @keyframes scaleShort {
+            0% {
+                height: 0;
+                y: 70px;
+            }
+
+            100% {
+                height: 10px;
+                y: 60px;
+            }
+        }
+
+        .anim-bar-tall {
+            animation: scaleTall 1s ease-out forwards;
+        }
+
+        .anim-bar-short {
+            animation: scaleShort 1s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes gaugeFill {
+            0% {
+                stroke-dashoffset: 100;
+            }
+
+            100% {
+                stroke-dashoffset: 20;
+            }
+        }
+
+        .anim-gauge {
+            animation: gaugeFill 2s ease-out forwards;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: #00a859;
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            margin-top: 40px;
+            border: 2px solid transparent;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 168, 89, 0.3);
+            background: #007c42;
+            color: white;
+        }
+
+        .cta-section {
+            padding: 100px 20px;
+            background: #007c42;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body style="padding-top: 0;">
+    <!-- Header -->
+    <header id="main-header"
+        style="background: rgba(255, 255, 255, 0.95); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0;">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">Autowhat AI</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="who-we-are.html">Who we are</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#services" style="color: var(--primary-color);">What we do</a>
+                        <ul class="dropdown-content">
+                            <li class="nested-dropdown">
+                                <a href="#">Logistics and Mobility Systems</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
+                                    <li><a href="sipoc.html">Supply Chain and Logistics</a></li>
+                                    <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="#" style="color: var(--primary-color);">Finance and Capital Markets</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="algo-trading.html">Algo Trading</a></li>
+                                    <li><a href="pms-data-scraping.html" style="color: var(--primary-color);">PMS Data
+                                            Scraping Automation</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="#">Growth and Intelligence Products</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="chat-with-database.html">Chat with Database</a></li>
+                                    <li><a href="content-ai.html">Content AI</a></li>
+                                    <li><a href="mgrow.html">MGrow</a></li>
+                                    <li><a href="learnpro.html">LearnPro</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="ai-consulting.html">AI Consulting</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions" style="justify-self: end;"></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="product-hero">
+        <div class="container">
+            <div class="hero-pretitle">PMS Data Scraping Automation</div>
+            <h1 class="product-title">Zero Manual Analysis. <br><span style="color: #00a859;">Instant
+                    Intelligence.</span></h1>
+            <p class="product-subtitle">
+                Automate SEBI, APMI, and NSE data collection. Free your research team to analyze, not extract—scaling
+                your tracking universe instantly.
+            </p>
+
+            <div class="kpi-row-cover">
+                <div class="kpi-card fade-in-up" style="animation-delay: 0.1s;">
+                    <span class="kpi-val">40+ hrs</span>
+                    <span class="kpi-label">Analyst time saved per month</span>
+                </div>
+                <div class="kpi-card fade-in-up" style="animation-delay: 0.2s;">
+                    <span class="kpi-val">250+</span>
+                    <span class="kpi-label">SEBI-registered PMs tracked</span>
+                </div>
+                <div class="kpi-card fade-in-up" style="animation-delay: 0.3s;">
+                    <span class="kpi-val">
+                        < 5 min</span>
+                            <span class="kpi-label">Extraction to structure time</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Problem (Bento Grid) -->
+    <section class="bento-section" style="background: #ffffff;">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 60px;">
+                <div class="hero-pretitle" style="background: rgba(0,0,0,0.05); color: var(--text-dark);">01 — Problem
+                    Diagnosis</div>
+                <h2 style="font-size: 3rem; margin-bottom: 20px;">The Manual Intelligence Bottleneck</h2>
+                <p style="font-size: 1.25rem; color: var(--text-gray); max-width: 800px; margin: 0 auto;">
+                    Every PMS firm in India collects the same regulatory intelligence. None have automated it. Analysts
+                    are paying for clerical data extraction at substantial cost with compounding data quality risk.
+                </p>
+            </div>
+
+            <div class="bento-grid fade-in-up">
+
+                <div class="bento-card bottleneck-1">
+                    <div class="bento-card-visual">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="10" width="40" height="30" rx="4" fill="#f0fdf4" stroke="#00a859"
+                                stroke-width="2" />
+                            <line x1="15" y1="20" x2="45" y2="20" stroke="#00a859" stroke-width="2"
+                                stroke-linecap="round" />
+                            <line x1="15" y1="28" x2="35" y2="28" stroke="#00a859" stroke-width="2"
+                                stroke-linecap="round" />
+                            <g class="anim-cursor">
+                                <path d="M25 25 L35 40 L30 40 L35 50 L30 52 L25 42 L20 45 Z" fill="#007c42"
+                                    stroke="white" stroke-width="2" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="bento-card-content">
+                        <h4>Manual Step 01 · APMI</h4>
+                        <h3>PMS Performance: Navigate → Filter → Copy</h3>
+                        <p>Analysts open apmiindia.org, apply filters, wait for JS-rendered tables, and copy row-by-row
+                            manually. A 3-4 hour operation per month. No batch export exists.</p>
+                    </div>
+                </div>
+
+                <div class="bento-card bottleneck-2">
+                    <div class="bento-card-visual">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="15" y="10" width="30" height="40" rx="3" fill="#f0fdf4" stroke="#007c42"
+                                stroke-width="2" />
+                            <line x1="22" y1="20" x2="38" y2="20" stroke="#007c42" stroke-width="2"
+                                stroke-linecap="round" class="anim-row-1" />
+                            <line x1="22" y1="28" x2="38" y2="28" stroke="#007c42" stroke-width="2"
+                                stroke-linecap="round" class="anim-row-2" />
+                            <line x1="22" y1="36" x2="30" y2="36" stroke="#007c42" stroke-width="2"
+                                stroke-linecap="round" class="anim-row-3" />
+                            <rect x="10" y="15" width="40" height="30" rx="3" fill="transparent" stroke="#00a859"
+                                stroke-width="2" stroke-dasharray="4 4" />
+                        </svg>
+                    </div>
+                    <div class="bento-card-content">
+                        <h4>Manual Step 02 · SEBI PMR</h4>
+                        <h3>250 Managers × 8 Sub-Reports</h3>
+                        <p>A full-universe extraction requires 2,000+ page loads individually. Firms either outsource
+                            this or accept partial data gaps.</p>
+                    </div>
+                </div>
+
+                <div class="bento-card bottleneck-3">
+                    <div class="bento-card-visual">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="15" width="20" height="30" rx="2" fill="#fff" stroke="#00a859"
+                                stroke-width="2" />
+                            <rect x="35" y="15" width="20" height="30" rx="2" fill="#fff" stroke="#00a859"
+                                stroke-width="2" />
+                            <line x1="10" y1="25" x2="20" y2="25" stroke="#00a859" stroke-width="2"
+                                stroke-linecap="round" />
+                            <line x1="40" y1="25" x2="50" y2="25" stroke="#00a859" stroke-width="2"
+                                stroke-linecap="round" />
+                            <path d="M25 30 C 30 30, 30 30, 35 30" stroke="#00a859" fill="none" stroke-width="2"
+                                class="anim-break" />
+                            <circle cx="25" cy="30" r="2" fill="#00a859" />
+                            <circle cx="35" cy="30" r="2" fill="#00a859" />
+                        </svg>
+                    </div>
+                    <div class="bento-card-content">
+                        <h4>NSE ETF VLOOKUP</h4>
+                        <h3>Dual-Portal Friction</h3>
+                        <p>Reconciling NSE price volume with AMFI NAV breaks continually due to column header and schema
+                            changes.</p>
+                    </div>
+                </div>
+
+                <div class="bento-card bottleneck-4">
+                    <div class="bento-card-visual">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g class="anim-dirty">
+                                <text x="30" y="35" font-family="monospace" font-size="16" font-weight="bold"
+                                    fill="#ef4444" text-anchor="middle">"(12.4)"</text>
+                            </g>
+                            <g class="anim-clean">
+                                <text x="30" y="35" font-family="monospace" font-size="16" font-weight="bold"
+                                    fill="#00a859" text-anchor="middle">-12.40</text>
+                            </g>
+                            <rect x="5" y="15" width="50" height="30" rx="4" fill="transparent" stroke="#007c42"
+                                stroke-width="2" stroke-dasharray="4 4" />
+                        </svg>
+                    </div>
+                    <div class="bento-card-content">
+                        <h4>Format Chaos</h4>
+                        <h3>Data Normalisation</h3>
+                        <p>"12.4%", "(3.2)", "--". Missing names and format mismatches consume 2+ hours per pull just to
+                            clean data.</p>
+                    </div>
+                </div>
+
+                <div class="bento-card bottleneck-5">
+                    <div class="bento-card-visual">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="20" fill="#f0fdf4" stroke="#007c42" stroke-width="2" />
+                            <circle cx="30" cy="30" r="3" fill="#007c42" />
+                            <line x1="30" y1="30" x2="30" y2="16" stroke="#007c42" stroke-width="2"
+                                stroke-linecap="round" class="anim-spin-fast" />
+                            <line x1="30" y1="30" x2="40" y2="30" stroke="#00a859" stroke-width="3"
+                                stroke-linecap="round" class="anim-spin-slow" />
+                        </svg>
+                    </div>
+                    <div class="bento-card-content">
+                        <h4>Information Lag</h4>
+                        <h3>Systemic Delay</h3>
+                        <p>Without monitoring, discovering SEBI data manually leaves you acting on AUM shifts 6-8 weeks
+                            late.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- The Solution: 3 Agents -->
+    <section class="feature-section" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 60px;">
+                <div class="hero-pretitle" style="background: rgba(0,0,0,0.05); color: var(--text-dark);">03 — The
+                    Solution</div>
+                <h2 style="font-size: 3rem; margin-bottom: 20px;">Three Production-Ready Intelligence Agents</h2>
+                <p style="font-size: 1.25rem; color: var(--text-gray); max-width: 800px; margin: 0 auto;">
+                    Autonomous replacements for specific manual analyst workflows. Fully normalized, versioned, and
+                    instant.
+                </p>
+            </div>
+
+            <div style="max-width: 1000px; margin: 0 auto;">
+
+                <!-- Agent 1 -->
+                <div class="exec-card-v2 fade-in-up">
+                    <div class="agent-header">
+                        <div class="agent-title-block">
+                            <h4
+                                style="font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: #00a859; margin-bottom: 5px;">
+                                Agent 01 · PMS Intelligence</h4>
+                            <h3>PMS APMI Performance Agent</h3>
+                            <div class="agent-source">→ apmiindia.org / APMI PMS Performance Portal</div>
+                        </div>
+                        <div class="agent-tag">● Live Auto-Schedule</div>
+                    </div>
+
+                    <p style="color: var(--text-gray); line-height: 1.6; font-size: 1.05rem;">
+                        This agent replaces the analyst who logs into the APMI portal, manually applies filters, waits
+                        for tables, and copies return figures cell-by-cell. It autonomously scrapes every provider,
+                        date, and service bucket, storing normalized records with full historical depth back to April
+                        2023.
+                    </p>
+
+                    <div class="agent-pipeline">
+                        <svg width="100%" height="80" viewBox="0 0 600 80" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <!-- Source -->
+                            <rect x="20" y="20" width="80" height="40" rx="4" fill="#fff" stroke="#007c42"
+                                stroke-width="2" />
+                            <text x="60" y="44" font-size="12" font-family="monospace" font-weight="bold" fill="#007c42"
+                                text-anchor="middle">APMI HTML</text>
+
+                            <!-- Path 1 -->
+                            <path d="M100 40 L250 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                            <path d="M100 40 L250 40" stroke="#00a859" stroke-width="4" stroke-linecap="round"
+                                class="anim-data-flow" />
+
+                            <!-- Process -->
+                            <rect x="250" y="10" width="100" height="60" rx="8" fill="#e6f4ea" stroke="#00a859"
+                                stroke-width="2" />
+                            <circle cx="280" cy="40" r="10" fill="none" stroke="#00a859" stroke-width="3"
+                                stroke-dasharray="4 2" class="anim-gear" />
+                            <text x="320" y="44" font-size="12" font-family="monospace" font-weight="bold"
+                                fill="#00a859" text-anchor="middle">PARSE</text>
+
+                            <!-- Path 2 -->
+                            <path d="M350 40 L500 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                            <path d="M350 40 L500 40" stroke="#007c42" stroke-width="4" stroke-linecap="round"
+                                class="anim-data-flow" style="animation-delay: 1s;" />
+
+                            <!-- Dest -->
+                            <path d="M500 30 C500 20, 580 20, 580 30 L580 50 C580 60, 500 60, 500 50 Z" fill="#fff"
+                                stroke="#007c42" stroke-width="2" />
+                            <path d="M500 30 C500 40, 580 40, 580 30" fill="none" stroke="#007c42" stroke-width="2" />
+                            <text x="540" y="44" font-size="12" font-family="monospace" font-weight="bold"
+                                fill="#007c42" text-anchor="middle">SQL DB</text>
+                        </svg>
+                    </div>
+
+                    <div class="agent-content-grid">
+                        <div class="agent-content-col">
+                            <h4>Current Manual Process</h4>
+                            <ul class="agent-list before">
+                                <li>Navigate and select filters one at a time</li>
+                                <li>Copy each provider row-by-row into Excel</li>
+                                <li>Normalize inconsistent return formats manually</li>
+                                <li>No historical archive; overrides previous sheet</li>
+                                <li>3–4 analyst hours consumed monthly</li>
+                            </ul>
+                        </div>
+                        <div class="agent-content-col">
+                            <h4>With Terminal X Agent</h4>
+                            <ul class="agent-list after">
+                                <li>Agent triggers natively — no human intervention</li>
+                                <li>Returns normalized to consistent decimal formats</li>
+                                <li>Historical data versioned since April 2023</li>
+                                <li>Benchmark-relative alpha calculated automatically</li>
+                                <li>One-click Excel export with any filter combination</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent 2 -->
+                <div class="exec-card-v2 fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="agent-header">
+                        <div class="agent-title-block">
+                            <h4
+                                style="font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: #00a859; margin-bottom: 5px;">
+                                Agent 02 · Regulatory Intelligence</h4>
+                            <h3>SEBI PMR Monthly Agent</h3>
+                            <div class="agent-source">→ sebi.gov.in / PMR Portal — 250+ PMs</div>
+                        </div>
+                        <div class="agent-tag" style="background: rgba(0, 168, 89, 0.1); color: #00a859;">SEBI
+                            Regulatory</div>
+                    </div>
+
+                    <p style="color: var(--text-gray); line-height: 1.6; font-size: 1.05rem;">
+                        Extracting the full universe manually requires 2,000+ page loads, hours of copy-paste, and
+                        careful assembly. This agent automates the entire operation with real-time progress tracking,
+                        auto-retries, and scrape-status panels across all 8 sub-reports per PM.
+                    </p>
+
+                    <div class="agent-pipeline">
+                        <svg width="100%" height="80" viewBox="0 0 600 80" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <!-- Multi-Source -->
+                            <rect x="10" y="10" width="80" height="40" rx="4" fill="#fff" stroke="#007c42"
+                                stroke-width="2" />
+                            <rect x="20" y="20" width="80" height="40" rx="4" fill="#fff" stroke="#007c42"
+                                stroke-width="2" />
+                            <rect x="30" y="30" width="80" height="40" rx="4" fill="#fff" stroke="#007c42"
+                                stroke-width="2" />
+                            <text x="70" y="54" font-size="12" font-family="monospace" font-weight="bold" fill="#007c42"
+                                text-anchor="middle">250 PMRs</text>
+
+                            <!-- Path 1 -->
+                            <path d="M110 40 L250 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                            <path d="M110 40 L250 40" stroke="#007c42" stroke-width="4" stroke-linecap="round"
+                                class="anim-data-flow" />
+
+                            <!-- Process -->
+                            <rect x="250" y="10" width="100" height="60" rx="8" fill="#f0fdf4" stroke="#007c42"
+                                stroke-width="2" />
+                            <circle cx="300" cy="40" r="15" fill="none" stroke="#007c42" stroke-width="3"
+                                stroke-dasharray="6 4" class="anim-gear" />
+                            <circle cx="300" cy="40" r="4" fill="#007c42" />
+
+                            <!-- Path 2 -->
+                            <path d="M350 40 L500 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                            <path d="M350 40 L500 40" stroke="#007c42" stroke-width="4" stroke-linecap="round"
+                                class="anim-data-flow" style="animation-delay: 1s;" />
+
+                            <!-- Dest -->
+                            <path d="M500 30 C500 20, 580 20, 580 30 L580 50 C580 60, 500 60, 500 50 Z" fill="#fff"
+                                stroke="#007c42" stroke-width="2" />
+                            <path d="M500 30 C500 40, 580 40, 580 30" fill="none" stroke="#007c42" stroke-width="2" />
+                            <text x="540" y="44" font-size="12" font-family="monospace" font-weight="bold"
+                                fill="#007c42" text-anchor="middle">DB STORE</text>
+                        </svg>
+                    </div>
+
+                    <div class="agent-content-grid">
+                        <div class="agent-content-col">
+                            <h4>Current Manual Process</h4>
+                            <ul class="agent-list before">
+                                <li>Navigate 8 sub-sections for 250+ PMs individually</li>
+                                <li>Merged HTML cells break standard parsers</li>
+                                <li>Industry extracts only 20-30; full universe infeasible</li>
+                                <li>No alert when SEBI publishes new data</li>
+                            </ul>
+                        </div>
+                        <div class="agent-content-col">
+                            <h4>With Terminal X Agent</h4>
+                            <ul class="agent-list after">
+                                <li>All 250+ PMs scraped in a single triggered run</li>
+                                <li>Month-over-month delta capabilities via structured data</li>
+                                <li>Auto-retry on errors; skips known no-data PMs</li>
+                                <li>Excel export with full universe data</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent 3 -->
+                <div class="exec-card-v2 fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="agent-header">
+                        <div class="agent-title-block">
+                            <h4
+                                style="font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: #00a859; margin-bottom: 5px;">
+                                Agent 03 · Market Microstructure</h4>
+                            <h3>ETF Liquidity Intelligence Agent</h3>
+                            <div class="agent-source">→ nseindia.com / ETF Market Data + AMFI NAV</div>
+                        </div>
+                        <div class="agent-tag" style="background: rgba(0, 168, 89, 0.1); color: #00a859;">NSE Market
+                            Data</div>
+                    </div>
+
+                    <p style="color: var(--text-gray); line-height: 1.6; font-size: 1.05rem;">
+                        This agent unifies price, NAV, volume, premium/discount, and 52-week range into a single
+                        session-level dataset. Replaces the painful process of downloading separate files from NSE and
+                        AMFI and running breakable VLOOKUPs.
+                    </p>
+
+                    <div class="agent-pipeline">
+                        <svg width="100%" height="80" viewBox="0 0 600 80" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <!-- Source 1 -->
+                            <rect x="20" y="5" width="60" height="30" rx="4" fill="#fff" stroke="#00a859"
+                                stroke-width="2" />
+                            <text x="50" y="24" font-size="10" font-family="monospace" font-weight="bold" fill="#00a859"
+                                text-anchor="middle">NSE CSV</text>
+
+                            <!-- Source 2 -->
+                            <rect x="20" y="45" width="60" height="30" rx="4" fill="#fff" stroke="#00a859"
+                                stroke-width="2" />
+                            <text x="50" y="64" font-size="10" font-family="monospace" font-weight="bold" fill="#00a859"
+                                text-anchor="middle">AMFI NAV</text>
+
+                            <!-- Paths 1 & 2 Merge -->
+                            <path d="M80 20 L250 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                            <path d="M80 20 L250 40" stroke="#00a859" stroke-width="4" stroke-linecap="round"
+                                class="anim-data-flow" />
+                            <path d="M80 60 L250 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                            <path d="M80 60 L250 40" stroke="#00a859" stroke-width="4" stroke-linecap="round"
+                                class="anim-data-flow" style="animation-delay: 0.5s;" />
+
+                            <!-- Process (Merge) -->
+                            <rect x="250" y="10" width="100" height="60" rx="8" fill="#e6f4ea" stroke="#00a859"
+                                stroke-width="2" />
+                            <path d="M280 40 L290 50 L310 30" fill="none" stroke="#00a859" stroke-width="4"
+                                stroke-linecap="round" stroke-linejoin="round" />
+
+                            <!-- Path 3 -->
+                            <path d="M350 40 L500 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                            <path d="M350 40 L500 40" stroke="#00a859" stroke-width="4" stroke-linecap="round"
+                                class="anim-data-flow" style="animation-delay: 1.5s;" />
+
+                            <!-- Dest -->
+                            <path d="M500 30 C500 20, 580 20, 580 30 L580 50 C580 60, 500 60, 500 50 Z" fill="#fff"
+                                stroke="#00a859" stroke-width="2" />
+                            <path d="M500 30 C500 40, 580 40, 580 30" fill="none" stroke="#00a859" stroke-width="2" />
+                            <text x="540" y="44" font-size="12" font-family="monospace" font-weight="bold"
+                                fill="#00a859" text-anchor="middle">UNIFIED</text>
+                        </svg>
+                    </div>
+
+                    <div class="agent-content-grid">
+                        <div class="agent-content-col">
+                            <h4>Current Manual Process</h4>
+                            <ul class="agent-list before">
+                                <li>Download NSE CSV and AMFI NAV from separate portals</li>
+                                <li>VLOOKUP merge breaks on ETF name mismatches</li>
+                                <li>NSE column header changes corrupt analysis</li>
+                                <li>No historical session archive persists</li>
+                            </ul>
+                        </div>
+                        <div class="agent-content-col">
+                            <h4>With Terminal X Agent</h4>
+                            <ul class="agent-list after">
+                                <li>Price and NAV unified — premium/discount auto-calculated</li>
+                                <li>Every session archived; full history queryable</li>
+                                <li>Liquidity tier classification based on traded value</li>
+                                <li>Anomaly alerts for unusual discounts or low volumes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Efficiency & ROI -->
+    <section class="feature-section" style="background: #ffffff;">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 60px;">
+                <div class="hero-pretitle" style="background: rgba(0, 168, 89, 0.05); color: #00a859;">04 — Efficiency &
+                    ROI</div>
+                <h2 style="font-size: 3rem; margin-bottom: 20px;">Redefining Research Economics</h2>
+                <p style="font-size: 1.25rem; color: var(--text-gray); max-width: 800px; margin: 0 auto;">
+                    Terminal X shifts your team's focus from clerical extraction to alpha generation, eliminating manual
+                    data costs while increasing data depth instantly.
+                </p>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-card fade-in-up" style="grid-column: span 6;">
+                    <div class="bento-card-visual"
+                        style="border-bottom: 1px solid rgba(0,0,0,0.05); margin-bottom: 25px; padding-bottom: 15px;">
+                        <svg width="100" height="80" viewBox="0 0 100 80" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <line x1="10" y1="70" x2="90" y2="70" stroke="#007c42" stroke-width="2" />
+                            <!-- Manual Bar (Tall) -->
+                            <rect x="25" y="20" width="15" height="50" fill="#f0fdf4" stroke="#ef4444" stroke-width="2"
+                                class="anim-bar-tall" />
+                            <!-- Autowhat Bar (Short) -->
+                            <rect x="60" y="60" width="15" height="10" fill="#00a859" class="anim-bar-short" />
+                            <text x="32.5" y="15" font-size="9" font-family="monospace" font-weight="bold"
+                                fill="#ef4444" text-anchor="middle">DAYS</text>
+                            <text x="67.5" y="55" font-size="9" font-family="monospace" font-weight="bold"
+                                fill="#00a859" text-anchor="middle">5 MIN</text>
+                        </svg>
+                    </div>
+                    <div class="bento-card-content">
+                        <h4>Extraction Velocity</h4>
+                        <h3>From Days to Minutes</h3>
+                        <p>Manual tracking across 250 PMRs takes a team days. The Terminal X SEBI Agent scales to the
+                            full universe in under 5 minutes with zero marginal effort.</p>
+                    </div>
+                </div>
+
+                <div class="bento-card fade-in-up" style="grid-column: span 6; animation-delay: 0.2s;">
+                    <div class="bento-card-visual"
+                        style="border-bottom: 1px solid rgba(0,0,0,0.05); margin-bottom: 25px; padding-bottom: 15px;">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Arc -->
+                            <path d="M 10 60 A 30 30 0 0 1 70 60" fill="none" stroke="#e2e8f0" stroke-width="8"
+                                stroke-linecap="round" />
+                            <!-- Foreground Arc (Animated) -->
+                            <path d="M 10 60 A 30 30 0 0 1 70 60" fill="none" stroke="#00a859" stroke-width="8"
+                                stroke-linecap="round" stroke-dasharray="100" class="anim-gauge" />
+                            <text x="40" y="55" font-size="16" font-family="monospace" font-weight="bold" fill="#007c42"
+                                text-anchor="middle">40h+</text>
+                        </svg>
+                    </div>
+                    <div class="bento-card-content">
+                        <h4>Resource Optimization</h4>
+                        <h3>Recapture 40+ Analyst Hours</h3>
+                        <p>By eliminating manual navigation, copy-pasting, and Excel formatting across APMI and NSE, you
+                            reclaim 40+ hours per analyst every month for core investment research.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials / Extensibility -->
+    <section class="feature-section" id="credentials" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 60px;">
+                <div class="hero-pretitle" style="background: rgba(0,0,0,0.05); color: var(--text-dark);">05 — Platform
+                    Extensibility</div>
+                <h2 style="font-size: 3rem; margin-bottom: 20px;">Custom Intelligence Agents: Built to Spec</h2>
+                <p style="font-size: 1.25rem; color: var(--text-gray); max-width: 800px; margin: 0 auto;">
+                    Terminal X is not a generic scraper. It is a platform. We design, develop, and operationalize custom
+                    agents against any specification, natively integrated into the same database and interface.
+                </p>
+            </div>
+
+            <div class="bento-grid" style="max-width: 1000px;">
+                <div class="bento-card fade-in-up" style="grid-column: span 12;">
+                    <div class="check-grid">
+                        <div class="check-item">
+                            <div class="check-icon">✓</div>
+                            <div class="check-text">Any web source: SEBI, BSE, MCA, RBI, Bloomberg, custom vendor
+                                portals.</div>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon">✓</div>
+                            <div class="check-text">Authentication-aware: Session management, OTP workflows, CAPTCHA
+                                handling.</div>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon">✓</div>
+                            <div class="check-text">Structured PostgreSQL storage with versioning, and full audit trail.
+                            </div>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon">✓</div>
+                            <div class="check-text">Configurable schedules: Intraday, daily, weekly, or on-demand
+                                trigger.</div>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon">✓</div>
+                            <div class="check-text">REST API access for direct integration with internal Python models.
+                            </div>
+                        </div>
+                        <div class="check-item">
+                            <div class="check-icon">✓</div>
+                            <div class="check-text">Custom alerting logic: New data detected, AUM thresholds, return
+                                anomalies.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 80px;">
+                <h3 style="font-size: 1.5rem; color: var(--text-dark); margin-bottom: 15px;">Built for Institutional Rigour</h3>
+                <p style="color: var(--text-gray); margin-bottom: 30px;">Deployed via Managed Cloud, On-Premise, or
+                    Hybrid with extensive data lineage on every record.</p>
+                <a href="contact-us.html" class="cta-btn">Request Terminal X Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">AUTOWHAT AI</h4>
+                <p style="color: var(--primary-color);">Innovating for a better tomorrow.</p>
+            </div>
+            
+            
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Autowhat AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
