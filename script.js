@@ -306,4 +306,61 @@ document.addEventListener('DOMContentLoaded', () => {
         init();
         animate();
     }
+
+    // Contact Form AJAX Submission
+    const contactForm = document.getElementById('autowhat-contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnLoader = document.getElementById('btn-loader');
+            const successMsg = document.getElementById('form-success-message');
+            const errorMsg = document.getElementById('form-error-message');
+            
+            // Loading State
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+            btnText.style.display = 'none';
+            btnLoader.style.display = 'inline-block';
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+            
+            // Collect Data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+            data.privacy_consent = formData.has('privacy_consent');
+            data.marketing_updates = formData.has('marketing_updates');
+
+            try {
+                const response = await fetch('/.netlify/functions/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    successMsg.style.display = 'block';
+                    contactForm.reset();
+                    // Scroll to success message
+                    successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    errorMsg.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Submission Error:', error);
+                errorMsg.style.display = 'block';
+            } finally {
+                // Reset Button State
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+                btnText.style.display = 'inline-block';
+                btnLoader.style.display = 'none';
+            }
+        });
+    }
+
 });

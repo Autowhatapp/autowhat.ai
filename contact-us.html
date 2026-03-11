@@ -203,30 +203,39 @@
                 your vision. Tell us a bit more about yourself so we can get the ball rolling.
             </p>
 
-            <form class="contact-form" action="#" method="POST">
+            <div id="form-success-message" style="display: none; background: #e6f6ee; color: #007c42; padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #b3e3cc; margin-bottom: 20px;">
+                <h3 style="margin-top: 0;">Thank you!</h3>
+                <p style="margin-bottom: 0;">Your message has been sent successfully. We will be in touch shortly.</p>
+            </div>
+            
+            <div id="form-error-message" style="display: none; background: #fee2e2; color: #b91c1c; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #fecaca; margin-bottom: 20px;">
+                <p style="margin: 0;">Oops! Something went wrong. Please try again later.</p>
+            </div>
+
+            <form id="autowhat-contact-form" class="contact-form">
 
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="First Name" required>
+                    <input type="text" id="first_name" name="first_name" class="form-control" placeholder="First Name" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Last Name" required>
+                    <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Last Name" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Work Email" required>
+                    <input type="email" id="work_email" name="work_email" class="form-control" placeholder="Work Email" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Job Title" required>
+                    <input type="text" id="job_title" name="job_title" class="form-control" placeholder="Job Title" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Company" required>
+                    <input type="text" id="company" name="company" class="form-control" placeholder="Company" required>
                 </div>
 
                 <div class="form-group">
-                    <select class="form-control" required>
+                    <select id="region" name="region" class="form-control" required>
                         <option value="" disabled selected>Region*</option>
                         <option value="India">India</option>
                         <option value="Asia Pacific">Asia Pacific</option>
@@ -240,22 +249,25 @@
                 </div>
 
                 <div class="form-group">
-                    <textarea class="form-control" placeholder="Message" required></textarea>
+                    <textarea id="message" name="message" class="form-control" placeholder="Message" required></textarea>
                 </div>
 
                 <div class="checkbox-group">
-                    <input type="checkbox" id="privacy-consent" required>
+                    <input type="checkbox" id="privacy-consent" name="privacy_consent" required>
                     <label for="privacy-consent">I confirm, I have read and agree to Autowhat AI's Privacy Policy and
                         consent to sharing my information.</label>
                 </div>
 
                 <div class="checkbox-group">
-                    <input type="checkbox" id="marketing-updates">
+                    <input type="checkbox" id="marketing-updates" name="marketing_updates">
                     <label for="marketing-updates">I would like to receive alerts and updates from Autowhat AI.</label>
                 </div>
 
                 <div class="submit-btn-wrapper">
-                    <button type="submit" class="submit-btn">Send</button>
+                    <button type="submit" id="submit-btn" class="submit-btn">
+                        <span id="btn-text">Send</span>
+                        <span id="btn-loader" style="display: none;">Sending...</span>
+                    </button>
                 </div>
 
             </form>
