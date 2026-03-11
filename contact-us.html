@@ -99,6 +99,10 @@
             height: 16px;
             accent-color: #00a859;
             cursor: pointer;
+            -webkit-appearance: checkbox;
+            appearance: checkbox;
+            opacity: 1 !important;
+            visibility: visible !important;
         }
 
         .checkbox-group label {
@@ -253,14 +257,9 @@
                 </div>
 
                 <div class="checkbox-group">
-                    <input type="checkbox" id="privacy-consent" name="privacy_consent" required>
+                    <input type="checkbox" id="privacy-consent" name="privacy_consent">
                     <label for="privacy-consent">I confirm, I have read and agree to Autowhat AI's Privacy Policy and
                         consent to sharing my information.</label>
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="marketing-updates" name="marketing_updates">
-                    <label for="marketing-updates">I would like to receive alerts and updates from Autowhat AI.</label>
                 </div>
 
                 <div class="submit-btn-wrapper">

@@ -313,6 +313,13 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
+            // Manual Safari Validation for privacy checkbox
+            const privacyCheckbox = document.getElementById('privacy-consent');
+            if (privacyCheckbox && !privacyCheckbox.checked) {
+                alert("Please confirm you have read the Privacy Policy to continue.");
+                return; // Stop submission
+            }
+            
             const submitBtn = document.getElementById('submit-btn');
             const btnText = document.getElementById('btn-text');
             const btnLoader = document.getElementById('btn-loader');
@@ -331,7 +338,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
             data.privacy_consent = formData.has('privacy_consent');
-            data.marketing_updates = formData.has('marketing_updates');
 
             try {
                 const response = await fetch('/.netlify/functions/send-email', {
