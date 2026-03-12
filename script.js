@@ -21,18 +21,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handle Mobile Dropdowns gracefully
+    // Handle Dropdowns gracefully (prevent page jumping on click)
     const dropdownToggles = document.querySelectorAll('.main-nav .dropdown > a, .main-nav .nested-dropdown > a');
 
     dropdownToggles.forEach(toggle => {
         toggle.addEventListener('click', (e) => {
-            if (window.innerWidth <= 900) {
-                const parent = toggle.parentElement;
-                const dropdownContent = parent.querySelector('.dropdown-content, .nested-dropdown-content');
+            const parent = toggle.parentElement;
+            const dropdownContent = parent.querySelector('.dropdown-content, .nested-dropdown-content');
 
-                // Only prevent default if there actually is a dropdown to open
-                if (dropdownContent) {
-                    e.preventDefault();
+            // Only prevent default if there actually is a dropdown to open
+            if (dropdownContent) {
+                // Prevent default anchor behavior (like jumping to #services or #)
+                e.preventDefault();
+                
+                // Only handle click-to-expand logic on mobile (desktop relies on CSS :hover)
+                if (window.innerWidth <= 900) {
                     dropdownContent.classList.toggle('active');
                     toggle.classList.toggle('active'); // For rotating arrows
 
