@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next-Generation Vehicle Fleet & Logistics Management | Autowhat AI</title>
+    <title>Enterprise Vehicle Fleet Management | Logistics Operations Software</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@fontsource/clear-sans@5.0.0/index.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -68,13 +68,13 @@
         }
 
         .dashboard-mockup {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -82,8 +82,8 @@
 
         .dashboard-header {
             height: 40px;
-            background: rgba(250, 250, 250, 0.9);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(30, 41, 59, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             align-items: center;
             padding: 0 16px;
@@ -97,6 +97,7 @@
             border-radius: 50%;
             background: #e2e2e2;
             margin-right: 4px;
+            opacity: 0.8;
         }
 
         .dashboard-header .dots span:nth-child(1) {
@@ -115,7 +116,7 @@
             margin-left: auto;
             margin-right: auto;
             font-size: 0.85rem;
-            color: var(--text-gray);
+            color: #cbd5e1;
             font-weight: 500;
             letter-spacing: 0.02em;
         }
@@ -127,8 +128,8 @@
 
         .dash-sidebar {
             width: 80px;
-            background: #fafafc;
-            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(15, 23, 42, 0.5);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
             padding: 20px 0;
             display: flex;
             flex-direction: column;
@@ -140,12 +141,17 @@
             width: 40px;
             height: 40px;
             border-radius: 12px;
-            background: rgba(0, 0, 0, 0.03);
+            background: rgba(255, 255, 255, 0.03);
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-gray);
+            color: #94a3b8;
+        }
+
+        .dash-sidebar .nav-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #f8fafc;
         }
 
         .dash-sidebar .nav-item svg {
@@ -155,9 +161,10 @@
         }
 
         .dash-sidebar .nav-item.active {
-            background: rgba(0, 168, 89, 0.1);
-            border: 1px solid rgba(0, 168, 89, 0.2);
+            background: rgba(0, 168, 89, 0.15);
+            border: 1px solid rgba(0, 168, 89, 0.3);
             color: #00a859;
+            box-shadow: 0 0 15px rgba(0, 168, 89, 0.2);
         }
 
         .dash-main {
@@ -166,7 +173,7 @@
             display: flex;
             flex-direction: column;
             gap: 24px;
-            background: #ffffff;
+            background: transparent;
             position: relative;
         }
 
@@ -177,16 +184,24 @@
 
         .stat-card {
             flex: 1;
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 16px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: default;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
         .stat-card::before {
@@ -198,19 +213,21 @@
             height: 100%;
             background: var(--primary-color);
             border-radius: 4px 0 0 4px;
+            box-shadow: 0 0 10px var(--primary-color);
         }
 
         .stat-card .label {
             font-size: 0.9rem;
-            color: var(--text-gray);
+            color: #94a3b8;
             font-weight: 500;
         }
 
         .stat-card .value {
             font-size: 2rem;
             font-weight: 600;
-            color: var(--text-dark);
+            color: #f8fafc;
             letter-spacing: -0.02em;
+            text-shadow: 0 0 20px rgba(255,255,255,0.1);
         }
 
         .dash-map-area {
@@ -284,15 +301,15 @@
 
         .floating-card {
             position: absolute;
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(30, 41, 59, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 14px 18px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.02);
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: #cbd5e1;
             min-width: 200px;
             transform: translateY(0);
             animation: float 6s ease-in-out infinite;
@@ -315,6 +332,13 @@
 
         .floating-card.alert-card {
             animation-delay: 1s;
+            border-color: rgba(243, 156, 18, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(243, 156, 18, 0.05);
+        }
+        
+        .floating-card.truck-card {
+            border-color: rgba(0, 168, 89, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 168, 89, 0.05);
         }
 
         .card-header {
@@ -323,10 +347,10 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            color: #ffffff;
+            color: #f8fafc;
             font-size: 0.95rem;
             letter-spacing: 0.5px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 6px;
         }
 
@@ -338,17 +362,17 @@
 
         .status-dot.green {
             background: #00a859;
-            box-shadow: 0 0 10px rgba(0, 168, 89, 0.5);
+            box-shadow: 0 0 12px rgba(0, 168, 89, 0.8);
         }
 
         .status-dot.orange {
             background: #f39c12;
-            box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+            box-shadow: 0 0 12px rgba(243, 156, 18, 0.8);
         }
 
         .status-dot.blue {
             background: #3498db;
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+            box-shadow: 0 0 12px rgba(52, 152, 219, 0.8);
         }
 
         .card-row {
@@ -358,13 +382,11 @@
         }
 
         .card-row span {
-            color: rgba(255, 255, 255, 0.5);
+            color: #94a3b8;
         }
 
-        /* Removed broken keyframes */
-
         .card-row span:first-child {
-            color: #555;
+            color: #64748b;
         }
 
         /* Tech Architecture Diagram */
@@ -613,10 +635,10 @@
 <body>
 
     <!-- Header (Copied from index.html) -->
-    <header id="main-header" class="scrolled">
+    <header id="main-header">
         <div class="container header-container">
             <div class="logo">
-                <a href="index.html">Autowhat AI</a>
+                <a href="index.html"><img src="logo.png" alt="Autowhat AI"></a>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -627,8 +649,8 @@
                             <li class="nested-dropdown">
                                 <a href="#">Logistics and Mobility Systems</a>
                                 <ul class="nested-dropdown-content">
+                                    <li><a href="gate-module.html">AutoGate</a></li>
                                     <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
-                                    <li><a href="sipoc.html">Supply Chain and Logistics</a></li>
                                     <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
                                 </ul>
                             </li>
@@ -663,166 +685,508 @@
     <section class="product-hero">
         <div class="container">
             <div class="product-hero-badge">VEHICLE FLEET MANAGEMENT</div>
-            <h1>Next-Generation Vehicle Fleet Management</h1>
+            <h1>Next-Generation Vehicle Fleet Management System</h1>
             <p class="product-hero-lead">
-                Transform your fleet operations with a unified orchestration platform. We provide end-to-end,
-                cloud-native solutions that digitize vehicle dispatch, unify fragmented tracking signals, and
-                deliver real-time intelligence for high-volume commercial fleets.
+                Transform your logistics operations with a unified orchestration platform. We provide an enterprise-grade, highly scalable software solution that digitizes fleet monitoring, optimizes maintenance, and delivers real-time intelligence for high-volume commercial fleets.
             </p>
 
-            <!-- Hero Infographic (CSS/HTML Based) -->
+            <!-- Hero Infographic: Fleet Command Center -->
+            <style>
+                .fc-container {
+                    max-width: 1000px;
+                    margin: 50px auto 0;
+                    background: linear-gradient(160deg, #ffffff, #f7f8fa);
+                    border-radius: 20px;
+                    padding: 0;
+                    position: relative;
+                    overflow: hidden;
+                    border: 1px solid rgba(0, 0, 0, 0.08);
+                    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0,0,0,0.04);
+                }
+                .fc-container::before {
+                    content: '';
+                    position: absolute;
+                    bottom: -100px; left: -80px;
+                    width: 300px; height: 300px;
+                    background: radial-gradient(circle, rgba(52, 152, 219, 0.05) 0%, transparent 70%);
+                    pointer-events: none;
+                }
+
+                /* Top Bar */
+                .fc-topbar {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 16px 28px;
+                    border-bottom: 1px solid rgba(0,0,0,0.06);
+                    background: rgba(0,0,0,0.01);
+                }
+                .fc-topbar-title {
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    color: rgba(0,0,0,0.45);
+                }
+                .fc-topbar-right {
+                    display: flex; align-items: center; gap: 16px;
+                }
+                .fc-topbar-time {
+                    font-size: 0.72rem;
+                    color: rgba(0,0,0,0.3);
+                    font-family: 'Outfit', monospace;
+                }
+                .fc-topbar-status {
+                    display: flex; align-items: center; gap: 6px;
+                    font-size: 0.7rem; font-weight: 600;
+                    text-transform: uppercase; letter-spacing: 1px;
+                }
+                .fc-status-dot {
+                    width: 7px; height: 7px;
+                    border-radius: 50%;
+                    animation: fcPulse 2s ease-in-out infinite;
+                }
+                @keyframes fcPulse {
+                    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,168,89,0.5); }
+                    50% { opacity: 0.5; box-shadow: 0 0 0 5px rgba(0,168,89,0); }
+                }
+
+                /* Stats Strip */
+                .fc-stats-strip {
+                    display: grid;
+                    grid-template-columns: repeat(6, 1fr);
+                    border-bottom: 1px solid rgba(0,0,0,0.06);
+                }
+                .fc-stat {
+                    padding: 16px 12px;
+                    text-align: center;
+                    border-right: 1px solid rgba(0,0,0,0.05);
+                    transition: background 0.3s ease;
+                }
+                .fc-stat:last-child { border-right: none; }
+                .fc-stat:hover { background: rgba(0,0,0,0.02); }
+                .fc-stat-num {
+                    font-size: 1.35rem;
+                    font-weight: 700;
+                    font-family: 'Outfit', sans-serif;
+                    margin-bottom: 4px;
+                }
+                .fc-stat-lbl {
+                    font-size: 0.6rem;
+                    color: rgba(0,0,0,0.4);
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                }
+
+                /* Main Panel */
+                .fc-main {
+                    display: grid;
+                    grid-template-columns: 1fr 300px;
+                    min-height: 320px;
+                }
+
+                /* Map Panel */
+                .fc-map-panel {
+                    position: relative;
+                    padding: 20px;
+                    border-right: 1px solid rgba(0,0,0,0.06);
+                    overflow: hidden;
+                    background: rgba(0,0,0,0.015);
+                }
+                .fc-map-panel svg {
+                    width: 100%; height: 100%;
+                }
+                .fc-map-label {
+                    position: absolute;
+                    font-size: 0.55rem;
+                    font-weight: 600;
+                    color: rgba(0,0,0,0.3);
+                    text-transform: uppercase;
+                    letter-spacing: 1.5px;
+                    pointer-events: none;
+                }
+
+                /* Sidebar */
+                .fc-sidebar {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .fc-sidebar-header {
+                    padding: 16px 20px;
+                    border-bottom: 1px solid rgba(0,0,0,0.06);
+                    display: flex; justify-content: space-between; align-items: center;
+                }
+                .fc-sidebar-title {
+                    font-size: 0.7rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    color: rgba(0,0,0,0.45);
+                }
+                .fc-sidebar-count {
+                    font-size: 0.65rem;
+                    padding: 2px 8px;
+                    border-radius: 4px;
+                    background: rgba(0,168,89,0.12);
+                    color: #00a859;
+                    font-weight: 600;
+                }
+                .fc-vehicle-list {
+                    flex: 1;
+                    overflow: hidden;
+                }
+                .fc-vehicle-row {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    padding: 14px 20px;
+                    border-bottom: 1px solid rgba(0,0,0,0.04);
+                    transition: background 0.2s ease;
+                }
+                .fc-vehicle-row:hover { background: rgba(0,0,0,0.02); }
+                .fc-vehicle-dot {
+                    width: 8px; height: 8px;
+                    border-radius: 50%;
+                    flex-shrink: 0;
+                }
+                .fc-vehicle-info {
+                    flex: 1;
+                    min-width: 0;
+                }
+                .fc-vehicle-id {
+                    font-size: 0.78rem;
+                    font-weight: 600;
+                    color: rgba(0,0,0,0.8);
+                    margin-bottom: 2px;
+                }
+                .fc-vehicle-route {
+                    font-size: 0.65rem;
+                    color: rgba(0,0,0,0.4);
+                }
+                .fc-vehicle-status {
+                    font-size: 0.6rem;
+                    padding: 3px 8px;
+                    border-radius: 5px;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    flex-shrink: 0;
+                }
+
+                /* Bottom Cards */
+                .fc-bottom {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    border-top: 1px solid rgba(0,0,0,0.06);
+                }
+                .fc-bottom-card {
+                    padding: 20px 22px;
+                    border-right: 1px solid rgba(0,0,0,0.05);
+                    transition: background 0.3s ease;
+                }
+                .fc-bottom-card:last-child { border-right: none; }
+                .fc-bottom-card:hover { background: rgba(0,0,0,0.02); }
+                .fc-bottom-header {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 10px;
+                }
+                .fc-bottom-icon {
+                    width: 28px; height: 28px;
+                    border-radius: 8px;
+                    display: flex; align-items: center; justify-content: center;
+                }
+                .fc-bottom-icon svg { width: 14px; height: 14px; }
+                .fc-bottom-label {
+                    font-size: 0.68rem;
+                    font-weight: 600;
+                    color: rgba(0,0,0,0.45);
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+                .fc-bottom-value {
+                    font-size: 0.85rem;
+                    color: rgba(0,0,0,0.65);
+                    line-height: 1.5;
+                }
+                .fc-bottom-value strong { color: #1a1a2e; }
+                .fc-bottom-bar {
+                    margin-top: 10px;
+                    height: 3px;
+                    background: rgba(0,0,0,0.06);
+                    border-radius: 2px;
+                    overflow: hidden;
+                }
+                .fc-bottom-bar-fill {
+                    height: 100%;
+                    border-radius: 2px;
+                }
+
+                @media (max-width: 768px) {
+                    .fc-stats-strip { grid-template-columns: repeat(3, 1fr); }
+                    .fc-main { grid-template-columns: 1fr; }
+                    .fc-map-panel { min-height: 250px; border-right: none; border-bottom: 1px solid rgba(0,0,0,0.06); }
+                    .fc-sidebar { max-height: 240px; overflow-y: auto; }
+                    .fc-bottom { grid-template-columns: 1fr; }
+                    .fc-bottom-card { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.05); }
+                    .fc-bottom-card:last-child { border-bottom: none; }
+                }
+            </style>
+
             <div class="hero-infographic-container fade-in">
-                <div class="dashboard-mockup">
-                    <div class="dashboard-header">
-                        <div class="dots"><span></span><span></span><span></span></div>
-                        <div class="title">Autowhat Fleet Control Center</div>
+                <div class="fc-container">
+                    <!-- Top Bar -->
+                    <div class="fc-topbar">
+                        <span class="fc-topbar-title">Fleet Command Center</span>
+                        <div class="fc-topbar-right">
+                            <span class="fc-topbar-time">Last sync: 4s ago</span>
+                            <span class="fc-topbar-status" style="color: #00a859;">
+                                <span class="fc-status-dot" style="background: #00a859;"></span> All Systems Online
+                            </span>
+                        </div>
                     </div>
-                    <div class="dashboard-body">
-                        <div class="dash-sidebar">
-                            <div class="nav-item active">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="3" y1="9" x2="21" y2="9"></line>
-                                    <line x1="9" y1="21" x2="9" y2="9"></line>
-                                </svg>
+
+                    <!-- Stats Strip -->
+                    <div class="fc-stats-strip">
+                        <div class="fc-stat">
+                            <div class="fc-stat-num" style="color: #00a859;">1,248</div>
+                            <div class="fc-stat-lbl">Active Vehicles</div>
+                        </div>
+                        <div class="fc-stat">
+                            <div class="fc-stat-num" style="color: #3498db;">145</div>
+                            <div class="fc-stat-lbl">Drivers Online</div>
+                        </div>
+                        <div class="fc-stat">
+                            <div class="fc-stat-num" style="color: #f39c12;">14</div>
+                            <div class="fc-stat-lbl">Open Tickets</div>
+                        </div>
+                        <div class="fc-stat">
+                            <div class="fc-stat-num" style="color: #e74c3c;">3</div>
+                            <div class="fc-stat-lbl">Maint. Alerts</div>
+                        </div>
+                        <div class="fc-stat">
+                            <div class="fc-stat-num" style="color: #9b59b6;">98.5%</div>
+                            <div class="fc-stat-lbl">On-Time Rate</div>
+                        </div>
+                        <div class="fc-stat">
+                            <div class="fc-stat-num" style="color: #1abc9c;">₹2.1L</div>
+                            <div class="fc-stat-lbl">Fuel (Today)</div>
+                        </div>
+                    </div>
+
+                    <!-- Main: Map + Sidebar -->
+                    <div class="fc-main">
+                        <!-- Map Panel -->
+                        <div class="fc-map-panel">
+                            <span class="fc-map-label" style="top: 12px; left: 20px;">Live Fleet Map</span>
+                            <svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <radialGradient id="fmGlow" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%" stop-color="#00a859" stop-opacity="0.7"/>
+                                        <stop offset="100%" stop-color="#00a859" stop-opacity="0"/>
+                                    </radialGradient>
+                                    <radialGradient id="fmGlowBlue" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%" stop-color="#3498db" stop-opacity="0.7"/>
+                                        <stop offset="100%" stop-color="#3498db" stop-opacity="0"/>
+                                    </radialGradient>
+                                    <radialGradient id="fmGlowOrange" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%" stop-color="#f39c12" stop-opacity="0.6"/>
+                                        <stop offset="100%" stop-color="#f39c12" stop-opacity="0"/>
+                                    </radialGradient>
+                                </defs>
+
+                                <!-- Grid lines (subtle) -->
+                                <line x1="0" y1="70" x2="600" y2="70" stroke="rgba(0,0,0,0.04)" stroke-width="1"/>
+                                <line x1="0" y1="140" x2="600" y2="140" stroke="rgba(0,0,0,0.04)" stroke-width="1"/>
+                                <line x1="0" y1="210" x2="600" y2="210" stroke="rgba(0,0,0,0.04)" stroke-width="1"/>
+                                <line x1="150" y1="0" x2="150" y2="280" stroke="rgba(0,0,0,0.04)" stroke-width="1"/>
+                                <line x1="300" y1="0" x2="300" y2="280" stroke="rgba(0,0,0,0.04)" stroke-width="1"/>
+                                <line x1="450" y1="0" x2="450" y2="280" stroke="rgba(0,0,0,0.04)" stroke-width="1"/>
+
+                                <!-- Route 1: Mumbai → Delhi (green) -->
+                                <path d="M60,220 C120,180 200,100 280,120 S420,60 520,90"
+                                    stroke="rgba(0,168,89,0.3)" stroke-width="2.5" fill="none" stroke-dasharray="6,4">
+                                    <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2s" repeatCount="indefinite"/>
+                                </path>
+
+                                <!-- Route 2: Bangalore → Hyderabad (blue) -->
+                                <path d="M80,250 C160,230 240,170 350,200 S480,160 560,180"
+                                    stroke="rgba(52,152,219,0.3)" stroke-width="2.5" fill="none" stroke-dasharray="6,4">
+                                    <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.5s" repeatCount="indefinite"/>
+                                </path>
+
+                                <!-- Route 3: Chennai → Pune (orange) -->
+                                <path d="M100,40 C200,80 300,200 420,130 S500,60 570,40"
+                                    stroke="rgba(243,156,18,0.25)" stroke-width="2" fill="none" stroke-dasharray="5,5">
+                                    <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="3s" repeatCount="indefinite"/>
+                                </path>
+
+                                <!-- Hub nodes -->
+                                <circle cx="60" cy="220" r="10" fill="url(#fmGlow)" class="pulse-node" style="animation-duration:3s;"/>
+                                <circle cx="60" cy="220" r="5" fill="#00a859"/>
+                                <text x="60" y="245" text-anchor="middle" fill="rgba(0,0,0,0.3)" font-size="8" font-weight="600">MUM</text>
+
+                                <circle cx="520" cy="90" r="10" fill="url(#fmGlow)" class="pulse-node" style="animation-duration:3.5s;"/>
+                                <circle cx="520" cy="90" r="5" fill="#00a859"/>
+                                <text x="520" y="115" text-anchor="middle" fill="rgba(0,0,0,0.3)" font-size="8" font-weight="600">DEL</text>
+
+                                <circle cx="80" cy="250" r="4" fill="#3498db"/>
+                                <text x="80" y="268" text-anchor="middle" fill="rgba(0,0,0,0.25)" font-size="7" font-weight="600">BLR</text>
+
+                                <circle cx="560" cy="180" r="4" fill="#3498db"/>
+                                <text x="560" y="198" text-anchor="middle" fill="rgba(0,0,0,0.25)" font-size="7" font-weight="600">HYD</text>
+
+                                <circle cx="100" cy="40" r="4" fill="#f39c12"/>
+                                <text x="100" y="58" text-anchor="middle" fill="rgba(0,0,0,0.25)" font-size="7" font-weight="600">CHN</text>
+
+                                <circle cx="570" cy="40" r="4" fill="#f39c12"/>
+                                <text x="570" y="58" text-anchor="middle" fill="rgba(0,0,0,0.25)" font-size="7" font-weight="600">PUN</text>
+
+                                <!-- Animated vehicle dots -->
+                                <!-- Vehicle 1 (green route) -->
+                                <circle r="10" fill="url(#fmGlow)">
+                                    <animateMotion dur="12s" begin="0s" repeatCount="indefinite"
+                                        path="M60,220 C120,180 200,100 280,120 S420,60 520,90"/>
+                                </circle>
+                                <circle r="4" fill="#333">
+                                    <animateMotion dur="12s" begin="0s" repeatCount="indefinite"
+                                        path="M60,220 C120,180 200,100 280,120 S420,60 520,90"/>
+                                </circle>
+
+                                <!-- Vehicle 2 (blue route) -->
+                                <circle r="10" fill="url(#fmGlowBlue)">
+                                    <animateMotion dur="14s" begin="1s" repeatCount="indefinite"
+                                        path="M80,250 C160,230 240,170 350,200 S480,160 560,180"/>
+                                </circle>
+                                <circle r="4" fill="#333">
+                                    <animateMotion dur="14s" begin="1s" repeatCount="indefinite"
+                                        path="M80,250 C160,230 240,170 350,200 S480,160 560,180"/>
+                                </circle>
+
+                                <!-- Vehicle 3 (orange route) -->
+                                <circle r="8" fill="url(#fmGlowOrange)">
+                                    <animateMotion dur="16s" begin="2s" repeatCount="indefinite"
+                                        path="M100,40 C200,80 300,200 420,130 S500,60 570,40"/>
+                                </circle>
+                                <circle r="3" fill="#333">
+                                    <animateMotion dur="16s" begin="2s" repeatCount="indefinite"
+                                        path="M100,40 C200,80 300,200 420,130 S500,60 570,40"/>
+                                </circle>
+
+                                <!-- Intermediate waypoint -->
+                                <circle cx="280" cy="120" r="3" fill="rgba(0,0,0,0.1)"/>
+                                <circle cx="350" cy="200" r="3" fill="rgba(0,0,0,0.1)"/>
+                                <circle cx="420" cy="130" r="3" fill="rgba(0,0,0,0.1)"/>
+                            </svg>
+                        </div>
+
+                        <!-- Sidebar: Vehicle List -->
+                        <div class="fc-sidebar">
+                            <div class="fc-sidebar-header">
+                                <span class="fc-sidebar-title">Active Vehicles</span>
+                                <span class="fc-sidebar-count">1,248</span>
                             </div>
-                            <div class="nav-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                                </svg>
-                            </div>
-                            <div class="nav-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <path
-                                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
-                                    </path>
-                                    <line x1="12" y1="9" x2="12" y2="13"></line>
-                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                                </svg>
-                            </div>
-                            <div class="nav-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                    <path
-                                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-                                    </path>
-                                </svg>
+                            <div class="fc-vehicle-list">
+                                <div class="fc-vehicle-row">
+                                    <div class="fc-vehicle-dot" style="background: #00a859; box-shadow: 0 0 6px rgba(0,168,89,0.5);"></div>
+                                    <div class="fc-vehicle-info">
+                                        <div class="fc-vehicle-id">TRK-9924-MH</div>
+                                        <div class="fc-vehicle-route">Mumbai → Delhi · ETA 3h 20m</div>
+                                    </div>
+                                    <span class="fc-vehicle-status" style="background: rgba(0,168,89,0.12); color: #00a859;">On Route</span>
+                                </div>
+                                <div class="fc-vehicle-row">
+                                    <div class="fc-vehicle-dot" style="background: #3498db; box-shadow: 0 0 6px rgba(52,152,219,0.5);"></div>
+                                    <div class="fc-vehicle-info">
+                                        <div class="fc-vehicle-id">TRK-7731-KA</div>
+                                        <div class="fc-vehicle-route">Bangalore → Hyderabad · ETA 5h 45m</div>
+                                    </div>
+                                    <span class="fc-vehicle-status" style="background: rgba(52,152,219,0.12); color: #3498db;">In Transit</span>
+                                </div>
+                                <div class="fc-vehicle-row">
+                                    <div class="fc-vehicle-dot" style="background: #f39c12; box-shadow: 0 0 6px rgba(243,156,18,0.5);"></div>
+                                    <div class="fc-vehicle-info">
+                                        <div class="fc-vehicle-id">TRK-5518-TN</div>
+                                        <div class="fc-vehicle-route">Chennai → Pune · Halted 12m</div>
+                                    </div>
+                                    <span class="fc-vehicle-status" style="background: rgba(243,156,18,0.12); color: #f39c12;">Halted</span>
+                                </div>
+                                <div class="fc-vehicle-row">
+                                    <div class="fc-vehicle-dot" style="background: #e74c3c; box-shadow: 0 0 6px rgba(231,76,60,0.5);"></div>
+                                    <div class="fc-vehicle-info">
+                                        <div class="fc-vehicle-id">TRK-3302-RJ</div>
+                                        <div class="fc-vehicle-route">Jaipur → Ahmedabad · Tyre Alert</div>
+                                    </div>
+                                    <span class="fc-vehicle-status" style="background: rgba(231,76,60,0.12); color: #e74c3c;">Alert</span>
+                                </div>
+                                <div class="fc-vehicle-row">
+                                    <div class="fc-vehicle-dot" style="background: #00a859; box-shadow: 0 0 6px rgba(0,168,89,0.5);"></div>
+                                    <div class="fc-vehicle-info">
+                                        <div class="fc-vehicle-id">TRK-8810-GJ</div>
+                                        <div class="fc-vehicle-route">Surat → Mumbai · ETA 1h 55m</div>
+                                    </div>
+                                    <span class="fc-vehicle-status" style="background: rgba(0,168,89,0.12); color: #00a859;">On Route</span>
+                                </div>
                             </div>
                         </div>
-                        <!-- Main Content -->
-                        <div class="dash-main">
-                            <div class="dash-stats">
-                                <div class="stat-card">
-                                    <span class="label">Active Vehicles</span>
-                                    <span class="value" style="color: var(--primary-color);">1,248</span>
+                    </div>
+
+                    <!-- Bottom Insight Cards -->
+                    <div class="fc-bottom">
+                        <div class="fc-bottom-card">
+                            <div class="fc-bottom-header">
+                                <div class="fc-bottom-icon" style="background: rgba(0,168,89,0.12);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#00a859" stroke-width="2.5">
+                                        <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+                                    </svg>
                                 </div>
-                                <div class="stat-card" style="--primary-color: #3498db;">
-                                    <span class="label">On-Time TAT</span>
-                                    <span class="value" style="color: #3498db;">98.4%</span>
-                                </div>
-                                <div class="stat-card" style="--primary-color: #f39c12;">
-                                    <span class="label">Gate Queue</span>
-                                    <span class="value" style="color: #f39c12;">12</span>
-                                </div>
+                                <span class="fc-bottom-label">Route Efficiency</span>
                             </div>
-                            <div class="dash-map-area">
-                                <!-- Abstract Map SVG -->
-                                <svg class="dash-map-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-                                    <defs>
-                                        <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-                                            <stop offset="0%" stop-color="#00a859" stop-opacity="0.8" />
-                                            <stop offset="100%" stop-color="#00a859" stop-opacity="0" />
-                                        </radialGradient>
-                                        <radialGradient id="nodeGlowBlue" cx="50%" cy="50%" r="50%">
-                                            <stop offset="0%" stop-color="#3498db" stop-opacity="0.8" />
-                                            <stop offset="100%" stop-color="#3498db" stop-opacity="0" />
-                                        </radialGradient>
-                                    </defs>
-
-                                    <!-- Routes -->
-                                    <path d="M50,150 C150,100 250,250 350,150 S550,50 650,200 S750,150 780,180"
-                                        stroke="rgba(0, 168, 89, 0.4)" stroke-width="4" fill="none"
-                                        class="route-line glow-filter" />
-                                    <path d="M100,300 C200,350 300,200 450,300 S600,350 700,250 S750,300 780,280"
-                                        stroke="rgba(52, 152, 219, 0.4)" stroke-width="4" fill="none"
-                                        class="route-line glow-filter-blue" style="animation-duration: 25s;" />
-                                    <path d="M350,150 C400,250 500,100 650,200" stroke="rgba(255,255,255,0.15)"
-                                        stroke-width="2" fill="none" stroke-dasharray="5,5" />
-
-                                    <!-- Radar Sweep Animation Center -->
-                                    <circle cx="350" cy="150" r="40" fill="url(#nodeGlow)" class="pulse-node"
-                                        style="animation-duration: 4s;" />
-                                    <circle cx="350" cy="150" r="80" fill="url(#nodeGlow)" class="pulse-node"
-                                        style="animation-duration: 4s; animation-delay: 1s;" />
-
-                                    <circle cx="450" cy="300" r="30" fill="rgba(243, 156, 18, 0.2)" class="pulse-node"
-                                        style="animation-duration: 3s;" />
-
-                                    <!-- Static Nodes (Hubs) -->
-                                    <circle cx="50" cy="150" r="6" fill="#00a859" class="glow-filter" />
-                                    <circle cx="100" cy="300" r="6" fill="#3498db" class="glow-filter-blue" />
-                                    <circle cx="350" cy="150" r="8" fill="#00a859" class="glow-filter" />
-                                    <circle cx="650" cy="200" r="8" fill="#00a859" class="glow-filter" />
-                                    <circle cx="450" cy="300" r="8" fill="#f39c12" />
-                                    <circle cx="780" cy="180" r="6" fill="#00a859" />
-                                    <circle cx="780" cy="280" r="6" fill="#3498db" />
-
-                                    <!-- Moving Vehicles (Route 1) -->
-                                    <!-- Tail effect -->
-                                    <circle r="12" fill="url(#nodeGlow)">
-                                        <animateMotion dur="15s" begin="0.1s" repeatCount="indefinite"
-                                            path="M50,150 C150,100 250,250 350,150 S550,50 650,200 S750,150 780,180" />
-                                    </circle>
-                                    <circle r="6" fill="#fff" class="glow-filter">
-                                        <animateMotion dur="15s" repeatCount="indefinite"
-                                            path="M50,150 C150,100 250,250 350,150 S550,50 650,200 S750,150 780,180" />
-                                    </circle>
-
-                                    <!-- Moving Vehicles (Route 2) -->
-                                    <circle r="12" fill="url(#nodeGlowBlue)">
-                                        <animateMotion dur="18s" begin="0.1s" repeatCount="indefinite"
-                                            path="M100,300 C200,350 300,200 450,300 S600,350 700,250 S750,300 780,280" />
-                                    </circle>
-                                    <circle r="6" fill="#fff" class="glow-filter-blue">
-                                        <animateMotion dur="18s" repeatCount="indefinite"
-                                            path="M100,300 C200,350 300,200 450,300 S600,350 700,250 S750,300 780,280" />
-                                    </circle>
-                                </svg>
-
-                                <!-- Floating Data Cards -->
-                                <div class="floating-card truck-card" style="top: 15%; left: 8%;">
-                                    <div class="card-header">TRK-9924-MH <span class="status-dot green"></span></div>
-                                    <div class="card-row"><span>Status:</span> <strong style="color:#00a859;">En
-                                            Route</strong></div>
-                                    <div class="card-row"><span>ETA:</span> <span style="color: #fff">14:30 IST</span>
-                                    </div>
-                                    <div class="card-row"><span>Load:</span> <span style="color: #fff">85% cap</span>
-                                    </div>
-                                    <div
-                                        style="margin-top:10px; height:4px; background:rgba(255,255,255,0.1); border-radius:2px; overflow:hidden;">
-                                        <div
-                                            style="height:100%; width:85%; background:#00a859; box-shadow: 0 0 10px #00a859;">
-                                        </div>
-                                    </div>
+                            <div class="fc-bottom-value">
+                                <strong>92.3%</strong> fleet on optimal routes<br>
+                                <span style="color:rgba(0,0,0,0.4); font-size:0.72rem;">↑ 4.2% vs last week</span>
+                            </div>
+                            <div class="fc-bottom-bar">
+                                <div class="fc-bottom-bar-fill" style="width:92.3%; background:#00a859; box-shadow: 0 0 6px rgba(0,168,89,0.4);"></div>
+                            </div>
+                        </div>
+                        <div class="fc-bottom-card">
+                            <div class="fc-bottom-header">
+                                <div class="fc-bottom-icon" style="background: rgba(243,156,18,0.12);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#f39c12" stroke-width="2.5">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
                                 </div>
-
-                                <div class="floating-card alert-card" style="bottom: 25%; left: 45%;">
-                                    <div class="card-header" style="color: #f39c12;">Checkpoint Delay <span
-                                            class="status-dot orange"></span></div>
-                                    <div class="card-row"><span>Node:</span> <span style="color: #fff">South
-                                            Station</span></div>
-                                    <div class="card-row"><span>Dwell Time:</span> <span style="color: #fff">45
-                                            mins</span></div>
-                                    <div class="card-row"><span>Action:</span> <strong style="color: #f39c12">Rerouting
-                                            via AI</strong></div>
+                                <span class="fc-bottom-label">Maintenance Score</span>
+                            </div>
+                            <div class="fc-bottom-value">
+                                <strong>3 alerts</strong> pending action<br>
+                                <span style="color:rgba(0,0,0,0.4); font-size:0.72rem;">Tyre pressure · Engine temp · Oil change</span>
+                            </div>
+                            <div class="fc-bottom-bar">
+                                <div class="fc-bottom-bar-fill" style="width:78%; background:#f39c12; box-shadow: 0 0 6px rgba(243,156,18,0.4);"></div>
+                            </div>
+                        </div>
+                        <div class="fc-bottom-card">
+                            <div class="fc-bottom-header">
+                                <div class="fc-bottom-icon" style="background: rgba(52,152,219,0.12);">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2.5">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
                                 </div>
-
-                                <div class="floating-card" style="top: 25%; right: 5%; animation-delay: 2s;">
-                                    <div class="card-header">Logistics Hub A <span class="status-dot blue"></span></div>
-                                    <div class="card-row"><span>Capacity:</span> 92% Full</div>
-                                    <div class="card-row"><span>Active Docks:</span> 14/15</div>
-                                </div>
+                                <span class="fc-bottom-label">Driver Activity</span>
+                            </div>
+                            <div class="fc-bottom-value">
+                                <strong>145</strong> drivers active · <strong>12</strong> on break<br>
+                                <span style="color:rgba(0,0,0,0.4); font-size:0.72rem;">Avg driving hours: 6.2h today</span>
+                            </div>
+                            <div class="fc-bottom-bar">
+                                <div class="fc-bottom-bar-fill" style="width:91%; background:#3498db; box-shadow: 0 0 6px rgba(52,152,219,0.4);"></div>
                             </div>
                         </div>
                     </div>
@@ -839,21 +1203,21 @@
             <div class="capabilities-grid">
                 <!-- Capability 1 -->
                 <div class="capability-card fade-in">
-                    <div class="capability-icon">
+                    <div class="capability-icon" style="color: var(--primary-color);">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
                         </svg>
                     </div>
-                    <h3>Real-Time Command & Control</h3>
-                    <p>Gain 24/7 visibility into your entire fleet with interactive analytics, 3D visualization, and a
-                        centralized call desk module for instant breakdown and ticket management.</p>
+                    <h3>Smart Alerts & IoT Monitoring</h3>
+                    <p>Elevate vigilance and safety with our Smart Alerting System. Harness the power of IoT connectivity to create intelligent notifications for precision monitoring, allowing you to set custom parameters and sensitivity levels.</p>
                 </div>
 
                 <!-- Capability 2 -->
                 <div class="capability-card fade-in delay-1">
-                    <div class="capability-icon">
+                    <div class="capability-icon" style="color: var(--primary-color);">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -863,48 +1227,13 @@
                             <polyline points="10 9 9 9 8 9"></polyline>
                         </svg>
                     </div>
-                    <h3>Digital Gate & Dock Operations</h3>
-                    <p>Fully digitize the vehicle entry lifecycle, including dock assignments, loading checklists, and
-                        departure clearances. Our offline-first web architecture ensures field officers can queue data
-                        and capture images even during network outages.</p>
+                    <h3>Issue Management</h3>
+                    <p>Solve day-to-day operations seamlessly with an inbuilt ticketing system. Minimize turnaround time by resolving issues efficiently using geo-spatial and IoT data configured for your large logistics fleet.</p>
                 </div>
 
                 <!-- Capability 3 -->
                 <div class="capability-card fade-in delay-2">
-                    <div class="capability-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                            </path>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                        </svg>
-                    </div>
-                    <h3>Predictive TAT & Multi-Source Tracking</h3>
-                    <p>Eliminate tracking blindspots by fusing data from FastTag RFID, SIM triangulation, and direct
-                        transporter APIs. Our intelligent engine automatically computes Turnaround Time (TAT)
-                        compliance, predicts delays, and alerts you to delivery failures.</p>
-                </div>
-
-                <!-- Capability 4 -->
-                <div class="capability-card fade-in">
-                    <div class="capability-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                        </svg>
-                    </div>
-                    <h3>Automated Security & KYC</h3>
-                    <p>Secure field operations with passwordless WhatsApp OTP authentication. Automatically validate
-                        vehicle RCs, fitness certificates, and driver licenses at the gate via integration with
-                        government VAHAN and Sarathi APIs.</p>
-                </div>
-
-                <!-- Capability 5 -->
-                <div class="capability-card fade-in delay-1">
-                    <div class="capability-icon">
+                    <div class="capability-icon" style="color: var(--primary-color);">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -913,10 +1242,48 @@
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                         </svg>
                     </div>
-                    <h3>Vendor Collaboration & Sustainability</h3>
-                    <p>Streamline operations with a dedicated self-service portal for transporters to upload Proof of
-                        Delivery (POD) documents. Track per-shipment CO2 emissions to easily monitor and achieve your
-                        sustainability goals.</p>
+                    <h3>User Roles & Access Control</h3>
+                    <p>Empower your team with secure multiple access points across Android, iOS, and Web Apps. Centrally manage access grants and permissions so you maintain total control over employee driver and transporter views.</p>
+                </div>
+
+                <!-- Capability 4 -->
+                <div class="capability-card fade-in">
+                    <div class="capability-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3>Tyre Life Cycle Management</h3>
+                    <p>Improve tyre inventory management to reduce operation costs. Onboard multiple tyres seamlessly and gain detailed analytics on running KMs to effectively optimize tyre life cycle management for your fleet.</p>
+                </div>
+
+                <!-- Capability 5 -->
+                <div class="capability-card fade-in delay-1">
+                    <div class="capability-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </div>
+                    <h3>Maintenance & Service Work Orders</h3>
+                    <p>Your ultimate control center for proactive fleet maintenance. Manage comprehensive Work Orders and Service Histories to ensure preventative care, offering unparalleled visibility into overall vehicle health.</p>
+                </div>
+
+                <!-- Capability 6 (New) -->
+                <div class="capability-card fade-in delay-2">
+                    <div class="capability-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </div>
+                    <h3>Reporting & Dashboarding</h3>
+                    <p>Unleash the full power of your data with dynamic widgets and bespoke reports. Drive fleet efficiency by uncovering hidden business insights and eliminating operational bottlenecks seamlessly.</p>
                 </div>
             </div>
         </div>
@@ -932,13 +1299,12 @@
             <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 60px;">
                 <p style="font-size: 1.15rem; color: var(--text-gray); line-height: 1.6; margin-bottom: 20px;">
                     Implementing our logistics orchestration engine directly impacts your bottom line. By transitioning
-                    from fragmented SaaS tools and manual spreadsheets to a unified digital ecosystem, operations become
+                    from fragmented tools to a unified digital ecosystem, operations become
                     lean, predictable, and fully accountable.
                 </p>
                 <p style="font-size: 1.15rem; color: var(--text-gray); line-height: 1.6;">
-                    This platform eliminates the costly guesswork of supply chain management, driving revenue retention
-                    by reducing Service Level Agreement (SLA) violations and providing absolute clarity for financial
-                    billing and vendor reconciliation.
+                    This platform integrates real-time telemetry with comprehensive maintenance management, extending the life cycle of tyres and vehicles while providing absolute clarity for financial
+                    billing and vendor reconciliation through accurate reporting.
                 </p>
             </div>
 
@@ -979,9 +1345,8 @@
                             </svg>
                         </div>
                         <h4 style="font-size: 1.6rem; color: var(--text-dark); margin-bottom: 12px; font-weight: 600;">
-                            Accelerated Gate Operations</h4>
-                        <p style="color: var(--text-gray); font-size: 1.1rem; line-height: 1.6;">Slash vehicle yard idle
-                            time to under 4 hours on average using digital gate queuing and stage-level analytics.</p>
+                            Reduced Operation Costs</h4>
+                        <p style="color: var(--text-gray); font-size: 1.1rem; line-height: 1.6;">Maximize capital efficiency by identifying and reacting to maintenance needs early. Optimize your tyre lifecycles effectively to cut operational losses down drastically.</p>
                     </div>
 
                     <!-- Bottom Row: 3 Cards -->
@@ -1176,8 +1541,8 @@
         <div class="container" style="max-width: 800px;">
             <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Ready to Transform Your Logistics Operations?</h2>
             <p style="font-size: 1.15rem; color: var(--text-gray); margin-bottom: 40px; line-height: 1.6;">
-                Move beyond fragmented tracking and manual check-calls. Partner with Autowhat AI & Automations to reduce
-                vehicle yard idle time, achieve 100% digital documentation, and gain real-time fleet visibility.
+                Move beyond fragmented tracking and blind operations. Partner with Autowhat AI to reduce
+                operational costs, ensure rigorous daily maintenance, and gain powerful real-time fleet visibility across your logistics enterprise.
             </p>
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
                 <a href="contact-us.html" class="btn-primary">Speak with Our Engineering Team</a>
@@ -1186,14 +1551,35 @@
     </section>
 
     <!-- Footer (Copied from index.html) -->
-    <footer>
+                <footer>
         <div class="container footer-grid">
             <div class="footer-col">
                 <h4 style="color:#ffffff;">AUTOWHAT AI</h4>
                 <p style="color: var(--primary-color);">Innovating for a better tomorrow.</p>
             </div>
-            
-            
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">Offerings</h4>
+                <ul>
+                    <li><a href="gate-module.html">AutoGate</a></li>
+                    <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
+                    <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
+                    <li><a href="algo-trading.html">Algo Trading</a></li>
+                    <li><a href="pms-data-scraping.html">PMS Data Scraping Automation</a></li>
+                    <li><a href="chat-with-database.html">Chat with Database</a></li>
+                    <li><a href="content-ai.html">Content AI</a></li>
+                    <li><a href="mgrow.html">MGrow</a></li>
+                    <li><a href="learnpro.html">LearnPro</a></li>
+                    <li><a href="ai-consulting.html">AI Consulting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">Company</h4>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="who-we-are.html">Who We Are</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </div>
         </div>
         <div class="container footer-bottom">
             <p>&copy; 2026 Autowhat AI. All rights reserved.</p>
@@ -1221,6 +1607,7 @@
             observer.observe(el);
         });
     </script>
+<script src="script.js"></script>
 </body>
 
 </html>

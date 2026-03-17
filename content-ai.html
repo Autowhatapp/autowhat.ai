@@ -17,7 +17,7 @@
         }
 
         .product-hero {
-            padding: 160px 0 40px;
+            padding: 120px 0 60px;
             background: linear-gradient(135deg, rgba(248, 242, 248, 0.4) 0%, rgba(255, 255, 255, 1) 100%);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             text-align: center;
@@ -40,7 +40,7 @@
         .product-hero h1 {
             font-size: 3.5rem;
             font-weight: 500;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             color: var(--text-dark);
             line-height: 1.1;
             max-width: 900px;
@@ -53,7 +53,7 @@
             font-size: 1.25rem;
             color: var(--text-gray);
             max-width: 800px;
-            margin: 0 auto 40px;
+            margin: 0 auto 32px;
             line-height: 1.6;
             font-weight: 300;
         }
@@ -499,7 +499,7 @@
         }
 
         .platform-capabilities {
-            padding: 80px 0;
+            padding: 70px 0;
             background: #ffffff;
         }
 
@@ -516,7 +516,7 @@
             font-size: 1.15rem;
             color: var(--text-gray);
             max-width: 700px;
-            margin: 0 auto 60px;
+            margin: 0 auto 48px;
         }
 
         .capabilities-grid {
@@ -573,7 +573,7 @@
 
         /* Bento Grid Sections */
         .bento-section {
-            padding: 80px 0;
+            padding: 70px 0;
             background: #fafafc;
         }
 
@@ -631,7 +631,7 @@
 
         /* Timeline Process Section */
         .process-section {
-            padding: 80px 0;
+            padding: 70px 0;
             background: #ffffff;
         }
 
@@ -715,7 +715,7 @@
         }
 
         .cta-section {
-            padding: 80px 0;
+            padding: 70px 0;
             text-align: center;
             background: #fafafc;
         }
@@ -786,10 +786,10 @@
 <body>
 
     <!-- Header (Copied from index.html) -->
-    <header id="main-header" class="scrolled">
+    <header id="main-header">
         <div class="container header-container">
             <div class="logo">
-                <a href="index.html">Autowhat AI</a>
+                <a href="index.html"><img src="logo.png" alt="Autowhat AI"></a>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -800,8 +800,8 @@
                             <li class="nested-dropdown">
                                 <a href="#">Logistics and Mobility Systems</a>
                                 <ul class="nested-dropdown-content">
+                                    <li><a href="gate-module.html">AutoGate</a></li>
                                     <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
-                                    <li><a href="sipoc.html">Supply Chain and Logistics</a></li>
                                     <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
                                 </ul>
                             </li>
@@ -1205,14 +1205,35 @@
     </section>
 
     <!-- Footer (Copied from index.html) -->
-    <footer>
+                <footer>
         <div class="container footer-grid">
             <div class="footer-col">
                 <h4 style="color:#ffffff;">AUTOWHAT AI</h4>
                 <p style="color: var(--primary-color);">Innovating for a better tomorrow.</p>
             </div>
-            
-            
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">Offerings</h4>
+                <ul>
+                    <li><a href="gate-module.html">AutoGate</a></li>
+                    <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
+                    <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
+                    <li><a href="algo-trading.html">Algo Trading</a></li>
+                    <li><a href="pms-data-scraping.html">PMS Data Scraping Automation</a></li>
+                    <li><a href="chat-with-database.html">Chat with Database</a></li>
+                    <li><a href="content-ai.html">Content AI</a></li>
+                    <li><a href="mgrow.html">MGrow</a></li>
+                    <li><a href="learnpro.html">LearnPro</a></li>
+                    <li><a href="ai-consulting.html">AI Consulting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">Company</h4>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="who-we-are.html">Who We Are</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </div>
         </div>
         <div class="container footer-bottom">
             <p>&copy; 2026 Autowhat AI. All rights reserved.</p>
@@ -1240,6 +1261,7 @@
             observer.observe(el);
         });
     </script>
+<script src="script.js"></script>
 </body>
 
 </html>

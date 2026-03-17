@@ -48,6 +48,91 @@
             line-height: 1.6;
         }
 
+        .hero-layout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            text-align: left;
+        }
+
+        .hero-text-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-text-content .product-title {
+            margin-left: 0;
+            margin-right: 0;
+            font-size: 3.5rem;
+        }
+
+        .hero-text-content .product-subtitle {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .hero-visual-content {
+            flex: 1;
+            position: relative;
+        }
+
+        /* Hero Animation CSS */
+        .algo-hero-graphic {
+            width: 100%;
+            height: auto;
+            max-width: 600px;
+            filter: drop-shadow(0 20px 40px rgba(0, 168, 89, 0.15));
+            animation: float-hero 6s ease-in-out infinite;
+        }
+
+        @keyframes float-hero {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero-chart-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw-chart 3s ease-out forwards;
+        }
+
+        @keyframes draw-chart {
+            to { stroke-dashoffset: 0; }
+        }
+
+        .hero-pulse-node {
+            animation: hero-pulse 2s infinite;
+        }
+
+        @keyframes hero-pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 168, 89, 0.7); opacity: 0.8; }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(0, 168, 89, 0); opacity: 1; }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 168, 89, 0); opacity: 0.8; }
+        }
+
+        @media (max-width: 900px) {
+            .hero-layout {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-text-content {
+                max-width: 100%;
+            }
+
+            .hero-text-content .product-title {
+                margin: 0 auto 30px;
+            }
+            
+            .hero-text-content .product-subtitle {
+                margin: 0 auto 40px;
+            }
+        }
+
         .kpi-row-cover {
             display: flex;
             justify-content: center;
@@ -238,93 +323,121 @@
             color: #00a859;
         }
 
-        .pricing-section {
+        .roi-section {
             padding: 100px 20px;
             background: #ffffff;
+            position: relative;
+            overflow: hidden;
         }
 
-        .pricing-grid {
+        .roi-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             max-width: 1200px;
             margin: 60px auto 0;
-        }
-
-        .pricing-card {
-            background: white;
-            border-radius: 24px;
-            padding: 40px;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.05);
-        }
-
-        .pricing-card.popular {
-            border: 2px solid #00a859;
-            background: #f8fafc;
-        }
-
-        .pricing-card.popular::before {
-            content: 'MOST POPULAR';
-            position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #00a859;
-            color: white;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-
-        .tier-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .tier-price {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-bottom: 30px;
-            display: flex;
-            align-items: baseline;
-        }
-
-        .tier-price span {
-            font-size: 1rem;
-            color: var(--text-gray);
-            font-weight: 400;
-            margin-left: 8px;
-        }
-
-        .tier-features {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 40px 0;
-        }
-
-        .tier-features li {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            color: var(--text-gray);
-            display: flex;
             align-items: center;
         }
 
-        .tier-features li::before {
-            content: '✓';
+        .roi-content {
+            text-align: left;
+        }
+
+        .roi-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            color: var(--text-dark);
+        }
+
+        .roi-content p {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .roi-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .roi-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .roi-list-icon {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: #e6f6ed;
             color: #00a859;
-            font-weight: 900;
-            margin-right: 12px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .roi-list-text h4 {
+            font-size: 1.1rem;
+            margin: 0 0 8px 0;
+            color: var(--text-dark);
+        }
+
+        .roi-list-text p {
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .roi-visual {
+            position: relative;
+            background: var(--bg-light);
+            border-radius: 32px;
+            padding: 40px;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.02);
+        }
+
+        .roi-svg-graphic {
+            width: 100%;
+            height: auto;
+        }
+
+        /* SVG Internal Animation Styles */
+        .svg-manual-line {
+            stroke-dasharray: 500;
+            stroke-dashoffset: 500;
+            animation: grow-manual 4s ease-out forwards;
+        }
+
+        .svg-auto-line {
+            stroke-dasharray: 600;
+            stroke-dashoffset: 600;
+            animation: grow-auto 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .svg-auto-area {
+            opacity: 0;
+            animation: fade-area 1s 4s forwards;
+        }
+
+        @keyframes grow-manual {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes grow-auto {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes fade-area {
+            to { opacity: 0.6; }
         }
 
         @media (max-width: 900px) {
@@ -339,8 +452,9 @@
                 font-size: 3rem;
             }
 
-            .pricing-grid {
+            .roi-grid {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
         }
 
@@ -376,10 +490,10 @@
 <body style="padding-top: 0;">
     <!-- Header -->
     <header id="main-header"
-        style="background: rgba(255, 255, 255, 0.95); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0;">
+       >
         <div class="container header-container">
             <div class="logo">
-                <a href="index.html">Autowhat AI</a>
+                <a href="index.html"><img src="logo.png" alt="Autowhat AI"></a>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -390,8 +504,8 @@
                             <li class="nested-dropdown">
                                 <a href="#">Logistics and Mobility Systems</a>
                                 <ul class="nested-dropdown-content">
+                                    <li><a href="gate-module.html">AutoGate</a></li>
                                     <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
-                                    <li><a href="sipoc.html">Supply Chain and Logistics</a></li>
                                     <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
                                 </ul>
                             </li>
@@ -425,15 +539,98 @@
     <!-- Hero Section -->
     <section class="product-hero">
         <div class="container">
-            <div class="hero-pretitle">Algo Trading</div>
-            <h1 class="product-title">Automate Your Edge. <br><span style="color: #00a859;">Execute with
-                    Precision.</span></h1>
-            <p class="product-subtitle">
-                Rule-Based Algos + AI-Driven Intelligence. <br>Institutional-grade automation for the modern trading
-                desk.
-            </p>
+            <div class="hero-layout">
+                <div class="hero-text-content fade-in-up">
+                    <div class="hero-pretitle">Algo Trading</div>
+                    <h1 class="product-title">Automate Your Edge. <br><span style="color: #00a859;">Execute with
+                            Precision.</span></h1>
+                    <p class="product-subtitle">
+                        Rule-Based Algos + AI-Driven Intelligence. Institutional-grade automation for the modern trading desk.
+                    </p>
+                </div>
+                <div class="hero-visual-content fade-in-up" style="animation-delay: 0.2s;">
+                    <!-- High-tech Animated SVG Interface -->
+                    <svg class="algo-hero-graphic" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="heroBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="100%" stop-color="#f8fafc" />
+                            </linearGradient>
+                            <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="rgba(0,168,89,0.3)" />
+                                <stop offset="100%" stop-color="rgba(0,168,89,0)" />
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Main Terminal Window -->
+                        <rect x="20" y="20" width="560" height="360" rx="16" fill="url(#heroBg)" stroke="#e2e8f0" stroke-width="2" />
+                        
+                        <!-- Header Bar -->
+                        <path d="M20 36 Q20 20 36 20 L564 20 Q580 20 580 36 L580 60 L20 60 Z" fill="#f1f5f9" />
+                        <circle cx="40" cy="40" r="6" fill="#ef4444" />
+                        <circle cx="60" cy="40" r="6" fill="#f59e0b" />
+                        <circle cx="80" cy="40" r="6" fill="#10b981" />
+                        <text x="110" y="44" font-family="monospace" font-size="12" fill="#64748b" font-weight="600">aw_algo_core_v3.0.run()</text>
 
-            <div class="kpi-row-cover fade-in-up">
+                        <!-- Grid Lines -->
+                        <path d="M70 80 L70 340 M170 80 L170 340 M270 80 L270 340 M370 80 L370 340 M470 80 L470 340" stroke="#f1f5f9" stroke-width="1" />
+                        <path d="M70 120 L550 120 M70 180 L550 180 M70 240 L550 240 M70 300 L550 300" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="4" />
+
+                        <!-- Buy/Sell UI Panels -->
+                        <rect x="420" y="80" width="130" height="90" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+                        <text x="435" y="105" font-family="sans-serif" font-size="10" fill="#94a3b8" font-weight="bold">ACTIVE SIGNAL</text>
+                        <rect x="435" y="115" width="40" height="18" rx="4" fill="#dcfce7" />
+                        <text x="442" y="128" font-family="sans-serif" font-size="10" fill="#16a34a" font-weight="bold">LONG</text>
+                        <text x="485" y="128" font-family="sans-serif" font-size="12" fill="#0f172a" font-weight="bold">BTC/USD</text>
+                        <text x="435" y="155" font-family="monospace" font-size="9" fill="#64748b">Confidence: 94.2%</text>
+
+                        <rect x="420" y="180" width="130" height="90" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+                        <text x="435" y="205" font-family="sans-serif" font-size="10" fill="#94a3b8" font-weight="bold">RISK MGMT</text>
+                        <text x="435" y="225" font-family="sans-serif" font-size="11" fill="#0f172a">Stop: -1.2%</text>
+                        <text x="435" y="245" font-family="sans-serif" font-size="11" fill="#0f172a">Target: +3.8%</text>
+                        <rect x="435" y="255" width="100" height="4" rx="2" fill="#e2e8f0" />
+                        <rect x="435" y="255" width="70" height="4" rx="2" fill="#10b981" />
+
+                        <!-- The Animated Chart -->
+                        <!-- Area Fill -->
+                        <path class="hero-chart-line" d="M70 320 C100 320, 130 280, 150 240 C170 200, 190 250, 220 220 C250 190, 280 120, 310 160 C340 200, 360 140, 390 100 L390 340 L70 340 Z" fill="url(#chartGradient)" />
+                        <!-- Line Draw -->
+                        <path class="hero-chart-line" d="M70 320 C100 320, 130 280, 150 240 C170 200, 190 250, 220 220 C250 190, 280 120, 310 160 C340 200, 360 140, 390 100" fill="none" stroke="#00a859" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
+                        
+                        <!-- Candlesticks / Volumes -->
+                        <rect x="85" y="260" width="8" height="60" fill="#10b981" opacity="0.8" />
+                        <line x1="89" y1="240" x2="89" y2="330" stroke="#10b981" stroke-width="2" />
+                        
+                        <rect x="115" y="240" width="8" height="40" fill="#10b981" opacity="0.8" />
+                        <line x1="119" y1="210" x2="119" y2="290" stroke="#10b981" stroke-width="2" />
+
+                        <rect x="145" y="230" width="8" height="30" fill="#ef4444" opacity="0.8" />
+                        <line x1="149" y1="210" x2="149" y2="270" stroke="#ef4444" stroke-width="2" />
+
+                        <!-- Pulsing Entry/Exit Nodes -->
+                        <g class="hero-pulse-node" style="transform-origin: 150px 240px; animation-delay: 0s;">
+                            <circle cx="150" cy="240" r="6" fill="#ffffff" stroke="#10b981" stroke-width="3" />
+                        </g>
+                        <g class="hero-pulse-node" style="transform-origin: 310px 160px; animation-delay: 1.5s;">
+                            <circle cx="310" cy="160" r="6" fill="#ffffff" stroke="#10b981" stroke-width="3" />
+                        </g>
+
+                        <!-- Moving Execution Marker -->
+                        <circle cx="0" cy="0" r="8" fill="#10b981" filter="url(#glow)">
+                            <animateMotion dur="3s" repeatCount="indefinite" path="M70 320 C100 320, 130 280, 150 240 C170 200, 190 250, 220 220 C250 190, 280 120, 310 160 C340 200, 360 140, 390 100" />
+                        </circle>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="kpi-row-cover fade-in-up" style="animation-delay: 0.4s;">
                 <div class="kpi-card">
                     <span class="kpi-val">99.9%</span>
                     <span class="kpi-label">Uptime Reliability</span>
@@ -740,53 +937,97 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing-section">
+    <!-- ROI Automation Section -->
+    <section class="roi-section">
         <div class="container text-center">
-            <div class="hero-pretitle" style="background: rgba(0,0,0,0.05); color: var(--text-dark);">Deployment Tiers
+            <div class="hero-pretitle" style="background: rgba(0,0,0,0.05); color: var(--text-dark);">The Automation Advantage
             </div>
-            <h2 style="font-size: 3rem; margin-bottom: 60px;">Scale Your Alpha</h2>
+            <h2 style="font-size: 3rem; margin-bottom: 20px;">Manual vs. Automated Trading</h2>
+            
+            <div class="roi-grid">
+                <!-- Infographic Side -->
+                <div class="roi-visual fade-in-up">
+                    <svg class="roi-svg-graphic" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#00a859" stop-opacity="0.2"/>
+                                <stop offset="100%" stop-color="#00a859" stop-opacity="0"/>
+                            </linearGradient>
+                            <filter id="shadow">
+                                <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="rgba(0,168,89,0.3)"/>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Grid Background -->
+                        <path d="M50 350 L450 350 M50 300 L450 300 M50 250 L450 250 M50 200 L450 200 M50 150 L450 150 M50 100 L450 100" stroke="#f1f5f9" stroke-width="1" />
+                        <path d="M50 350 L50 50 M130 350 L130 50 M210 350 L210 50 M290 350 L290 50 M370 350 L370 50 M450 350 L450 50" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="4" />
+                        
+                        <!-- Axis Labels -->
+                        <text x="30" y="355" font-family="sans-serif" font-size="12" fill="#94a3b8">0</text>
+                        <text x="30" y="105" font-family="sans-serif" font-size="12" fill="#94a3b8">ROI</text>
+                        <text x="420" y="375" font-family="sans-serif" font-size="12" fill="#94a3b8">Time (Quarters)</text>
 
-            <div class="pricing-grid">
-                <!-- Starter -->
-                <div class="pricing-card fade-in-up" style="animation-delay: 0.1s; text-align: left;">
-                    <div class="tier-name">Starter</div>
-                    <p style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 20px;">Retail-focused
-                        automation for single live instances.</p>
-                    <div class="tier-price">₹4,299<span>/mo</span></div>
-                    <ul class="tier-features">
-                        <li>1 Live Execution Bot</li>
-                        <li>Standard Logic Scripts</li>
-                        <li>Email & Chat Support</li>
-                        <li>Basic Performance Dashboard</li>
-                    </ul>
+                        <!-- Legend -->
+                        <rect x="60" y="20" width="12" height="12" rx="2" fill="#94a3b8" />
+                        <text x="80" y="30" font-family="sans-serif" font-size="12" fill="#64748b">Manual Trading</text>
+                        
+                        <rect x="220" y="20" width="12" height="12" rx="2" fill="#00a859" />
+                        <text x="240" y="30" font-family="sans-serif" font-size="12" fill="#0f172a" font-weight="bold">Automated Algo</text>
+
+                        <!-- Manual Trading Line (Struggle, emotional, flat growth) -->
+                        <path class="svg-manual-line" d="M50 320 L90 310 L130 330 L170 290 L210 315 L250 280 L290 290 L330 250 L370 270 L410 240 L450 250" fill="none" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                        
+                        <!-- Automated Trading Line (Compound, smooth, exponential) -->
+                        <path class="svg-auto-area" d="M50 320 C100 320, 150 300, 200 270 C250 240, 300 200, 350 150 C400 100, 420 80, 450 60 L450 350 L50 350 Z" fill="url(#areaGradient)" />
+                        <path class="svg-auto-line" d="M50 320 C100 320, 150 300, 200 270 C250 240, 300 200, 350 150 C400 100, 420 80, 450 60" fill="none" stroke="#00a859" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" filter="url(#shadow)" />
+                        
+                        <!-- Auto Node Final -->
+                        <circle cx="450" cy="60" r="6" fill="#ffffff" stroke="#00a859" stroke-width="3">
+                            <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <rect x="365" y="30" width="75" height="24" rx="4" fill="#00a859" />
+                        <text x="402" y="47" font-family="sans-serif" font-size="12" fill="#ffffff" font-weight="bold" text-anchor="middle">Alpha ++</text>
+
+                        <!-- Warning callouts on Manual line -->
+                        <circle cx="130" cy="330" r="4" fill="#ef4444" />
+                        <text x="130" y="350" font-family="sans-serif" font-size="10" fill="#ef4444" text-anchor="middle">Fatigue</text>
+
+                        <circle cx="210" cy="315" r="4" fill="#ef4444" />
+                        <text x="210" y="335" font-family="sans-serif" font-size="10" fill="#ef4444" text-anchor="middle">Emotion</text>
+
+                        <circle cx="370" cy="270" r="4" fill="#ef4444" />
+                        <text x="370" y="290" font-family="sans-serif" font-size="10" fill="#ef4444" text-anchor="middle">Missed Entry</text>
+
+                    </svg>
                 </div>
 
-                <!-- Standard -->
-                <div class="pricing-card popular fade-in-up" style="animation-delay: 0.2s; text-align: left;">
-                    <div class="tier-name">Standard</div>
-                    <p style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 20px;">Multi-strategy
-                        deployment with advanced risk parameters.</p>
-                    <div class="tier-price">₹7,299<span>/mo</span></div>
-                    <ul class="tier-features">
-                        <li>3 Live Execution Bots</li>
-                        <li>Advanced Risk Controls</li>
-                        <li>Priority API Access</li>
-                        <li>Real-time Alerts (WhatsApp)</li>
-                    </ul>
-                </div>
-
-                <!-- Pro -->
-                <div class="pricing-card fade-in-up" style="animation-delay: 0.3s; text-align: left;">
-                    <div class="tier-name">Pro</div>
-                    <p style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 20px;">Institutional-grade
-                        scaling for complex portfolio logic.</p>
-                    <div class="tier-price">₹12,499<span>/mo</span></div>
-                    <ul class="tier-features">
-                        <li>10 Live Execution Bots</li>
-                        <li>Bespoke Strategy Deployment</li>
-                        <li>Dedicated Account Manager</li>
-                        <li>Multi-Agent Mesh Access</li>
+                <!-- Text Side -->
+                <div class="roi-content fade-in-up" style="animation-delay: 0.2s;">
+                    <h3>Compound Growth<br>Without the Burnout</h3>
+                    <p>Manual trading hits a human ceiling. Fatigue, emotional biases, and biologically limited reaction speeds prevent traders from scaling their Alpha. Automation removes the ceiling entirely.</p>
+                    
+                    <ul class="roi-list">
+                        <li>
+                            <div class="roi-list-icon">⚡</div>
+                            <div class="roi-list-text">
+                                <h4>Sub-Millisecond Execution</h4>
+                                <p>Exploit micro-inefficiencies and arbitrage opportunities that simply disappear before a human can click the mouse.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="roi-list-icon">🧠</div>
+                            <div class="roi-list-text">
+                                <h4>Zero Emotional Drag</h4>
+                                <p>The algorithm doesn't revenge trade. It executes the statistical edge with 100% adherence to risk parameters every single time, even during market crashes.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="roi-list-icon">📈</div>
+                            <div class="roi-list-text">
+                                <h4>Infinite Portfolio Scale</h4>
+                                <p>Humans can actively monitor 2-4 markets. A single server mesh can monitor 1,000+ asset classes globally, executing simultaneous strategies 24/7/365.</p>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -805,14 +1046,35 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+                <footer>
         <div class="container footer-grid">
             <div class="footer-col">
                 <h4 style="color:#ffffff;">AUTOWHAT AI</h4>
                 <p style="color: var(--primary-color);">Innovating for a better tomorrow.</p>
             </div>
-            
-            
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">Offerings</h4>
+                <ul>
+                    <li><a href="gate-module.html">AutoGate</a></li>
+                    <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
+                    <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
+                    <li><a href="algo-trading.html">Algo Trading</a></li>
+                    <li><a href="pms-data-scraping.html">PMS Data Scraping Automation</a></li>
+                    <li><a href="chat-with-database.html">Chat with Database</a></li>
+                    <li><a href="content-ai.html">Content AI</a></li>
+                    <li><a href="mgrow.html">MGrow</a></li>
+                    <li><a href="learnpro.html">LearnPro</a></li>
+                    <li><a href="ai-consulting.html">AI Consulting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">Company</h4>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="who-we-are.html">Who We Are</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </div>
         </div>
         <div class="container footer-bottom">
             <p>&copy; 2026 Autowhat AI. All rights reserved.</p>

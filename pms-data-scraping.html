@@ -49,6 +49,92 @@
             line-height: 1.6;
         }
 
+        .hero-layout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            text-align: left;
+        }
+
+        .hero-text-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-text-content .product-title {
+            margin-left: 0;
+            margin-right: 0;
+            font-size: 3.5rem;
+        }
+
+        .hero-text-content .product-subtitle {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .hero-visual-content {
+            flex: 1;
+            position: relative;
+        }
+
+        /* Hero Animation CSS */
+        .pms-hero-graphic {
+            width: 100%;
+            height: auto;
+            max-width: 600px;
+            filter: drop-shadow(0 20px 40px rgba(0, 168, 89, 0.15));
+            animation: float-hero 6s ease-in-out infinite;
+        }
+
+        @keyframes float-hero {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero-data-packet {
+            animation: flow-packet 3s infinite linear;
+        }
+
+        @keyframes flow-packet {
+            0% { transform: translateY(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(150px); opacity: 0; }
+        }
+
+        .hero-scanner-line {
+            animation: scan-doc 4s infinite ease-in-out;
+            transform-origin: center;
+        }
+
+        @keyframes scan-doc {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(80px); }
+        }
+
+        @media (max-width: 900px) {
+            .hero-layout {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-text-content {
+                max-width: 100%;
+            }
+
+            .hero-text-content .product-title {
+                margin: 0 auto 30px;
+            }
+            
+            .hero-text-content .product-subtitle {
+                margin: 0 auto 40px;
+            }
+        }
+
         .kpi-row-cover {
             display: flex;
             justify-content: center;
@@ -600,10 +686,10 @@
 <body style="padding-top: 0;">
     <!-- Header -->
     <header id="main-header"
-        style="background: rgba(255, 255, 255, 0.95); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0;">
+       >
         <div class="container header-container">
             <div class="logo">
-                <a href="index.html">Autowhat AI</a>
+                <a href="index.html"><img src="logo.png" alt="Autowhat AI"></a>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -614,8 +700,8 @@
                             <li class="nested-dropdown">
                                 <a href="#">Logistics and Mobility Systems</a>
                                 <ul class="nested-dropdown-content">
+                                    <li><a href="gate-module.html">AutoGate</a></li>
                                     <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
-                                    <li><a href="sipoc.html">Supply Chain and Logistics</a></li>
                                     <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
                                 </ul>
                             </li>
@@ -649,13 +735,150 @@
     <!-- Hero Section -->
     <section class="product-hero">
         <div class="container">
-            <div class="hero-pretitle">PMS Data Scraping Automation</div>
-            <h1 class="product-title">Zero Manual Analysis. <br><span style="color: #00a859;">Instant
-                    Intelligence.</span></h1>
-            <p class="product-subtitle">
-                Automate SEBI, APMI, and NSE data collection. Free your research team to analyze, not extract—scaling
-                your tracking universe instantly.
-            </p>
+            <div class="hero-layout">
+                <div class="hero-text-content fade-in-up">
+                    <div class="hero-pretitle">PMS Data Scraping Automation</div>
+                    <h1 class="product-title">Zero Manual Analysis. <br><span style="color: #00a859;">Instant
+                            Intelligence.</span></h1>
+                    <p class="product-subtitle">
+                        Automate SEBI, APMI, and NSE data collection. Free your research team to analyze, not extract—scaling
+                        your tracking universe instantly.
+                    </p>
+                </div>
+                
+                <div class="hero-visual-content fade-in-up" style="animation-delay: 0.2s;">
+                    <!-- High-tech Animated SVG Interface -->
+                    <svg class="pms-hero-graphic" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="dbBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="100%" stop-color="#f8fafc" />
+                            </linearGradient>
+                            <linearGradient id="scanGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="rgba(0,168,89,0)" />
+                                <stop offset="100%" stop-color="rgba(0,168,89,0.2)" />
+                            </linearGradient>
+                            <filter id="glowGreen">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Main DB/Terminal Window -->
+                        <rect x="20" y="40" width="560" height="340" rx="16" fill="url(#dbBg)" stroke="#e2e8f0" stroke-width="2" />
+                        
+                        <!-- Web Documents (Sources to be scraped) -->
+                        <g opacity="0.9" transform="translate(60, -10)">
+                            <!-- Doc 1 (SEBI) -->
+                            <rect x="0" y="0" width="100" height="120" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+                            <rect x="15" y="15" width="40" height="6" rx="3" fill="#94a3b8" />
+                            <rect x="15" y="35" width="70" height="4" rx="2" fill="#e2e8f0" />
+                            <rect x="15" y="45" width="60" height="4" rx="2" fill="#e2e8f0" />
+                            <rect x="15" y="55" width="70" height="4" rx="2" fill="#e2e8f0" />
+                            <rect x="15" y="65" width="50" height="4" rx="2" fill="#e2e8f0" />
+                            <text x="50" y="105" font-family="sans-serif" font-size="10" fill="#0f172a" font-weight="bold" text-anchor="middle">SEBI.GOV</text>
+
+                            <!-- Scanner on Doc 1 -->
+                            <g class="hero-scanner-line">
+                                <rect x="5" y="10" width="90" height="20" fill="url(#scanGradient)" />
+                                <line x1="5" y1="30" x2="95" y2="30" stroke="#10b981" stroke-width="2" filter="url(#glowGreen)" />
+                            </g>
+                        </g>
+                        
+                        <g opacity="0.9" transform="translate(250, -10)">
+                            <!-- Doc 2 (APMI) -->
+                            <rect x="0" y="0" width="100" height="120" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+                            <rect x="15" y="15" width="40" height="6" rx="3" fill="#94a3b8" />
+                            <!-- Table representation -->
+                            <path d="M15 35 L85 35 M15 50 L85 50 M15 65 L85 65" stroke="#e2e8f0" stroke-width="2" />
+                            <path d="M40 35 L40 75 M60 35 L60 75" stroke="#e2e8f0" stroke-width="2" />
+                            <text x="50" y="105" font-family="sans-serif" font-size="10" fill="#0f172a" font-weight="bold" text-anchor="middle">APMI INDIA</text>
+                            
+                            <!-- Scanner on Doc 2 -->
+                            <g class="hero-scanner-line" style="animation-delay: 1.5s;">
+                                <rect x="5" y="10" width="90" height="20" fill="url(#scanGradient)" />
+                                <line x1="5" y1="30" x2="95" y2="30" stroke="#10b981" stroke-width="2" filter="url(#glowGreen)" />
+                            </g>
+                        </g>
+
+                        <g opacity="0.9" transform="translate(440, -10)">
+                            <!-- Doc 3 (NSE) -->
+                            <rect x="0" y="0" width="100" height="120" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+                            <rect x="15" y="15" width="40" height="6" rx="3" fill="#94a3b8" />
+                            <!-- Charts representation -->
+                            <rect x="15" y="65" width="10" height="15" fill="#e2e8f0" />
+                            <rect x="30" y="55" width="10" height="25" fill="#e2e8f0" />
+                            <rect x="45" y="40" width="10" height="40" fill="#e2e8f0" />
+                            <rect x="60" y="70" width="10" height="10" fill="#e2e8f0" />
+                            <rect x="75" y="45" width="10" height="35" fill="#e2e8f0" />
+                            <text x="50" y="105" font-family="sans-serif" font-size="10" fill="#0f172a" font-weight="bold" text-anchor="middle">NSE / BSE</text>
+                            
+                            <!-- Scanner on Doc 3 -->
+                            <g class="hero-scanner-line" style="animation-delay: 3s;">
+                                <rect x="5" y="10" width="90" height="20" fill="url(#scanGradient)" />
+                                <line x1="5" y1="30" x2="95" y2="30" stroke="#10b981" stroke-width="2" filter="url(#glowGreen)" />
+                            </g>
+                        </g>
+
+                        <!-- Extraction Flow Lines (Vertical down into DB) -->
+                        <path d="M110 120 L110 200" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4" />
+                        <path d="M300 120 L300 200" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4" />
+                        <path d="M490 120 L490 200" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4" />
+
+                        <!-- Data Packets Flowing Down -->
+                        <g class="hero-data-packet" style="animation-delay: 0s;">
+                            <rect x="106" y="120" width="8" height="16" rx="4" fill="#10b981" filter="url(#glowGreen)" />
+                        </g>
+                        <g class="hero-data-packet" style="animation-delay: 1s;">
+                            <rect x="296" y="120" width="8" height="16" rx="4" fill="#10b981" filter="url(#glowGreen)" />
+                        </g>
+                        <g class="hero-data-packet" style="animation-delay: 2s;">
+                            <rect x="486" y="120" width="8" height="16" rx="4" fill="#10b981" filter="url(#glowGreen)" />
+                        </g>
+                        <g class="hero-data-packet" style="animation-delay: 1.5s;">
+                            <rect x="106" y="120" width="8" height="16" rx="4" fill="#10b981" filter="url(#glowGreen)" />
+                        </g>
+                        <g class="hero-data-packet" style="animation-delay: 2.5s;">
+                            <rect x="296" y="120" width="8" height="16" rx="4" fill="#10b981" filter="url(#glowGreen)" />
+                        </g>
+
+                        <!-- Central Database Core -->
+                        <!-- Connecting horizontal bus -->
+                        <path d="M80 200 L520 200" stroke="#10b981" stroke-width="3" filter="url(#glowGreen)" />
+                        
+                        <!-- Processing Core -->
+                        <rect x="220" y="230" width="160" height="110" rx="12" fill="#ffffff" stroke="#10b981" stroke-width="2" />
+                        <!-- Core Disks / Layers -->
+                        <ellipse cx="300" cy="260" rx="60" ry="15" fill="#f0fdf4" stroke="#10b981" stroke-width="1.5" />
+                        <ellipse cx="300" cy="280" rx="60" ry="15" fill="#f0fdf4" stroke="#10b981" stroke-width="1.5" />
+                        <ellipse cx="300" cy="300" rx="60" ry="15" fill="#dcfce7" stroke="#10b981" stroke-width="2" />
+                        <path d="M240 260 L240 300 M360 260 L360 300" stroke="#10b981" stroke-width="1.5" />
+                        
+                        <text x="300" y="245" font-family="monospace" font-size="10" fill="#00a859" font-weight="bold" text-anchor="middle">AW_STRUCTURED_DB</text>
+                        
+                        <!-- Extracted Data Rows visualization on left/right -->
+                        <rect x="60" y="240" width="120" height="80" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <circle cx="75" cy="255" r="4" fill="#10b981" />
+                        <line x1="85" y1="255" x2="165" y2="255" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" />
+                        <circle cx="75" cy="275" r="4" fill="#10b981" />
+                        <line x1="85" y1="275" x2="145" y2="275" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" />
+                        <circle cx="75" cy="295" r="4" fill="#10b981" />
+                        <line x1="85" y1="295" x2="155" y2="295" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" />
+
+                        <rect x="420" y="240" width="120" height="80" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+                        <circle cx="435" cy="255" r="4" fill="#f59e0b" />
+                        <line x1="445" y1="255" x2="525" y2="255" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" />
+                        <circle cx="435" cy="275" r="4" fill="#f59e0b" />
+                        <line x1="445" y1="275" x2="505" y2="275" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" />
+                        <circle cx="435" cy="295" r="4" fill="#f59e0b" />
+                        <line x1="445" y1="295" x2="515" y2="295" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" />
+
+                    </svg>
+                </div>
+            </div>
 
             <div class="kpi-row-cover">
                 <div class="kpi-card fade-in-up" style="animation-delay: 0.1s;">
@@ -691,17 +914,19 @@
             <div class="bento-grid fade-in-up">
 
                 <div class="bento-card bottleneck-1">
-                    <div class="bento-card-visual">
+                    <div class="bento-card-visual" style="justify-content: center; transform: scale(1.1);">
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="10" y="10" width="40" height="30" rx="4" fill="#f0fdf4" stroke="#00a859"
+                            <rect x="10" y="15" width="40" height="30" rx="4" fill="#f0fdf4" stroke="#00a859"
                                 stroke-width="2" />
-                            <line x1="15" y1="20" x2="45" y2="20" stroke="#00a859" stroke-width="2"
+                            <line x1="16" y1="22" x2="35" y2="22" stroke="#00a859" stroke-width="2"
                                 stroke-linecap="round" />
-                            <line x1="15" y1="28" x2="35" y2="28" stroke="#00a859" stroke-width="2"
+                            <line x1="16" y1="28" x2="28" y2="28" stroke="#cbd5e1" stroke-width="2"
+                                stroke-linecap="round" />
+                            <line x1="16" y1="34" x2="44" y2="34" stroke="#00a859" stroke-width="2"
                                 stroke-linecap="round" />
                             <g class="anim-cursor">
-                                <path d="M25 25 L35 40 L30 40 L35 50 L30 52 L25 42 L20 45 Z" fill="#007c42"
-                                    stroke="white" stroke-width="2" />
+                                <path d="M26 26 L34 38 L30 38 L34 46 L30 48 L26 40 L22 42 Z" fill="#007c42"
+                                    stroke="white" stroke-width="1.5" />
                             </g>
                         </svg>
                     </div>
@@ -714,9 +939,9 @@
                 </div>
 
                 <div class="bento-card bottleneck-2">
-                    <div class="bento-card-visual">
+                    <div class="bento-card-visual" style="justify-content: center; transform: scale(1.1);">
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="15" y="10" width="30" height="40" rx="3" fill="#f0fdf4" stroke="#007c42"
+                            <rect x="15" y="10" width="30" height="40" rx="4" fill="#f8fafc" stroke="#007c42"
                                 stroke-width="2" />
                             <line x1="22" y1="20" x2="38" y2="20" stroke="#007c42" stroke-width="2"
                                 stroke-linecap="round" class="anim-row-1" />
@@ -724,7 +949,7 @@
                                 stroke-linecap="round" class="anim-row-2" />
                             <line x1="22" y1="36" x2="30" y2="36" stroke="#007c42" stroke-width="2"
                                 stroke-linecap="round" class="anim-row-3" />
-                            <rect x="10" y="15" width="40" height="30" rx="3" fill="transparent" stroke="#00a859"
+                            <rect x="10" y="15" width="40" height="30" rx="4" fill="transparent" stroke="#00a859"
                                 stroke-width="2" stroke-dasharray="4 4" />
                         </svg>
                     </div>
@@ -737,20 +962,20 @@
                 </div>
 
                 <div class="bento-card bottleneck-3">
-                    <div class="bento-card-visual">
+                    <div class="bento-card-visual" style="justify-content: center; transform: scale(1.1);">
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="5" y="15" width="20" height="30" rx="2" fill="#fff" stroke="#00a859"
+                            <rect x="5" y="18" width="20" height="24" rx="3" fill="#ffffff" stroke="#00a859"
                                 stroke-width="2" />
-                            <rect x="35" y="15" width="20" height="30" rx="2" fill="#fff" stroke="#00a859"
+                            <rect x="35" y="18" width="20" height="24" rx="3" fill="#ffffff" stroke="#00a859"
                                 stroke-width="2" />
-                            <line x1="10" y1="25" x2="20" y2="25" stroke="#00a859" stroke-width="2"
-                                stroke-linecap="round" />
-                            <line x1="40" y1="25" x2="50" y2="25" stroke="#00a859" stroke-width="2"
-                                stroke-linecap="round" />
+                            <line x1="10" y1="25" x2="20" y2="25" stroke="#00a859" stroke-width="2" stroke-linecap="round" />
+                            <line x1="10" y1="32" x2="16" y2="32" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" />
+                            <line x1="40" y1="25" x2="50" y2="25" stroke="#00a859" stroke-width="2" stroke-linecap="round" />
+                            <line x1="40" y1="32" x2="46" y2="32" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" />
                             <path d="M25 30 C 30 30, 30 30, 35 30" stroke="#00a859" fill="none" stroke-width="2"
                                 class="anim-break" />
-                            <circle cx="25" cy="30" r="2" fill="#00a859" />
-                            <circle cx="35" cy="30" r="2" fill="#00a859" />
+                            <circle cx="25" cy="30" r="2.5" fill="#00a859" />
+                            <circle cx="35" cy="30" r="2.5" fill="#00a859" />
                         </svg>
                     </div>
                     <div class="bento-card-content">
@@ -762,18 +987,18 @@
                 </div>
 
                 <div class="bento-card bottleneck-4">
-                    <div class="bento-card-visual">
+                    <div class="bento-card-visual" style="justify-content: center; transform: scale(1.1);">
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="15" width="50" height="30" rx="4" fill="#f8fafc" stroke="#007c42"
+                                stroke-width="2" stroke-dasharray="4 4" />
                             <g class="anim-dirty">
-                                <text x="30" y="35" font-family="monospace" font-size="16" font-weight="bold"
+                                <text x="30" y="35" font-family="monospace" font-size="14" font-weight="bold"
                                     fill="#ef4444" text-anchor="middle">"(12.4)"</text>
                             </g>
                             <g class="anim-clean">
-                                <text x="30" y="35" font-family="monospace" font-size="16" font-weight="bold"
+                                <text x="30" y="35" font-family="monospace" font-size="14" font-weight="bold"
                                     fill="#00a859" text-anchor="middle">-12.40</text>
                             </g>
-                            <rect x="5" y="15" width="50" height="30" rx="4" fill="transparent" stroke="#007c42"
-                                stroke-width="2" stroke-dasharray="4 4" />
                         </svg>
                     </div>
                     <div class="bento-card-content">
@@ -785,13 +1010,15 @@
                 </div>
 
                 <div class="bento-card bottleneck-5">
-                    <div class="bento-card-visual">
+                    <div class="bento-card-visual" style="justify-content: center; transform: scale(1.1);">
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="30" cy="30" r="20" fill="#f0fdf4" stroke="#007c42" stroke-width="2" />
                             <circle cx="30" cy="30" r="3" fill="#007c42" />
-                            <line x1="30" y1="30" x2="30" y2="16" stroke="#007c42" stroke-width="2"
+                            <!-- Fast Hours Hand -->
+                            <line x1="30" y1="30" x2="30" y2="18" stroke="#007c42" stroke-width="2.5"
                                 stroke-linecap="round" class="anim-spin-fast" />
-                            <line x1="30" y1="30" x2="40" y2="30" stroke="#00a859" stroke-width="3"
+                            <!-- Slow Minutes Hand -->
+                            <line x1="30" y1="30" x2="42" y2="30" stroke="#00a859" stroke-width="3"
                                 stroke-linecap="round" class="anim-spin-slow" />
                         </svg>
                     </div>
@@ -842,38 +1069,38 @@
                         2023.
                     </p>
 
-                    <div class="agent-pipeline">
-                        <svg width="100%" height="80" viewBox="0 0 600 80" fill="none"
+                    <div class="agent-pipeline" style="padding: 30px 0;">
+                        <svg width="100%" height="90" viewBox="0 0 600 90" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <!-- Source -->
-                            <rect x="20" y="20" width="80" height="40" rx="4" fill="#fff" stroke="#007c42"
+                            <rect x="20" y="25" width="80" height="40" rx="4" fill="#ffffff" stroke="#007c42"
                                 stroke-width="2" />
-                            <text x="60" y="44" font-size="12" font-family="monospace" font-weight="bold" fill="#007c42"
+                            <text x="60" y="49" font-size="12" font-family="monospace" font-weight="bold" fill="#007c42"
                                 text-anchor="middle">APMI HTML</text>
 
                             <!-- Path 1 -->
-                            <path d="M100 40 L250 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
-                            <path d="M100 40 L250 40" stroke="#00a859" stroke-width="4" stroke-linecap="round"
+                            <path d="M100 45 L250 45" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                            <path d="M100 45 L250 45" stroke="#00a859" stroke-width="4" stroke-linecap="round"
                                 class="anim-data-flow" />
 
                             <!-- Process -->
-                            <rect x="250" y="10" width="100" height="60" rx="8" fill="#e6f4ea" stroke="#00a859"
+                            <rect x="250" y="15" width="100" height="60" rx="8" fill="#e6f4ea" stroke="#00a859"
                                 stroke-width="2" />
-                            <circle cx="280" cy="40" r="10" fill="none" stroke="#00a859" stroke-width="3"
+                            <circle cx="280" cy="45" r="10" fill="none" stroke="#00a859" stroke-width="3"
                                 stroke-dasharray="4 2" class="anim-gear" />
-                            <text x="320" y="44" font-size="12" font-family="monospace" font-weight="bold"
+                            <text x="320" y="49" font-size="12" font-family="monospace" font-weight="bold"
                                 fill="#00a859" text-anchor="middle">PARSE</text>
 
                             <!-- Path 2 -->
-                            <path d="M350 40 L500 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
-                            <path d="M350 40 L500 40" stroke="#007c42" stroke-width="4" stroke-linecap="round"
+                            <path d="M350 45 L500 45" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                            <path d="M350 45 L500 45" stroke="#007c42" stroke-width="4" stroke-linecap="round"
                                 class="anim-data-flow" style="animation-delay: 1s;" />
 
                             <!-- Dest -->
-                            <path d="M500 30 C500 20, 580 20, 580 30 L580 50 C580 60, 500 60, 500 50 Z" fill="#fff"
+                            <path d="M500 35 C500 25, 580 25, 580 35 L580 55 C580 65, 500 65, 500 55 Z" fill="#ffffff"
                                 stroke="#007c42" stroke-width="2" />
-                            <path d="M500 30 C500 40, 580 40, 580 30" fill="none" stroke="#007c42" stroke-width="2" />
-                            <text x="540" y="44" font-size="12" font-family="monospace" font-weight="bold"
+                            <path d="M500 35 C500 45, 580 45, 580 35" fill="none" stroke="#007c42" stroke-width="2" />
+                            <text x="540" y="49" font-size="12" font-family="monospace" font-weight="bold"
                                 fill="#007c42" text-anchor="middle">SQL DB</text>
                         </svg>
                     </div>
@@ -922,41 +1149,41 @@
                         auto-retries, and scrape-status panels across all 8 sub-reports per PM.
                     </p>
 
-                    <div class="agent-pipeline">
-                        <svg width="100%" height="80" viewBox="0 0 600 80" fill="none"
+                    <div class="agent-pipeline" style="padding: 30px 0;">
+                        <svg width="100%" height="90" viewBox="0 0 600 90" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <!-- Multi-Source -->
-                            <rect x="10" y="10" width="80" height="40" rx="4" fill="#fff" stroke="#007c42"
+                            <rect x="10" y="15" width="80" height="40" rx="4" fill="#ffffff" stroke="#007c42"
                                 stroke-width="2" />
-                            <rect x="20" y="20" width="80" height="40" rx="4" fill="#fff" stroke="#007c42"
+                            <rect x="20" y="25" width="80" height="40" rx="4" fill="#ffffff" stroke="#007c42"
                                 stroke-width="2" />
-                            <rect x="30" y="30" width="80" height="40" rx="4" fill="#fff" stroke="#007c42"
+                            <rect x="30" y="35" width="80" height="40" rx="4" fill="#ffffff" stroke="#007c42"
                                 stroke-width="2" />
-                            <text x="70" y="54" font-size="12" font-family="monospace" font-weight="bold" fill="#007c42"
+                            <text x="70" y="59" font-size="12" font-family="monospace" font-weight="bold" fill="#007c42"
                                 text-anchor="middle">250 PMRs</text>
 
                             <!-- Path 1 -->
-                            <path d="M110 40 L250 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
-                            <path d="M110 40 L250 40" stroke="#007c42" stroke-width="4" stroke-linecap="round"
+                            <path d="M110 45 L250 45" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                            <path d="M110 45 L250 45" stroke="#007c42" stroke-width="4" stroke-linecap="round"
                                 class="anim-data-flow" />
 
                             <!-- Process -->
-                            <rect x="250" y="10" width="100" height="60" rx="8" fill="#f0fdf4" stroke="#007c42"
+                            <rect x="250" y="15" width="100" height="60" rx="8" fill="#f0fdf4" stroke="#007c42"
                                 stroke-width="2" />
-                            <circle cx="300" cy="40" r="15" fill="none" stroke="#007c42" stroke-width="3"
+                            <circle cx="300" cy="45" r="15" fill="none" stroke="#007c42" stroke-width="3"
                                 stroke-dasharray="6 4" class="anim-gear" />
-                            <circle cx="300" cy="40" r="4" fill="#007c42" />
+                            <circle cx="300" cy="45" r="4" fill="#007c42" />
 
                             <!-- Path 2 -->
-                            <path d="M350 40 L500 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
-                            <path d="M350 40 L500 40" stroke="#007c42" stroke-width="4" stroke-linecap="round"
+                            <path d="M350 45 L500 45" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                            <path d="M350 45 L500 45" stroke="#007c42" stroke-width="4" stroke-linecap="round"
                                 class="anim-data-flow" style="animation-delay: 1s;" />
 
                             <!-- Dest -->
-                            <path d="M500 30 C500 20, 580 20, 580 30 L580 50 C580 60, 500 60, 500 50 Z" fill="#fff"
+                            <path d="M500 35 C500 25, 580 25, 580 35 L580 55 C580 65, 500 65, 500 55 Z" fill="#ffffff"
                                 stroke="#007c42" stroke-width="2" />
-                            <path d="M500 30 C500 40, 580 40, 580 30" fill="none" stroke="#007c42" stroke-width="2" />
-                            <text x="540" y="44" font-size="12" font-family="monospace" font-weight="bold"
+                            <path d="M500 35 C500 45, 580 45, 580 35" fill="none" stroke="#007c42" stroke-width="2" />
+                            <text x="540" y="49" font-size="12" font-family="monospace" font-weight="bold"
                                 fill="#007c42" text-anchor="middle">DB STORE</text>
                         </svg>
                     </div>
@@ -1003,45 +1230,45 @@
                         AMFI and running breakable VLOOKUPs.
                     </p>
 
-                    <div class="agent-pipeline">
-                        <svg width="100%" height="80" viewBox="0 0 600 80" fill="none"
+                    <div class="agent-pipeline" style="padding: 30px 0;">
+                        <svg width="100%" height="90" viewBox="0 0 600 90" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <!-- Source 1 -->
-                            <rect x="20" y="5" width="60" height="30" rx="4" fill="#fff" stroke="#00a859"
+                            <rect x="20" y="10" width="70" height="30" rx="4" fill="#ffffff" stroke="#00a859"
                                 stroke-width="2" />
-                            <text x="50" y="24" font-size="10" font-family="monospace" font-weight="bold" fill="#00a859"
+                            <text x="55" y="29" font-size="11" font-family="monospace" font-weight="bold" fill="#00a859"
                                 text-anchor="middle">NSE CSV</text>
 
                             <!-- Source 2 -->
-                            <rect x="20" y="45" width="60" height="30" rx="4" fill="#fff" stroke="#00a859"
+                            <rect x="20" y="55" width="70" height="30" rx="4" fill="#ffffff" stroke="#00a859"
                                 stroke-width="2" />
-                            <text x="50" y="64" font-size="10" font-family="monospace" font-weight="bold" fill="#00a859"
+                            <text x="55" y="74" font-size="11" font-family="monospace" font-weight="bold" fill="#00a859"
                                 text-anchor="middle">AMFI NAV</text>
 
                             <!-- Paths 1 & 2 Merge -->
-                            <path d="M80 20 L250 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
-                            <path d="M80 20 L250 40" stroke="#00a859" stroke-width="4" stroke-linecap="round"
+                            <path d="M90 25 L250 45" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                            <path d="M90 25 L250 45" stroke="#00a859" stroke-width="4" stroke-linecap="round"
                                 class="anim-data-flow" />
-                            <path d="M80 60 L250 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
-                            <path d="M80 60 L250 40" stroke="#00a859" stroke-width="4" stroke-linecap="round"
+                            <path d="M90 70 L250 45" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                            <path d="M90 70 L250 45" stroke="#00a859" stroke-width="4" stroke-linecap="round"
                                 class="anim-data-flow" style="animation-delay: 0.5s;" />
 
                             <!-- Process (Merge) -->
-                            <rect x="250" y="10" width="100" height="60" rx="8" fill="#e6f4ea" stroke="#00a859"
+                            <rect x="250" y="15" width="100" height="60" rx="8" fill="#e6f4ea" stroke="#00a859"
                                 stroke-width="2" />
-                            <path d="M280 40 L290 50 L310 30" fill="none" stroke="#00a859" stroke-width="4"
+                            <path d="M280 45 L290 55 L310 35" fill="none" stroke="#00a859" stroke-width="4"
                                 stroke-linecap="round" stroke-linejoin="round" />
 
                             <!-- Path 3 -->
-                            <path d="M350 40 L500 40" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
-                            <path d="M350 40 L500 40" stroke="#00a859" stroke-width="4" stroke-linecap="round"
+                            <path d="M350 45 L500 45" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+                            <path d="M350 45 L500 45" stroke="#00a859" stroke-width="4" stroke-linecap="round"
                                 class="anim-data-flow" style="animation-delay: 1.5s;" />
 
                             <!-- Dest -->
-                            <path d="M500 30 C500 20, 580 20, 580 30 L580 50 C580 60, 500 60, 500 50 Z" fill="#fff"
+                            <path d="M500 35 C500 25, 580 25, 580 35 L580 55 C580 65, 500 65, 500 55 Z" fill="#ffffff"
                                 stroke="#00a859" stroke-width="2" />
-                            <path d="M500 30 C500 40, 580 40, 580 30" fill="none" stroke="#00a859" stroke-width="2" />
-                            <text x="540" y="44" font-size="12" font-family="monospace" font-weight="bold"
+                            <path d="M500 35 C500 45, 580 45, 580 35" fill="none" stroke="#00a859" stroke-width="2" />
+                            <text x="540" y="49" font-size="12" font-family="monospace" font-weight="bold"
                                 fill="#00a859" text-anchor="middle">UNIFIED</text>
                         </svg>
                     </div>
@@ -1186,24 +1413,45 @@
                 </div>
             </div>
 
-            <div class="text-center" style="margin-top: 80px;">
-                <h3 style="font-size: 1.5rem; color: var(--text-dark); margin-bottom: 15px;">Built for Institutional Rigour</h3>
-                <p style="color: var(--text-gray); margin-bottom: 30px;">Deployed via Managed Cloud, On-Premise, or
+            <div class="text-center" style="margin-top: 100px; margin-bottom: 20px;">
+                <h3 style="font-size: 2rem; color: var(--text-dark); margin-bottom: 20px;">Built for Institutional Rigour</h3>
+                <p style="color: var(--text-gray); margin-bottom: 40px; font-size: 1.15rem;">Deployed via Managed Cloud, On-Premise, or
                     Hybrid with extensive data lineage on every record.</p>
-                <a href="contact-us.html" class="cta-btn">Request Terminal X Demo</a>
+                <a href="contact-us.html" class="cta-btn" style="margin-top: 0;">Request Demo</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+                <footer>
         <div class="container footer-grid">
             <div class="footer-col">
                 <h4 style="color:#ffffff;">AUTOWHAT AI</h4>
                 <p style="color: var(--primary-color);">Innovating for a better tomorrow.</p>
             </div>
-            
-            
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">Offerings</h4>
+                <ul>
+                    <li><a href="gate-module.html">AutoGate</a></li>
+                    <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
+                    <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
+                    <li><a href="algo-trading.html">Algo Trading</a></li>
+                    <li><a href="pms-data-scraping.html">PMS Data Scraping Automation</a></li>
+                    <li><a href="chat-with-database.html">Chat with Database</a></li>
+                    <li><a href="content-ai.html">Content AI</a></li>
+                    <li><a href="mgrow.html">MGrow</a></li>
+                    <li><a href="learnpro.html">LearnPro</a></li>
+                    <li><a href="ai-consulting.html">AI Consulting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">Company</h4>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="who-we-are.html">Who We Are</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </div>
         </div>
         <div class="container footer-bottom">
             <p>&copy; 2026 Autowhat AI. All rights reserved.</p>
