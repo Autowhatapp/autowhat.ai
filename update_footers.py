@@ -1,9 +1,9 @@
 import os
 import re
 
-directory = '/Users/akshaythaman/Desktop/autowhat website'
+directory = '/Users/akshaythaman/Desktop/Autowhat /autowhat website'
 
-# The exact footer from index.html
+# Updated footer with Company column linking to About Us
 new_footer = """    <footer>
         <div class="container footer-grid">
             <div class="footer-col">
@@ -11,20 +11,27 @@ new_footer = """    <footer>
                 <p style="color: var(--primary-color);">Innovating for a better tomorrow.</p>
             </div>
             <div class="footer-col">
-                <h4 style="color:#ffffff;">Company</h4>
+                <h4 style="color:#ffffff;">Offerings</h4>
                 <ul>
-                    <li><a href="#" style="color:#ffffff;">Our Team</a></li>
-                    <li><a href="#" style="color:#ffffff;">Careers</a></li>
-                    <li><a href="#" style="color:#ffffff;">Privacy Policy</a></li>
+                    <li><a href="gate-module.html">AutoGate</a></li>
+                    <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
+                    <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
+                    <li><a href="algo-trading.html">Algo Trading</a></li>
+                    <li><a href="pms-data-scraping.html">PMS Data Scraping Automation</a></li>
+                    <li><a href="chat-with-database.html">Chat with Database</a></li>
+                    <li><a href="content-ai.html">Content AI</a></li>
+                    <li><a href="mgrow.html">MGrow</a></li>
+                    <li><a href="learnpro.html">LearnPro</a></li>
+                    <li><a href="ai-consulting.html">AI Consulting</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4 style="color:#ffffff;">Connect</h4>
-                <div class="social-links">
-                    <a href="#">Li</a>
-                    <a href="#">Tw</a>
-                    <a href="#">In</a>
-                </div>
+                <h4 style="color:#ffffff;">Company</h4>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="who-we-are.html">Who We Are</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                </ul>
             </div>
         </div>
         <div class="container footer-bottom">
