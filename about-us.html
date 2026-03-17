@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Autowhat AI</title>
+    <meta name="description"
+        content="Meet the team behind Autowhat AI & Automations — the leadership, strategists, and developers building intelligent automation systems.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/clear-sans@5.0.0/index.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Hero */
+        .about-hero {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(0, 168, 89, 0.05) 0%, transparent 50%), var(--bg-light);
+            padding: 80px 20px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(rgba(0, 168, 89, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(0, 168, 89, 0.1);
+            color: var(--primary-color);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        .about-title {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+            color: var(--text-dark);
+        }
+
+        .about-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Team Sections */
+        .team-section {
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        .team-section:nth-child(odd) {
+            background: #ffffff;
+        }
+
+        .team-section:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        .team-section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .team-section-header h2 {
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .team-section-header p {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .team-grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        /* Team Card */
+        .team-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .team-section:nth-child(even) .team-card {
+            background: #ffffff;
+        }
+
+        .team-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 60%, rgba(0, 168, 89, 0.03) 100%);
+            pointer-events: none;
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px rgba(0, 168, 89, 0.1);
+            border-color: rgba(0, 168, 89, 0.25);
+        }
+
+        /* Avatar */
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .avatar-green {
+            background: linear-gradient(135deg, #00a859, #007c42);
+            box-shadow: 0 8px 24px rgba(0, 168, 89, 0.3);
+        }
+
+        .avatar-teal {
+            background: linear-gradient(135deg, #0d9488, #0f766e);
+            box-shadow: 0 8px 24px rgba(13, 148, 136, 0.3);
+        }
+
+        .avatar-blue {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+        }
+
+        .avatar-purple {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+        }
+
+        .avatar-amber {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            box-shadow: 0 8px 24px rgba(217, 119, 6, 0.3);
+        }
+
+        .avatar-rose {
+            background: linear-gradient(135deg, #e11d48, #be123c);
+            box-shadow: 0 8px 24px rgba(225, 29, 72, 0.3);
+        }
+
+        .avatar-indigo {
+            background: linear-gradient(135deg, #4f46e5, #4338ca);
+            box-shadow: 0 8px 24px rgba(79, 70, 229, 0.3);
+        }
+
+        .avatar-emerald {
+            background: linear-gradient(135deg, #059669, #047857);
+            box-shadow: 0 8px 24px rgba(5, 150, 105, 0.3);
+        }
+
+        .avatar-cyan {
+            background: linear-gradient(135deg, #0891b2, #0e7490);
+            box-shadow: 0 8px 24px rgba(8, 145, 178, 0.3);
+        }
+
+        /* Card Details */
+        .team-name {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-role {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-bio {
+            font-size: 1rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Divider line between avatar area and bio */
+        .team-divider {
+            width: 40px;
+            height: 3px;
+            background: rgba(0, 168, 89, 0.3);
+            border-radius: 2px;
+            margin-bottom: 20px;
+        }
+
+        /* CTA Section */
+        .about-cta {
+            padding: 80px 20px;
+            background: #0a0a0a;
+            color: white;
+            text-align: center;
+        }
+
+        .about-cta h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .about-cta p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            margin-top: 40px;
+            border: 2px solid transparent;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 168, 89, 0.3);
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .about-title {
+                font-size: 3rem;
+            }
+
+            .team-grid-2,
+            .team-grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .team-section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .about-cta h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (min-width: 601px) and (max-width: 900px) {
+            .team-grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body style="padding-top: 100px;">
+    <!-- Header -->
+    <header id="main-header"
+       >
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html"><img src="logo.png" alt="Autowhat AI"></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="who-we-are.html">Who we are</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#services">What we do</a>
+                        <ul class="dropdown-content">
+                            <li class="nested-dropdown">
+                                <a href="#">Logistics and Mobility Systems</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="gate-module.html">AutoGate</a></li>
+                                    <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
+                                    <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="#">Finance and Capital Markets</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="algo-trading.html">Algo Trading</a></li>
+                                    <li><a href="pms-data-scraping.html">PMS Data Scraping Automation</a></li>
+                                </ul>
+                            </li>
+                            <li class="nested-dropdown">
+                                <a href="#">Growth and Intelligence Products</a>
+                                <ul class="nested-dropdown-content">
+                                    <li><a href="chat-with-database.html">Chat with Database</a></li>
+                                    <li><a href="content-ai.html">Content AI</a></li>
+                                    <li><a href="mgrow.html">MGrow</a></li>
+                                    <li><a href="learnpro.html">LearnPro</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="ai-consulting.html">AI Consulting</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions" style="justify-self: end;">
+                <!-- Empty div to balance the 3-column CSS grid and keep nav centered -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <div class="hero-tag">About Us</div>
+            <h1 class="about-title">Meet the Team Behind<br><span
+                    style="color: var(--primary-color);">Autowhat AI.</span></h1>
+            <p class="about-subtitle">
+                A multidisciplinary team of engineers, strategists, and innovators united by a single mission — building
+                intelligent systems that transform how businesses operate.
+            </p>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="team-section-header reveal">
+                <div class="hero-tag">Leadership</div>
+                <h2>Our Directors</h2>
+                <p>Visionary leaders combining financial acumen with deep technological expertise to drive Autowhat's
+                    mission forward.</p>
+            </div>
+
+            <div class="team-grid team-grid-2">
+                <!-- Priyesh Patel -->
+                <div class="team-card reveal">
+                    <div class="team-avatar"><img src="team-photos/priyaesh-patel.jpg" alt="Priyesh Patel" style="object-position: center 15%;"></div>
+                    <h3 class="team-name">Priyesh Patel</h3>
+                    <div class="team-role">CEO — Autowhat AI & Automations Pvt. Ltd.</div>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">With a strong foundation in Chartered Accountancy and a passion for software
+                        design, Priyesh is the driving force behind Autowhat AI. Under his leadership, the company has
+                        launched groundbreaking solutions including the world's first SaaS attendance bot on WhatsApp,
+                        AI-powered supply chain platforms, and enterprise workflow systems.</p>
+                </div>
+                <!-- Akanksha Agarwal -->
+                <div class="team-card reveal" style="transition-delay: 0.1s;">
+                    <div class="team-avatar"><img src="team-photos/akanksha-agarwal.jpg" alt="Akanksha Agarwal"></div>
+                    <h3 class="team-name">Akanksha Agarwal</h3>
+                    <div class="team-role">Director — Autowhat AI and Automation Limited</div>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">A finance and management professional with a PGDM from IIM Rohtak and a B.A.
+                        from Miranda House, Delhi University. A certified Six Sigma Green Belt with experience at HDFC
+                        Bank and in international business operations, she leads finance, governance, and team management
+                        at Autowhat, ensuring fiscal discipline and organizational growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="team-section-header reveal">
+                <div class="hero-tag">Core Team</div>
+                <h2>Strategic Operations</h2>
+                <p>The strategists and domain experts who drive growth, innovation, and next-generation R&D.</p>
+            </div>
+
+            <div class="team-grid" style="max-width: 600px;">
+                <!-- Saransh Agarwal -->
+                <div class="team-card reveal">
+                    <div class="team-avatar"><img src="team-photos/saransh-agarwal.jpg" alt="Saransh Agarwal"></div>
+                    <h3 class="team-name">Saransh Agarwal</h3>
+                    <div class="team-role">Growth & Marketing</div>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">Leads client acquisition, marketing, and overall growth at Autowhat AI. With a
+                        strong foundation in accounts, finance, and logistics innovation, he combines data-driven
+                        insights with marketing strategies to position Autowhat competitively, build brand visibility,
+                        and drive customer-centric expansion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developer Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="team-section-header reveal">
+                <div class="hero-tag">Engineering</div>
+                <h2>Our Developer Team</h2>
+                <p>The engineers who architect, build, and deploy the intelligent systems that power our clients'
+                    operations.</p>
+            </div>
+
+            <div class="team-grid team-grid-3">
+                <!-- Vivek Gupta -->
+                <div class="team-card reveal">
+                    <div class="team-avatar"><img src="team-photos/vivek-gupta.jpg" alt="Vivek Gupta"></div>
+                    <h3 class="team-name">Vivek Gupta</h3>
+                    <div class="team-role">AI Developer</div>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">Holds a B.Sc. (Hons.) in Computer Science with an AI/ML specialization.
+                        Passionate about machine learning, chatbot development, and data science. Has contributed to
+                        LLM-powered bots, prompt engineering, and dashboard development, delivering impactful real-time
+                        solutions.</p>
+                </div>
+                <!-- Dipesh Nerpagar -->
+                <div class="team-card reveal" style="transition-delay: 0.1s;">
+                    <div class="team-avatar"><img src="team-photos/dipesh-nerpagar.jpg" alt="Dipesh Nerpagar"></div>
+                    <h3 class="team-name">Dipesh Nerpagar</h3>
+                    <div class="team-role">AI Developer</div>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">B.Sc. Computer Science graduate with AI/ML specialization, skilled in Python,
+                        SQL, AWS, MongoDB, and RAG systems. Has fine-tuned large language models, developed AI agents,
+                        and built data-driven automation systems spanning recommender systems and interactive dashboards.
+                    </p>
+                </div>
+                <!-- Chirag Vishwakarma -->
+                <div class="team-card reveal" style="transition-delay: 0.2s;">
+                    <div class="team-avatar"><img src="team-photos/chirag-vishwakarma.jpg" alt="Chirag Vishwakarma"></div>
+                    <h3 class="team-name">Chirag Vishwakarma</h3>
+                    <div class="team-role">AI Developer</div>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">B.Sc. graduate in AI/ML, experienced in machine learning, SQL, and LLM-based AI
+                        agents. Has designed conversational AI systems, integrated task automation bots, and developed
+                        projects including an Emotion-Based Music Recommender and Eye-Tracking Mouse for accessibility.
+                    </p>
+                </div>
+                <!-- Kunal Palande -->
+                <div class="team-card reveal" style="transition-delay: 0.3s;">
+                    <div class="team-avatar"><img src="team-photos/kunal-palande.jpg" alt="Kunal Palande"></div>
+                    <h3 class="team-name">Kunal Palande</h3>
+                    <div class="team-role">AI Developer</div>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">B.Tech. graduate in Information Technology with a strong background in Python,
+                        SQL, and data analytics. Has developed AI-powered applications including DestinAI — a generative
+                        AI travel itinerary planner — and a Face Recognition Attendance System. Research contributions
+                        presented at the 8th International Conference on ICT.</p>
+                </div>
+                <!-- Pritam Rikame -->
+                <div class="team-card reveal" style="transition-delay: 0.4s;">
+                    <div class="team-avatar"><img src="team-photos/pritam-rikame.jpg" alt="Pritam Rikame"></div>
+                    <h3 class="team-name">Pritam Rikame</h3>
+                    <div class="team-role">Full-Stack Developer</div>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">A BCA graduate and skilled MERN/MEAN Stack Developer with hands-on experience in
+                        web applications and chatbot development. Has built WhatsApp bot integrations, scalable
+                        dashboards, and API-driven applications. Proficient in React.js, Next.js, Node.js, Express.js,
+                        and MongoDB.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="about-cta">
+        <div class="container">
+            <h2>Want to Work with Us?</h2>
+            <p>
+                We're always looking for the next challenge. Get in touch to discuss how our team can engineer solutions
+                for your business.
+            </p>
+            <a href="contact-us.html" class="cta-btn" style="color: #ffffff;">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+                <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">AUTOWHAT AI</h4>
+                <p style="color: var(--primary-color);">Innovating for a better tomorrow.</p>
+            </div>
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">Offerings</h4>
+                <ul>
+                    <li><a href="gate-module.html">AutoGate</a></li>
+                    <li><a href="vehicle-fleet-management.html">Vehicle Fleet Management</a></li>
+                    <li><a href="vendor-payable.html">Vendor Payable Software</a></li>
+                    <li><a href="algo-trading.html">Algo Trading</a></li>
+                    <li><a href="pms-data-scraping.html">PMS Data Scraping Automation</a></li>
+                    <li><a href="chat-with-database.html">Chat with Database</a></li>
+                    <li><a href="content-ai.html">Content AI</a></li>
+                    <li><a href="mgrow.html">MGrow</a></li>
+                    <li><a href="learnpro.html">LearnPro</a></li>
+                    <li><a href="ai-consulting.html">AI Consulting</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 style="color:#ffffff;">Company</h4>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="who-we-are.html">Who We Are</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Autowhat AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll Reveal Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach((element) => {
+                observer.observe(element);
+            });
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
